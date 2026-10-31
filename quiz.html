@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Matemática 9º ano | Olaria do Cobogó (Mensal 3)</title>
+<style>
+  :root{--fundo:#17110d;--fundo2:#231a14;--fundo3:#2d2219;--borda:#3d2e23;--borda2:#5a4433;--amarelo:#f6c445;--azul:#4fb0e8;--terra:#e8804f;--verde:#4fd18b;--coral:#ff6b6b;--texto:#f3e9dd;--cinza:#bba897;--postit:#ffe39a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Verdana,'Segoe UI',system-ui,Arial,sans-serif;font-size:18px;line-height:1.55;color:var(--texto);background-color:var(--fundo);
+    background-image:radial-gradient(circle at 50% 50%,rgba(246,196,69,.06) 0 22%,transparent 23%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%);
+    background-size:56px 56px,56px 56px,56px 56px;background-position:0 0,0 0,28px 28px;min-height:100vh}
+  h1,h2,h3{font-family:'Trebuchet MS','Gill Sans',Tahoma,sans-serif}
+  header{background:linear-gradient(120deg,#3a210f,#231a14 55%,#123047);padding:24px 18px;text-align:center;border-bottom:5px solid var(--amarelo);box-shadow:0 4px 18px rgba(0,0,0,.5)}
+  header .selo{font-family:'Courier New',Consolas,monospace;font-size:.76rem;letter-spacing:3px;color:var(--amarelo);text-transform:uppercase}
+  header h1{font-size:1.6rem;margin:6px 0 2px}
+  header p{color:#e8d8c6;font-size:.92rem}
+  .wrap{max-width:880px;margin:0 auto;padding:16px}
+  .barra-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+  .barra-nav a{background:var(--fundo2);color:var(--texto);text-decoration:none;padding:7px 12px;border-radius:8px;font-size:.85rem;border:1px solid var(--borda2)}
+  .barra-nav a.on{background:var(--amarelo);color:#2b1c00;font-weight:bold}
+  .barra-nav a.lock{opacity:.5}
+  .painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--fundo2);border:1px solid var(--borda);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:.85rem}
+  .painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{cursor:pointer;font-family:inherit}
+  .mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:6px 10px;font-size:.8rem}
+  .intro{background:var(--fundo2);border:1px solid var(--borda);border-left:6px solid var(--amarelo);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+  .intro h2{font-size:1.2rem;margin-bottom:8px;color:var(--amarelo)}
+  .intro ol{margin:8px 0 0 22px}
+  .az{color:var(--azul);font-weight:bold} .te{color:var(--terra);font-weight:bold} .am{color:var(--amarelo);font-weight:bold}
+  .formula{text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:1.25rem;background:#120d0a;border:2px dashed var(--borda2);border-radius:12px;padding:12px;margin:10px 0;color:#fff}
+  .formula small{display:block;font-family:Verdana,sans-serif;font-size:.8rem;color:var(--cinza);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:8px 0 12px}
+  th,td{border:1px solid var(--borda2);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#33251b;color:var(--amarelo)}
+  .postit{background:var(--postit);color:#3b2a00;border-radius:4px 4px 18px 4px;padding:12px 14px;margin:12px 0;box-shadow:3px 4px 0 rgba(0,0,0,.35);transform:rotate(-.5deg);font-size:.95rem}
+  .alerta{background:#3a1616;border:2px solid var(--coral);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:.95rem}
+  .alerta b{color:#ffb3b3}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(15,10,7,.97);z-index:50;align-items:center;justify-content:center;padding:16px}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--fundo2);border:2px solid var(--amarelo);border-radius:14px;padding:22px;max-width:440px;text-align:center}
+  .modal p{margin-bottom:14px}
+  .modal .big{font-size:2.2rem}
+  .modal a,.modal button{display:inline-block;background:var(--amarelo);color:#2b1c00;border:none;border-radius:8px;padding:10px 18px;font-weight:bold;text-decoration:none;font-size:1rem}
+  .modal button.mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2)}
+  .trilha-fim{background:linear-gradient(120deg,#16301f,#1d3b28);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center}
+  .trilha-fim h3{color:#b5f2cf;margin-bottom:8px}
+  .trilha-fim a.btn{display:inline-block;margin-top:8px;background:var(--verde);color:#062614;text-decoration:none;font-weight:bold;padding:12px 20px;border-radius:10px}
+  .trilha-fim a.btn.off{background:#3a2e25;color:#8f7f70;pointer-events:none}
+  .rodape{text-align:center;color:var(--cinza);font-size:.8rem;margin-top:24px}
+  @media (max-width:560px){body{font-size:16.5px} header h1{font-size:1.3rem}}
+
+  .codigo{display:none;position:sticky;top:0;z-index:20;background:linear-gradient(90deg,#3a2a08,#5a3f0a);border:2px solid var(--amarelo);border-radius:0 0 14px 14px;padding:10px;text-align:center;margin-bottom:14px}
+  .codigo.show{display:block}
+  .codigo .cod{font-family:'Courier New',monospace;font-size:1.6rem;font-weight:bold;letter-spacing:3px;color:var(--amarelo)}
+  .progresso{height:12px;background:#120d0a;border-radius:8px;overflow:hidden;border:1px solid var(--borda2);margin-bottom:14px}
+  .progresso div{height:100%;width:0;background:linear-gradient(90deg,var(--azul),var(--amarelo),var(--terra));transition:width .3s}
+  .q{background:var(--fundo2);border:1px solid var(--borda);border-radius:14px;padding:14px 16px;margin-bottom:14px}
+  .q .tema{font-size:.72rem;font-family:'Courier New',monospace;background:#120d0a;color:var(--amarelo);border-radius:6px;padding:2px 8px}
+  .q .num{font-size:.8rem;color:var(--cinza);margin-top:6px}
+  .q h3{font-size:1.02rem;margin:6px 0 10px;font-family:Verdana,sans-serif;font-weight:bold}
+  .alt{display:block;background:#1b140f;border:1px solid var(--borda2);border-radius:10px;padding:10px 12px;margin:6px 0;cursor:pointer}
+  .alt.sel{border-color:var(--amarelo);background:#2e2310}
+  .alt.certa{border:2px solid var(--verde);background:#12291b}
+  .alt.errada{opacity:.75;background:#2a2622;color:#d0c6bc}
+  .alt.marcada-errada{border:2px solid var(--coral);background:#2e1515}
+  .exp{display:none;font-size:.88rem;margin-top:6px;color:#e3d8cc}
+  .exp.show{display:block}
+  .alt.certa .exp{color:#b5f2cf}
+  button.enviar{width:100%;background:var(--amarelo);color:#2b1c00;border:none;border-radius:12px;padding:14px;font-size:1.05rem;font-weight:bold}
+  button.enviar:disabled{background:#3a2e25;color:#8f7f70;cursor:not-allowed}
+  .gab{display:none;background:var(--fundo2);border:1px solid var(--borda2);border-radius:14px;padding:14px;margin-top:14px}
+  .gab.show{display:block}
+  .gab input{background:#0f0b08;color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:8px;font-size:1rem;margin:8px 6px 0 0;text-transform:uppercase}
+  .gab button{background:var(--azul);color:#06253a;border:none;border-radius:8px;padding:9px 14px;font-weight:bold}
+  .gab .msg{margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="selo">Olaria do Cobogó · Matemática 9º ano · CCF · Mensal 3</div>
+  <h1>🎯 Quiz — Inspeção da Fornada</h1>
+  <p>15 questões · Estatística (Frente A) · Polígonos regulares e Prismas (Frente B) · Código MED para os pais</p>
+</header>
+
+<div class="wrap">
+  <nav class="barra-nav" id="nav">
+    <a href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a class="on" href="quiz.html">🎯 Quiz</a>
+    <a href="resumo.html" data-etapa="resumo">🗺️ Resumo</a>
+    <a href="simulado.html" data-etapa="simulado">📝 Simulado</a>
+    <a href="index.html">🏠 Início</a>
+  </nav>
+
+  <div class="codigo" id="codigo"><div>Seu código de liberação</div><div class="cod" id="cod"></div><div id="codtxt"></div></div>
+
+  <div class="intro">
+    <h2>🔍 A fornada saiu do forno. Hora da inspeção!</h2>
+    <p>Responda as <b>15 questões</b> (todas obrigatórias) com papel e lápis ao lado para as contas. Depois de <b>Enviar</b>, as respostas travam, aparece o seu <b>código MED</b> e o gabarito comentado abre com esse código. Ao enviar, o <b>🗺️ Resumo destrava</b>.</p>
+  </div>
+
+  <div class="painel">
+    <span id="salvo">💾 Progresso salvo automaticamente.</span>
+    <div class="btns">
+      <button class="mini" onclick="exportar()">📥 Exportar</button>
+      <button class="mini" onclick="document.getElementById('imp').click()">📤 Importar</button>
+      <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+      <button class="mini" onclick="pedirZerar()">🗑️ Zerar tudo</button>
+    </div>
+  </div>
+
+  <div class="progresso"><div id="barra"></div></div>
+  <div id="questoes"></div>
+  <button class="enviar" id="btn-enviar" onclick="enviar()" disabled>📨 Enviar respostas (responda todas)</button>
+
+  <div class="gab" id="gab">
+    <b>🔑 Gabarito comentado:</b> digite o código MED que apareceu no topo.<br>
+    <input id="gab-in" placeholder="MED-XX-YY"><button onclick="abrirGab()">Ver gabarito</button>
+    <div class="msg" id="gab-msg"></div>
+  </div>
+
+  <div class="trilha-fim" id="trilha-fim">
+    <h3>🔒 Próxima etapa: Resumo</h3>
+    <p id="trilha-fim-txt">O Resumo destrava quando você enviar o Quiz.</p>
+    <a class="btn off" id="btn-prox" href="resumo.html">🗺️ Ir para o Resumo</a>
+  </div>
+
+  <div class="rodape">Feito com carinho para o jovem aprendiz. 🧱</div>
+</div>
+
+<div class="modal-bg" id="lock">
+  <div class="modal">
+    <div class="big">🔒</div>
+    <p><b>Esta etapa ainda está trancada.</b></p>
+    <p id="lock-txt">Para abrir o Quiz, conclua a Leitura Guiada.</p>
+    <a href="index.html">Voltar ao início</a>
+  </div>
+</div>
+<div class="modal-bg" id="modal" style="background:rgba(0,0,0,.75)">
+  <div class="modal">
+    <p id="modal-txt"></p>
+    <button onclick="fecharModal()" id="modal-ok">Ok</button>
+    <button class="mini" onclick="fecharModal()" id="modal-cancel" style="display:none;margin-left:8px">Cancelar</button>
+  </div>
+</div>
+
+<script>
+/* ====== TRILHA COM CADEADOS (módulo comum do kit) ====== */
+var KIT='olaria_cobogo_mat9';
+var TRILHA=[
+ {id:'leitura', chave:KIT+'_leitura_v1', nome:'Leitura Guiada', arquivo:'leitura-guiada.html', emoji:'📖'},
+ {id:'quiz', chave:KIT+'_quiz_v1', nome:'Quiz', arquivo:'quiz.html', emoji:'🎯'},
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapaConcluida(id){ var e=TRILHA.filter(function(t){return t.id===id;})[0]; var d=lerJSON(e.chave); return !!(d&&d.concluido); }
+function podeAbrir(id){ var idx=TRILHA.map(function(t){return t.id;}).indexOf(id); if(idx<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[idx-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+links[i].textContent.replace('🔒 ',''); links[i].setAttribute('title','Ainda trancado'); } else { links[i].classList.remove('lock'); links[i].textContent=links[i].textContent.replace('🔒 ',''); links[i].removeAttribute('title'); } }
+}
+function travar(txt){
+  document.getElementById('lock-txt').textContent=txt;
+  document.getElementById('lock').classList.add('show');
+  var w=document.querySelector('.wrap'); w.style.filter='blur(9px)'; w.style.pointerEvents='none'; w.style.visibility='hidden'; w.setAttribute('aria-hidden','true');
+}
+
+function checarTrava(){
+  if(podeAbrir('quiz')) return true;
+  var L=lerJSON(KIT+'_leitura_v1'); var p=(L&&L.progresso)||{conferidos:0,total:14,chkPendentes:0};
+  var faltam=p.total-p.conferidos;
+  travar(faltam>0 ? 'Para abrir o Quiz, conclua a Leitura Guiada: faltam '+faltam+' de '+p.total+' peças.' : 'Para abrir o Quiz, responda a autoavaliação Sim/Não da Leitura Guiada ('+p.chkPendentes+' ponto(s) pendente(s)).');
+  return false;
+}
+
+/* ====== QUESTÕES (conteúdo do livro Callis Matemática 9 — Caps. 19, 20, 21 e 23) — a correta é guardada pelo id ====== */
+var Q=[
+ {tema:"Frente A · Média ponderada",p:"Qual é a média ponderada de {2, 5, 8} com pesos 3, 1 e 2, respectivamente?",alts:[
+  {id:"a",t:"4,5",ok:true,e:"Mp = (3·2 + 1·5 + 2·8) ÷ (3 + 1 + 2) = (6 + 5 + 16) ÷ 6 = 27 ÷ 6 = 4,5."},
+  {id:"b",t:"5",e:"5 é a média simples (15 ÷ 3), que ignora os pesos."},
+  {id:"c",t:"9",e:"Você dividiu 27 por 3 (quantidade de números). Na ponderada, divide-se pela soma dos pesos (6)."},
+  {id:"d",t:"27",e:"27 é só o numerador; ainda falta dividir pela soma dos pesos (6)."}]},
+ {tema:"Frente A · Média na tabela",p:"Numa pesquisa, 2 famílias não têm carro, 5 famílias têm 1 carro e 3 famílias têm 2 carros. Qual é o número médio de carros por família?",alts:[
+  {id:"a",t:"1",e:"1 é a média dos valores 0, 1 e 2 sem considerar as frequências."},
+  {id:"b",t:"1,1",ok:true,e:"(0·2 + 1·5 + 2·3) ÷ (2 + 5 + 3) = (0 + 5 + 6) ÷ 10 = 11 ÷ 10 = 1,1."},
+  {id:"c",t:"3,67",e:"Você dividiu 11 por 3 (número de linhas da tabela). O certo é dividir pelo total de famílias (10)."},
+  {id:"d",t:"0,55",e:"Você dividiu por 20. O total de famílias (soma das frequências) é 10."}]},
+ {tema:"Frente A · Mediana",p:"Qual é a mediana do conjunto {8, 3, 11, 5, 14, 2}?",alts:[
+  {id:"a",t:"8",e:"Pegadinha: você usou os termos do meio sem ordenar (11 e 5 dão 8). Primeiro ordene!"},
+  {id:"b",t:"7,17",e:"7,17 é aproximadamente a média (43 ÷ 6), não a mediana."},
+  {id:"c",t:"6,5",ok:true,e:"Ordenando: 2, 3, 5, 8, 11, 14. São 6 termos (par): Md = (5 + 8) ÷ 2 = 6,5."},
+  {id:"d",t:"5",e:"5 é só um dos termos do meio; com n par, a mediana é a média dos dois termos centrais."}]},
+ {tema:"Frente A · Mediana na tabela",p:"Tempo de estudo de 20 alunos (h): 0 ├ 10: 5 alunos; 10 ├ 20: 10 alunos; 20 ├ 30: 5 alunos. Pela fórmula do livro, Md = Li + [(n/2 − Fa) ÷ fmd] · hmd, a mediana é:",alts:[
+  {id:"a",t:"15 h",ok:true,e:"n/2 = 10, que está na classe 10 ├ 20. Li = 10, Fa = 5, fmd = 10, hmd = 10: Md = 10 + (10 − 5) ÷ 10 · 10 = 10 + 5 = 15."},
+  {id:"b",t:"20 h",e:"Você usou Fa = 0. Fa é a soma das frequências das classes anteriores (5)."},
+  {id:"c",t:"10 h",e:"10 é só o limite inferior (Li) da classe da mediana; falta somar a parte da fórmula."},
+  {id:"d",t:"12,5 h",e:"Refaça: (10 − 5) ÷ 10 · 10 = 5, e 10 + 5 = 15."}]},
+ {tema:"Frente A · Moda",p:"Considere {4, 6, 6, 8, 9, 9, 9, 10}. A moda desse conjunto é:",alts:[
+  {id:"a",t:"6",e:"O 6 aparece 2 vezes, mas o 9 aparece 3 vezes."},
+  {id:"b",t:"7,625",e:"7,625 é a média (61 ÷ 8)."},
+  {id:"c",t:"8,5",e:"8,5 é a mediana ((8 + 9) ÷ 2)."},
+  {id:"d",t:"9",ok:true,e:"Moda é o termo de maior frequência: o 9 aparece 3 vezes."}]},
+ {tema:"Frente A · Amplitude",p:"A amplitude do conjunto {12, 7, 15, 9} é:",alts:[
+  {id:"a",t:"3",e:"3 é 15 − 12; a amplitude usa o maior e o MENOR valor (7)."},
+  {id:"b",t:"8",ok:true,e:"Amplitude = maior − menor = 15 − 7 = 8."},
+  {id:"c",t:"10,75",e:"10,75 é a média (43 ÷ 4)."},
+  {id:"d",t:"15",e:"15 é só o maior valor."}]},
+ {tema:"Frente A · Variância",p:"A variância populacional de {2, 4, 6} é:",alts:[
+  {id:"a",t:"8 ÷ 3 ≈ 2,67",ok:true,e:"Média 4. Quadrados das diferenças: 4, 0, 4 ➜ soma 8. Populacional: 8 ÷ 3 ≈ 2,67."},
+  {id:"b",t:"4",e:"4 é a variância AMOSTRAL (8 ÷ 2). A populacional divide por n = 3."},
+  {id:"c",t:"8",e:"8 é só a soma dos quadrados; falta dividir por n."},
+  {id:"d",t:"1,63",e:"1,63 é aproximadamente o desvio padrão (√2,67), não a variância."}]},
+ {tema:"Frente A · Desvio padrão",p:"Quatro turmas têm a mesma média. Os desvios padrão são: A = 1,2; B = 0,8; C = 2,5; D = 1,9. A turma com notas mais homogêneas (mais regulares) é:",alts:[
+  {id:"a",t:"A",e:"1,2 não é o menor desvio padrão."},
+  {id:"b",t:"C",e:"C tem o MAIOR desvio padrão: é a turma de notas mais dispersas."},
+  {id:"c",t:"B",ok:true,e:"Quanto menor o desvio padrão, mais próximos os dados estão da média: B (0,8)."},
+  {id:"d",t:"D",e:"1,9 é um desvio alto; D é uma das mais dispersas."}]},
+ {tema:"Frente B · Polígono regular",p:"Segundo o livro, um polígono é regular quando:",alts:[
+  {id:"a",t:"tem todos os lados congruentes e todos os ângulos internos congruentes.",ok:true,e:"É a definição do livro (p. 196): lados E ângulos internos congruentes."},
+  {id:"b",t:"tem todos os lados congruentes, mesmo que os ângulos sejam diferentes.",e:"Só lados iguais não basta: o losango com ângulos de 60° e 120° não é regular."},
+  {id:"c",t:"está desenhado dentro de uma circunferência.",e:"Estar dentro de uma circunferência não define polígono regular."},
+  {id:"d",t:"tem pelo menos dois lados paralelos.",e:"Lados paralelos não têm relação com a definição de polígono regular."}]},
+ {tema:"Frente B · Quadrado",p:"Um quadrado está inscrito numa circunferência de raio 6 cm. A medida do lado do quadrado é:",alts:[
+  {id:"a",t:"12 cm",e:"12 cm é o diâmetro da circunferência (que é a diagonal do quadrado)."},
+  {id:"b",t:"3√2 cm",e:"3√2 cm é o apótema (metade do lado)."},
+  {id:"c",t:"6 cm",e:"No quadrado, R não é igual ao lado (isso vale para o hexágono)."},
+  {id:"d",t:"6√2 cm",ok:true,e:"No quadrado inscrito, ℓ = R√2 = 6√2 cm."}]},
+ {tema:"Frente B · Triângulo equilátero",p:"Um triângulo equilátero está inscrito numa circunferência de raio 12 cm. O apótema desse triângulo mede:",alts:[
+  {id:"a",t:"18 cm",e:"18 cm é a altura (12 = (2/3)h ➜ h = 18)."},
+  {id:"b",t:"6 cm",ok:true,e:"R = (2/3)h ➜ h = 18 cm; a = (1/3)h = 6 cm (metade de R)."},
+  {id:"c",t:"12√3 cm",e:"12√3 cm é o lado do triângulo."},
+  {id:"d",t:"4 cm",e:"Você dividiu 12 por 3; mas 12 é o raio R, e não a altura."}]},
+ {tema:"Frente B · Hexágono",p:"Um hexágono regular está inscrito numa circunferência de raio 8 cm. O lado do hexágono mede:",alts:[
+  {id:"a",t:"8√3 cm",e:"No hexágono, as diagonais formam triângulos equiláteros: o lado é igual ao raio."},
+  {id:"b",t:"4√3 cm",e:"4√3 cm é o apótema (ℓ√3/2)."},
+  {id:"c",t:"8 cm",ok:true,e:"No hexágono regular, R = ℓ = 8 cm."},
+  {id:"d",t:"16 cm",e:"16 cm é o diâmetro."}]},
+ {tema:"Frente B · Área do hexágono",p:"A área de um hexágono regular de lado 6 cm é:",alts:[
+  {id:"a",t:"54√3 cm²",ok:true,e:"A = 3ℓ²√3 ÷ 2 = 3 · 36 · √3 ÷ 2 = 54√3 cm²."},
+  {id:"b",t:"9√3 cm²",e:"9√3 cm² é a área de UM dos 6 triângulos equiláteros (ℓ²√3 ÷ 4)."},
+  {id:"c",t:"36√3 cm²",e:"Faltou o fator 3/2: A = 3ℓ²√3 ÷ 2."},
+  {id:"d",t:"108√3 cm²",e:"Você esqueceu de dividir por 2."}]},
+ {tema:"Frente B · Prismas",p:"Um prisma é chamado de regular quando:",alts:[
+  {id:"a",t:"todas as suas faces são quadrados.",e:"Faces todas quadradas descreve o cubo, um caso particular."},
+  {id:"b",t:"é reto e suas bases são polígonos regulares.",ok:true,e:"É a definição do livro (p. 241)."},
+  {id:"c",t:"suas arestas laterais são oblíquas às bases.",e:"Isso descreve o prisma oblíquo."},
+  {id:"d",t:"tem duas bases paralelas e congruentes.",e:"Todo prisma tem isso; não é o que o torna regular."}]},
+ {tema:"Frente B · Volume",p:"Um prisma hexagonal regular tem aresta da base 2 cm e altura 10 cm. Seu volume é:",alts:[
+  {id:"a",t:"10√3 cm³",e:"Você usou a área de um triângulo só (√3) como base."},
+  {id:"b",t:"6√3 cm³",e:"6√3 cm² é a área da base; falta multiplicar pela altura."},
+  {id:"c",t:"30√3 cm³",e:"Refaça a base: B = 3 · 2² · √3 ÷ 2 = 6√3 cm²."},
+  {id:"d",t:"60√3 cm³",ok:true,e:"B = 3ℓ²√3 ÷ 2 = 3 · 4 · √3 ÷ 2 = 6√3 cm². V = B · h = 6√3 · 10 = 60√3 cm³."}]}
+];
+
+/* ====== EMBARALHAMENTO COM SEMENTE FIXA (mulberry32) ====== */
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+var rnd=mulberry32(931032026);
+Q.forEach(function(q){ var arr=q.alts.slice(); for(var i=arr.length-1;i>0;i--){ var j=Math.floor(rnd()*(i+1)); var tmp=arr[i]; arr[i]=arr[j]; arr[j]=tmp; } q.ordem=arr; });
+
+/* ====== ESTADO ====== */
+var CHAVE=KIT+'_quiz_v1'; var mem={}; var estado=carregar();
+function carregar(){ try{ var s=localStorage.getItem(CHAVE); if(s) return JSON.parse(s);}catch(e){ if(mem[CHAVE]) return JSON.parse(mem[CHAVE]); } return {resp:{},enviado:false}; }
+function salvar(){ var s=JSON.stringify(estado); try{ localStorage.setItem(CHAVE,s);}catch(e){ mem[CHAVE]=s; } var d=new Date(); document.getElementById('salvo').textContent='💾 Salvo às '+d.toLocaleTimeString('pt-BR')+' de '+d.toLocaleDateString('pt-BR'); }
+var LETRAS='ABCDEFGHJKLMNPQRSTUVWXYZ';
+function gerarCodigo(ac){ var xx=(ac<10?'0':'')+ac; var yy=LETRAS[Math.floor(Math.random()*LETRAS.length)]+LETRAS[Math.floor(Math.random()*LETRAS.length)]; return 'MED-'+xx+'-'+yy; }
+
+function render(){
+  var c=document.getElementById('questoes'); var h='';
+  Q.forEach(function(q,i){
+    h+='<div class="q" id="q'+i+'"><span class="tema">'+q.tema+'</span><div class="num">Questão '+(i+1)+' de '+Q.length+'</div><h3>'+q.p+'</h3>';
+    q.ordem.forEach(function(a,k){
+      var letra='abcd'[k]; var sel=estado.resp[i]===a.id;
+      var cls='alt'+(sel?' sel':'');
+      if(estado.gabarito){ if(a.ok) cls+=' certa'; else if(sel) cls+=' marcada-errada'; else cls+=' errada'; }
+      h+='<label class="'+cls+'"><input type="radio" name="q'+i+'" value="'+a.id+'" '+(sel?'checked':'')+' '+(estado.enviado?'disabled':'')+' onchange="marcar('+i+',\''+a.id+'\')"> <b>'+letra+')</b> '+a.t;
+      if(estado.gabarito){ h+='<div class="exp show">'+(a.ok?'✅ ':'')+a.e+'</div>'; }
+      h+='</label>';
+    });
+    h+='</div>';
+  });
+  c.innerHTML=h;
+  atualizarBarra();
+  if(estado.enviado){ mostrarEnviado(); }
+  atualizarTrilhaFim();
+}
+function marcar(i,id){ if(estado.enviado) return; estado.resp[i]=id; salvar(); var q=document.getElementById('q'+i); var labs=q.querySelectorAll('.alt'); for(var k=0;k<labs.length;k++){ labs[k].classList.toggle('sel', labs[k].querySelector('input').value===id); } atualizarBarra(); }
+function atualizarBarra(){ var n=Object.keys(estado.resp).length; document.getElementById('barra').style.width=(n/Q.length*100)+'%'; var b=document.getElementById('btn-enviar'); if(!estado.enviado){ b.disabled=n<Q.length; b.textContent=n<Q.length?'📨 Enviar respostas ('+n+' de '+Q.length+' respondidas)':'📨 Enviar respostas'; } }
+function enviar(){
+  if(estado.enviado) return;
+  var ac=0; Q.forEach(function(q,i){ var a=q.alts.filter(function(x){return x.id===estado.resp[i];})[0]; if(a&&a.ok) ac++; });
+  estado.acertos=ac; estado.total=Q.length; estado.codigo=gerarCodigo(ac); estado.enviado=true; estado.concluido=true; estado.concluidoEm=new Date().toISOString();
+  salvar(); render(); window.scrollTo({top:0,behavior:'smooth'});
+}
+function mostrarEnviado(){
+  var b=document.getElementById('btn-enviar'); b.disabled=true; b.textContent='✅ Quiz enviado — respostas travadas';
+  document.getElementById('codigo').classList.add('show'); document.getElementById('cod').textContent=estado.codigo;
+  document.getElementById('codtxt').textContent='Anote este código para os pais. Ele abre o gabarito comentado e o relatório no Início.';
+  document.getElementById('gab').classList.add('show');
+}
+function abrirGab(){ var v=document.getElementById('gab-in').value.trim().toUpperCase(); var m=document.getElementById('gab-msg'); if(v===estado.codigo||v==='PAIS-77'){ estado.gabarito=true; salvar(); render(); document.getElementById('gab-msg').innerHTML='<span style="color:#b5f2cf">Gabarito liberado: '+estado.acertos+' acertos de '+Q.length+'.</span>'; } else { m.innerHTML='<span style="color:#ffb3b3">Código incorreto.</span>'; } }
+function atualizarTrilhaFim(){
+  var box=document.getElementById('trilha-fim'), txt=document.getElementById('trilha-fim-txt'), btn=document.getElementById('btn-prox'); var h3=box.querySelector('h3');
+  if(estado.concluido||trilhaLiberada()){ h3.textContent='✅ Quiz enviado — Resumo destravado!'; txt.textContent=estado.concluido?'Agora use o Resumo para fechar as dúvidas que o Quiz mostrou.':'Trilha liberada pelos pais.'; btn.classList.remove('off'); }
+  else { h3.textContent='🔒 Próxima etapa: Resumo'; txt.textContent='Destrava quando você enviar o Quiz.'; btn.classList.add('off'); }
+  marcarNav();
+}
+function exportar(){ var blob=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='quiz_olaria-do-cobogo.json'; a.click(); }
+function importar(ev){ var f=ev.target.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ try{ estado=JSON.parse(r.result); if(!estado.resp) estado.resp={}; salvar(); render(); mostrarModal('✅ Progresso importado!',false);}catch(e){ mostrarModal('❌ Arquivo inválido.',false);} }; r.readAsText(f); }
+var acaoZerar=null;
+function pedirZerar(){ acaoZerar=true; mostrarModal('Apagar as respostas deste Quiz? (Se ele já foi enviado, o código e a conclusão são mantidos.)',true); }
+function mostrarModal(txt,confirmar){ document.getElementById('modal-txt').innerHTML=txt; document.getElementById('modal').classList.add('show'); document.getElementById('modal-cancel').style.display=confirmar?'inline-block':'none'; document.getElementById('modal-ok').textContent=confirmar?'Sim, apagar':'Ok';
+  document.getElementById('modal-ok').onclick=function(){ if(confirmar&&acaoZerar){ if(!estado.enviado){ estado={resp:{},enviado:false}; salvar(); render(); } else { acaoZerar=null; mostrarModal('O Quiz já foi enviado: as respostas ficam travadas. Para refazer do zero, use “Zerar o kit inteiro” no Início.',false); return; } } acaoZerar=null; fecharModal(); }; }
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+
+if(checarTrava()){ render(); } else { marcarNav(); }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo — Matemática 9º ano | Olaria do Cobogó (Mensal 3)</title>
+<style>
+  :root{--fundo:#17110d;--fundo2:#231a14;--fundo3:#2d2219;--borda:#3d2e23;--borda2:#5a4433;--amarelo:#f6c445;--azul:#4fb0e8;--terra:#e8804f;--verde:#4fd18b;--coral:#ff6b6b;--texto:#f3e9dd;--cinza:#bba897;--postit:#ffe39a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Verdana,'Segoe UI',system-ui,Arial,sans-serif;font-size:18px;line-height:1.55;color:var(--texto);background-color:var(--fundo);
+    background-image:radial-gradient(circle at 50% 50%,rgba(246,196,69,.06) 0 22%,transparent 23%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%);
+    background-size:56px 56px,56px 56px,56px 56px;background-position:0 0,0 0,28px 28px;min-height:100vh}
+  h1,h2,h3{font-family:'Trebuchet MS','Gill Sans',Tahoma,sans-serif}
+  header{background:linear-gradient(120deg,#3a210f,#231a14 55%,#123047);padding:24px 18px;text-align:center;border-bottom:5px solid var(--amarelo);box-shadow:0 4px 18px rgba(0,0,0,.5)}
+  header .selo{font-family:'Courier New',Consolas,monospace;font-size:.76rem;letter-spacing:3px;color:var(--amarelo);text-transform:uppercase}
+  header h1{font-size:1.6rem;margin:6px 0 2px}
+  header p{color:#e8d8c6;font-size:.92rem}
+  .wrap{max-width:880px;margin:0 auto;padding:16px}
+  .barra-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+  .barra-nav a{background:var(--fundo2);color:var(--texto);text-decoration:none;padding:7px 12px;border-radius:8px;font-size:.85rem;border:1px solid var(--borda2)}
+  .barra-nav a.on{background:var(--amarelo);color:#2b1c00;font-weight:bold}
+  .barra-nav a.lock{opacity:.5}
+  .painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--fundo2);border:1px solid var(--borda);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:.85rem}
+  .painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{cursor:pointer;font-family:inherit}
+  .mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:6px 10px;font-size:.8rem}
+  .intro{background:var(--fundo2);border:1px solid var(--borda);border-left:6px solid var(--amarelo);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+  .intro h2{font-size:1.2rem;margin-bottom:8px;color:var(--amarelo)}
+  .intro ol{margin:8px 0 0 22px}
+  .az{color:var(--azul);font-weight:bold} .te{color:var(--terra);font-weight:bold} .am{color:var(--amarelo);font-weight:bold}
+  .formula{text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:1.25rem;background:#120d0a;border:2px dashed var(--borda2);border-radius:12px;padding:12px;margin:10px 0;color:#fff}
+  .formula small{display:block;font-family:Verdana,sans-serif;font-size:.8rem;color:var(--cinza);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:8px 0 12px}
+  th,td{border:1px solid var(--borda2);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#33251b;color:var(--amarelo)}
+  .postit{background:var(--postit);color:#3b2a00;border-radius:4px 4px 18px 4px;padding:12px 14px;margin:12px 0;box-shadow:3px 4px 0 rgba(0,0,0,.35);transform:rotate(-.5deg);font-size:.95rem}
+  .alerta{background:#3a1616;border:2px solid var(--coral);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:.95rem}
+  .alerta b{color:#ffb3b3}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(15,10,7,.97);z-index:50;align-items:center;justify-content:center;padding:16px}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--fundo2);border:2px solid var(--amarelo);border-radius:14px;padding:22px;max-width:440px;text-align:center}
+  .modal p{margin-bottom:14px}
+  .modal .big{font-size:2.2rem}
+  .modal a,.modal button{display:inline-block;background:var(--amarelo);color:#2b1c00;border:none;border-radius:8px;padding:10px 18px;font-weight:bold;text-decoration:none;font-size:1rem}
+  .modal button.mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2)}
+  .trilha-fim{background:linear-gradient(120deg,#16301f,#1d3b28);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center}
+  .trilha-fim h3{color:#b5f2cf;margin-bottom:8px}
+  .trilha-fim a.btn{display:inline-block;margin-top:8px;background:var(--verde);color:#062614;text-decoration:none;font-weight:bold;padding:12px 20px;border-radius:10px}
+  .trilha-fim a.btn.off{background:#3a2e25;color:#8f7f70;pointer-events:none}
+  .rodape{text-align:center;color:var(--cinza);font-size:.8rem;margin-top:24px}
+  @media (max-width:560px){body{font-size:16.5px} header h1{font-size:1.3rem}}
+
+  .sumario{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:16px}
+  .sumario a{font-size:.8rem;text-decoration:none;border:1px dashed var(--borda2);border-radius:8px;padding:4px 10px}
+  .sumario a.a{color:var(--azul)} .sumario a.b{color:var(--terra)}
+  .faixa{margin:26px 0 12px;padding:10px 14px;border-radius:10px;font-weight:bold;font-family:'Courier New',Consolas,monospace;border:2px dashed}
+  .faixa.fa{color:var(--azul);border-color:var(--azul);background:#0d1d28}
+  .faixa.fb{color:var(--terra);border-color:var(--terra);background:#2a160b}
+  section{background:var(--fundo2);border:1px solid var(--borda);border-radius:16px;padding:18px;margin-bottom:20px;box-shadow:0 3px 12px rgba(0,0,0,.3)}
+  section.fa{border-top:5px solid var(--azul)} section.fb{border-top:5px solid var(--terra)}
+  section h2{font-size:1.25rem;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  section h2 .pill{font-family:'Courier New',monospace;font-size:.7rem;padding:3px 9px;border-radius:8px;letter-spacing:1px}
+  .pa{background:#0f2a3b;color:var(--azul)} .pb{background:#3a1f10;color:var(--terra)}
+  section p{margin-bottom:10px}
+  section.fb th{color:var(--terra)} section.fa th{color:var(--azul)}
+  .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:10px 0}
+  .card{background:#1b140f;border:1px solid var(--borda2);border-radius:12px;padding:12px}
+  .card h3{font-size:1rem;margin-bottom:6px;color:var(--amarelo)}
+  .flip{perspective:900px;cursor:pointer;min-height:150px}
+  .flip .in{position:relative;width:100%;height:100%;min-height:150px;transition:transform .5s;transform-style:preserve-3d}
+  .flip.virado .in{transform:rotateY(180deg)}
+  .flip .fr,.flip .vs{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:center}
+  .flip .fr{background:linear-gradient(135deg,#3a2a12,#231a14);border:2px solid var(--borda2);text-align:center}
+  .flip .fr b{font-size:1.15rem;color:#fff} .flip .fr small{color:var(--cinza);margin-top:6px}
+  .flip .vs{background:#12291b;border:2px solid var(--verde);transform:rotateY(180deg);font-size:.9rem}
+  .passos{counter-reset:p;list-style:none;margin:8px 0}
+  .passos li{counter-increment:p;position:relative;padding-left:42px;margin-bottom:10px}
+  .passos li::before{content:counter(p);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:8px;background:var(--azul);color:#06253a;font-weight:bold;display:flex;align-items:center;justify-content:center}
+  .glossario dt{color:var(--amarelo);font-weight:bold;margin-top:8px}
+  .glossario dd{margin-left:14px;font-size:.95rem}
+  .relampago .qr{background:#1b140f;border:1px solid var(--borda2);border-radius:12px;padding:12px;margin:10px 0}
+  .relampago .qr p{font-weight:bold}
+  .relampago button.op{display:inline-block;margin:4px 6px 4px 0;background:#231a14;color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:7px 12px;font-size:.92rem}
+  .relampago button.op.certo{background:#12291b;border-color:var(--verde)}
+  .relampago button.op.errado{background:#3a1616;border-color:var(--coral)}
+  .relampago .fb{font-size:.9rem;margin-top:6px}
+  .fim{background:linear-gradient(120deg,#12291b,#1d4a30);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center}
+  .fim h3{color:#b5f2cf;margin-bottom:8px}
+  .fim button{background:var(--amarelo);color:#2b1c00;border:none;border-radius:10px;padding:12px 20px;font-weight:bold;font-size:1rem;margin:6px}
+  .fim button:disabled{background:#3a2e25;color:#8f7f70;cursor:not-allowed}
+  .fim a.btn{display:inline-block;margin:6px;background:var(--verde);color:#062614;text-decoration:none;font-weight:bold;padding:12px 20px;border-radius:10px}
+  .fim a.btn.off{background:#3a2e25;color:#8f7f70;pointer-events:none}
+  .poly{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+  .poly figure{text-align:center;font-size:.8rem;color:var(--cinza)}
+</style>
+</head>
+<body>
+<header>
+  <div class="selo">Olaria do Cobogó · Matemática 9º ano · CCF · Mensal 3</div>
+  <h1>🗺️ Resumo — O Caderno do Oleiro</h1>
+  <p>Frente A: Estatística (Caps. 19 e 20) · Frente B: Polígonos regulares e Prismas (Caps. 21 e 23)</p>
+</header>
+
+<div class="wrap">
+  <nav class="barra-nav" id="nav">
+    <a href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a href="quiz.html">🎯 Quiz</a>
+    <a class="on" href="resumo.html">🗺️ Resumo</a>
+    <a href="simulado.html" data-etapa="simulado">📝 Simulado</a>
+    <a href="index.html">🏠 Início</a>
+  </nav>
+
+  <div class="intro">
+    <h2>📒 O caderno de anotações do oleiro</h2>
+    <p>Aqui está tudo o que cai na prova, em formato de consulta rápida: fórmulas, quadros, cartas para virar, post-its de prova e alertas de pegadinha. Use o Resumo para <b>fechar as dúvidas que o Quiz mostrou</b>. No fim da página, clique em <b>“✅ Li o resumo até o fim”</b> para destravar o Simulado.</p>
+  </div>
+
+  <div class="painel">
+    <span id="salvo">💾 Progresso salvo automaticamente.</span>
+    <div class="btns">
+      <button class="mini" onclick="exportar()">📥 Exportar</button>
+      <button class="mini" onclick="document.getElementById('imp').click()">📤 Importar</button>
+      <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+      <button class="mini" onclick="pedirZerar()">🗑️ Zerar tudo</button>
+    </div>
+  </div>
+
+  <div class="sumario">
+    <a class="a" href="#s1">⚖️ Média ponderada</a><a class="a" href="#s2">📋 Média na tabela</a><a class="a" href="#s3">🎯 Mediana</a><a class="a" href="#s4">🏆 Moda</a><a class="a" href="#s5">↔️ Dispersão</a><a class="a" href="#s6">σ Desvio padrão</a>
+    <a class="b" href="#s7">⬡ Polígonos regulares</a><a class="b" href="#s8">📐 Quadro das relações</a><a class="b" href="#s9">🧊 Prismas</a><a class="b" href="#s10">📦 Áreas</a><a class="b" href="#s11">🪣 Volume</a><a href="#s12" style="color:var(--amarelo)">📚 Glossário</a>
+  </div>
+
+  <div class="faixa fa">🔵 FRENTE A — ESTATÍSTICA · Cap. 19 (pp. 148–162) e Cap. 20 (pp. 176–191)</div>
+
+  <section id="s1" class="fa">
+    <h2>⚖️ Média aritmética ponderada <span class="pill pa">pp. 148–151</span></h2>
+    <p>Usada quando os termos <b>se repetem</b> ou têm <b>pesos diferentes</b> (importâncias diferentes).</p>
+    <div class="formula">M<sub>p</sub> = (p<sub>1</sub>·a<sub>1</sub> + p<sub>2</sub>·a<sub>2</sub> + … + p<sub>n</sub>·a<sub>n</sub>) ÷ (p<sub>1</sub> + p<sub>2</sub> + … + p<sub>n</sub>)</div>
+    <p>Exemplo do livro: {4, 5, 9} com pesos 2, 3 e 6 ➜ (8 + 15 + 54) ÷ 11 = 77 ÷ 11 = <b>7</b>. Média simples: soma ÷ quantidade ({22, 56, 45, 37, 19} ➜ 179 ÷ 5 = 35,8).</p>
+    <div class="postit">📌 <b>Dica de prova:</b> notas com pesos (prova 5, tarefa 2, participação 1, projeto 2) são média ponderada. Some os pesos para saber por quanto dividir: 5 + 2 + 1 + 2 = <b>10</b>.</div>
+    <div class="alerta">⚠️ <b>Pegadinha:</b> dividir pela quantidade de números (3 ou 4) em vez da <b>soma dos pesos</b>.</div>
+  </section>
+
+  <section id="s2" class="fa">
+    <h2>📋 Média em tabela de frequência <span class="pill pa">pp. 152–155</span></h2>
+    <p>É uma <b>média ponderada pelas frequências</b>. Monte a coluna “valor · frequência”, some e divida pelo <b>total de frequências</b>.</p>
+    <table>
+      <tr><th>Filhos (classe)</th><th>Famílias (frequência)</th><th>Classe · Frequência</th></tr>
+      <tr><td>0</td><td>10 100</td><td>0</td></tr><tr><td>1</td><td>12 350</td><td>12 350</td></tr><tr><td>2</td><td>15 005</td><td>30 010</td></tr><tr><td>3</td><td>9 010</td><td>27 030</td></tr><tr><td>4</td><td>8 000</td><td>32 000</td></tr><tr><td>5</td><td>1 050</td><td>5 250</td></tr>
+      <tr><td><b>Total</b></td><td><b>55 515</b></td><td><b>106 640</b></td></tr>
+    </table>
+    <div class="formula">M<sub>a</sub> = 106 640 ÷ 55 515 ≅ 1,92 filho por família</div>
+    <p><b>Classes de intervalo</b> (150 ├ 155): não sabemos o valor exato de cada dado, então usamos a <b>média da classe</b> (ponto do meio): (150 + 155) ÷ 2 = 152,5. No exemplo das alturas, M<sub>a</sub> = 4 845 ÷ 30 = <b>161,5 cm</b> — um valor <b>aproximado</b>.</p>
+    <div class="postit">📌 <b>Roteiro:</b> Média da classe ➜ Média · Frequência ➜ soma da coluna ÷ total.</div>
+  </section>
+
+  <section id="s3" class="fa">
+    <h2>🎯 Mediana <span class="pill pa">pp. 156–160</span></h2>
+    <p><b>Mediana é o termo central de uma sequência de dados ordenados</b>: metade dos dados fica acima e metade abaixo.</p>
+    <ol class="passos">
+      <li><b>Ordene</b> os dados (crescente ou decrescente).</li>
+      <li><b>n ímpar</b> ➜ termo da posição (n + 1) ÷ 2. Ex.: {10, 19, 23, 34, 41} ➜ Md = 23.</li>
+      <li><b>n par</b> ➜ média dos termos de posição n ÷ 2 e n ÷ 2 + 1. Ex.: {1, 22, 26, 32} ➜ Md = (22 + 26) ÷ 2 = 24.</li>
+    </ol>
+    <p><b>Na tabela de valores:</b> conte as frequências até a posição do meio (50 notas ➜ 25º = 5 e 26º = 6 ➜ Md = 5,5).</p>
+    <p><b>Na tabela com classes:</b> ache a posição n ÷ 2, descubra a classe que a contém e use:</p>
+    <div class="formula">Md = L<sub>i</sub> + [ (n ÷ 2 − F<sub>a</sub>) ÷ f<sub>md</sub> ] · h<sub>md</sub><small>L<sub>i</sub> limite inferior da classe da mediana · F<sub>a</sub> soma das frequências das classes anteriores · f<sub>md</sub> frequência da classe da mediana · h<sub>md</sub> amplitude da classe</small></div>
+    <p>Exemplo do livro (massas): 60 + (15 − 13) ÷ 6 · 10 = 380 ÷ 6 ≅ <b>63,333 kg</b>.</p>
+    <div class="alerta">⚠️ <b>Pegadinhas:</b> esquecer de ordenar · com n par, pegar só um termo · colocar em F<sub>a</sub> a frequência da própria classe da mediana.</div>
+  </section>
+
+  <section id="s4" class="fa">
+    <h2>🏆 Moda <span class="pill pa">pp. 161–162</span></h2>
+    <p><b>Moda é o termo de maior frequência</b>: mostra onde os dados estão concentrados. {3, 5, 7, 7, 9} ➜ Mo = 7.</p>
+    <p>Duas modas ➜ <b>bimodal</b> ({3, 5, 6, 3, 5, 4, 5, 3, 7, 7} ➜ 3 e 5). Na tabela: a moda é o <b>valor</b> com maior frequência (nota 6, com 13 alunos). Com classes: <b>classe modal</b> (50 ├ 60).</p>
+    <div class="alerta">⚠️ <b>Pegadinha:</b> a moda é o valor (6), não a frequência (13).</div>
+    <h3 style="margin:10px 0 6px">🃏 Vire as cartas: qual medida é?</h3>
+    <div class="grade">
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>“…a média de seus valores”</b><small>toque para virar</small></div><div class="vs"><b>Média</b> — soma ÷ quantidade (ou ponderada pelos pesos/frequências).</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>“…o valor que divide o conjunto em duas partes iguais”</b><small>toque para virar</small></div><div class="vs"><b>Mediana</b> — o termo central dos dados ordenados.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>“…o valor que mais aparece entre os dados”</b><small>toque para virar</small></div><div class="vs"><b>Moda</b> — o termo de maior frequência.</div></div></div>
+    </div>
+  </section>
+
+  <section id="s5" class="fa">
+    <h2>↔️ Dispersão: amplitude e variância <span class="pill pa">pp. 176–182</span></h2>
+    <p>As medidas de tendência central mostram o centro; as <b>medidas de dispersão</b> mostram o quanto os dados estão espalhados em relação à média. João (6, 5, 7) e Daniel (3, 10, 5) têm média 6, mas as notas de Daniel são mais dispersas.</p>
+    <table>
+      <tr><th>Medida</th><th>Como calcular</th><th>João</th><th>Daniel</th></tr>
+      <tr><td><b>Amplitude</b></td><td>maior − menor</td><td>2</td><td>7</td></tr>
+      <tr><td><b>Variância</b> (populacional)</td><td>soma dos (x − M<sub>a</sub>)² ÷ n</td><td>2 ÷ 3 = 0,6̄</td><td>26 ÷ 3 = 8,6̄</td></tr>
+    </table>
+    <ol class="passos">
+      <li>Calcule a média.</li><li>Faça a diferença de cada valor para a média.</li><li>Eleve cada diferença ao quadrado.</li><li>Some os quadrados.</li><li>Divida por <b>n</b> (população) ou por <b>n − 1</b> (amostra).</li>
+    </ol>
+    <div class="postit">📌 <b>Amostral × populacional:</b> a amostral divide por n − 1 e por isso dá um valor um pouco <b>maior</b>.</div>
+    <div class="alerta">⚠️ <b>Outlier:</b> dado muito afastado dos demais (às vezes falha de medição). Interfere muito na média e, principalmente, na variância — costuma ser excluído.</div>
+  </section>
+
+  <section id="s6" class="fa">
+    <h2>σ Desvio padrão <span class="pill pa">pp. 183–191</span></h2>
+    <div class="formula">σ = √Var<small>a raiz quadrada “compensa” o quadrado das diferenças</small></div>
+    <p>Exemplo do livro: salários com variância 60 000 ➜ σ = √60 000 ≅ <b>244,95</b>. Os salários variam só de R$ 2.700,00 a R$ 3.400,00: proporcionalmente, são bem menos dispersos que as notas de Daniel.</p>
+    <div class="postit">📌 <b>Regra de ouro da prova:</b> <b>menor desvio padrão = dados mais próximos da média = mais regular/homogêneo.</b> Maior desvio padrão = maior dispersão.</div>
+    <div class="alerta">⚠️ <b>Pegadinha:</b> “maior dispersão” não tem nada a ver com “maior média”. E desvio padrão é a <b>raiz</b> da variância, não o quadrado (se σ = 0,5, Var = 0,25).</div>
+    <p><b>Planilhas:</b> =VAR.A (variância amostral) · =VAR.P (populacional) · =DESVPAD.A · =DESVPAD.P.</p>
+  </section>
+
+  <div class="faixa fb">🟠 FRENTE B — GEOMETRIA · Cap. 21 (pp. 196–208) e Cap. 23 (pp. 240–252 e 263–266)</div>
+
+  <section id="s7" class="fb">
+    <h2>⬡ Polígonos regulares <span class="pill pb">pp. 196–198</span></h2>
+    <p><b>Polígono regular:</b> todos os <b>lados</b> congruentes e todos os <b>ângulos internos</b> congruentes. <b>Todos os polígonos regulares são inscritíveis numa circunferência e circunscritíveis a ela.</b></p>
+    <div class="poly">
+      <figure><svg width="170" height="170" viewBox="0 0 170 170"><circle cx="85" cy="85" r="70" fill="none" stroke="#e8804f" stroke-width="3"/><circle cx="85" cy="85" r="60.6" fill="none" stroke="#4fb0e8" stroke-width="3"/><polygon points="155,85 120,145.6 50,145.6 15,85 50,24.4 120,24.4" fill="rgba(246,196,69,.12)" stroke="#f6c445" stroke-width="3"/><line x1="85" y1="85" x2="120" y2="145.6" stroke="#e8804f" stroke-width="2" stroke-dasharray="5 4"/><line x1="85" y1="85" x2="85" y2="145.6" stroke="#4fb0e8" stroke-width="2" stroke-dasharray="5 4"/><circle cx="85" cy="85" r="3" fill="#fff"/><text x="106" y="112" fill="#e8804f" font-size="13">R</text><text x="70" y="122" fill="#4fb0e8" font-size="13">a = r</text><text x="78" y="80" fill="#fff" font-size="12">O</text></svg><figcaption>🟠 circunscrita (raio R) · 🔵 inscrita (raio r = apótema)</figcaption></figure>
+    </div>
+    <table>
+      <tr><th>Elemento</th><th>O que é</th></tr>
+      <tr><td><b>R</b></td><td>raio da circunferência <b>circunscrita</b> (do centro até um vértice)</td></tr>
+      <tr><td><b>r</b></td><td>raio da circunferência <b>inscrita</b> (do centro até o ponto médio de um lado)</td></tr>
+      <tr><td><b>a</b> (apótema)</td><td>segmento do centro ao ponto médio de um lado, formando 90° com ele · <b>a = r</b></td></tr>
+      <tr><td><b>ℓ</b></td><td>lado do polígono</td></tr>
+    </table>
+    <div class="formula">R² = r² + (ℓ ÷ 2)²<small>vale para qualquer polígono regular (Pitágoras no triângulo OMA)</small></div>
+  </section>
+
+  <section id="s8" class="fb">
+    <h2>📐 Quadro das relações métricas <span class="pill pb">pp. 198–208</span></h2>
+    <table>
+      <tr><th>Polígono</th><th>Lado (ℓ) e R</th><th>Apótema (a = r)</th><th>Área</th></tr>
+      <tr><td><b>Quadrado</b></td><td>ℓ = R√2</td><td>a = ℓ ÷ 2 = R√2 ÷ 2</td><td>A = ℓ²</td></tr>
+      <tr><td><b>Triângulo equilátero</b></td><td>R = (2/3)h · h = ℓ√3 ÷ 2</td><td>a = (1/3)h</td><td>A = ℓ²√3 ÷ 4</td></tr>
+      <tr><td><b>Hexágono regular</b></td><td>R = ℓ</td><td>a = ℓ√3 ÷ 2 = R√3 ÷ 2</td><td>A = 3ℓ²√3 ÷ 2</td></tr>
+    </table>
+    <div class="grade">
+      <div class="card"><h3>◻️ Exemplo do quadrado</h3>R = 12 ➜ ℓ = 12√2 · a = 6√2 · A = 288 cm²</div>
+      <div class="card"><h3>🔺 Exemplo do triângulo</h3>R = 20 ➜ h = 30 · a = 10 · ℓ = 20√3 · A = 300√3 cm²</div>
+      <div class="card"><h3>⬡ Exemplo do hexágono</h3>a = 10 ➜ ℓ = R = 20√3 ÷ 3 · A = 200√3 cm²</div>
+    </div>
+    <div class="postit">📌 <b>Macetes:</b> triângulo equilátero ➜ <b>R = 2r</b> (a altura se divide em 3 partes: 2 para R, 1 para r) · hexágono ➜ 6 triângulos equiláteros, por isso <b>R = ℓ</b> · quadrado ➜ apótema = <b>metade do lado</b>.</div>
+    <div class="alerta">⚠️ <b>Pegadinhas:</b> confundir diâmetro com raio · achar que no quadrado R = ℓ (isso é no hexágono) · esquecer o ÷ 4 na área do triângulo e o ÷ 2 na do hexágono.</div>
+    <p>🧱 <b>Cobogó (p. 207):</b> elemento vazado da arquitetura, design nacional surgido em Recife (PE) no fim da década de 1920. Quadrado, triângulo equilátero e hexágono regular fazem <b>ladrilhamento perfeito</b> (preenchem o plano sem falhas nem sobreposições).</p>
+  </section>
+
+  <section id="s9" class="fb">
+    <h2>🧊 Poliedros e prismas <span class="pill pb">pp. 240–242</span></h2>
+    <p><b>Poliedro:</b> sólido formado por um número finito de polígonos; cada lado é comum a dois, e só dois, polígonos (<i>póly</i> = vários, <i>hedra</i> = faces). Elementos: <b>faces</b>, <b>arestas</b> e <b>vértices</b>.</p>
+    <p><b>Prisma:</b> duas bases planas, paralelas e congruentes + faces laterais paralelogramos. O nome vem do polígono da base.</p>
+    <div class="grade">
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>Prisma reto</b><small>toque para virar</small></div><div class="vs">Faces laterais são <b>retângulos</b>; arestas laterais perpendiculares às bases.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>Prisma oblíquo</b><small>toque para virar</small></div><div class="vs">Arestas laterais <b>inclinadas</b> (oblíquas) em relação às bases; faces laterais paralelogramos.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>Prisma regular</b><small>toque para virar</small></div><div class="vs">Prisma <b>reto</b> cujas bases são <b>polígonos regulares</b>.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>Paralelepípedo</b><small>toque para virar</small></div><div class="vs">Prisma de bases <b>paralelogramos</b>. Reto com bases retângulos = <b>reto-retângulo</b> (bloco retangular).</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>Cubo</b><small>toque para virar</small></div><div class="vs">Paralelepípedo reto-retângulo com <b>todas as arestas congruentes</b>.</div></div></div>
+      <div class="flip" onclick="this.classList.toggle('virado')"><div class="in"><div class="fr"><b>Romboedro</b><small>toque para virar</small></div><div class="vs">Paralelepípedo com todas as arestas congruentes (faces losangos); pode ser reto ou oblíquo.</div></div></div>
+    </div>
+  </section>
+
+  <section id="s10" class="fb">
+    <h2>📦 Área lateral e área total <span class="pill pb">pp. 243–247</span></h2>
+    <p>A superfície lateral tem tantas faces quantos forem os lados da base (retângulos no prisma reto, paralelogramos no oblíquo).</p>
+    <div class="formula">A<sub>L</sub> = soma das áreas das faces laterais · A<sub>T</sub> = A<sub>L</sub> + 2B</div>
+    <div class="formula">Paralelepípedo reto-retângulo: A<sub>T</sub> = 2(ab + ac + bc) · Cubo: A<sub>T</sub> = 6a²</div>
+    <p>Exemplo do livro: prisma triangular (base com lados 15, 20 e 25 cm; altura 30 cm) ➜ A<sub>L</sub> = 750 + 600 + 450 = 1 800 cm²; B = 150 cm²; <b>A<sub>T</sub> = 2 100 cm²</b>.</p>
+    <div class="alerta">⚠️ <b>Pegadinha:</b> esquecer uma das bases (são <b>duas</b>: “2B”). Se o problema dá o perímetro da base quadrada, divida por 4 para achar o lado.</div>
+  </section>
+
+  <section id="s11" class="fb">
+    <h2>🪣 Princípio de Cavalieri e volume <span class="pill pb">pp. 248–252 · 263–266</span></h2>
+    <p><b>Princípio de Cavalieri:</b> se todo plano paralelo a um plano dado corta dois sólidos em seções de <b>áreas iguais</b>, então os <b>volumes são iguais</b> (as duas pilhas de placas, alinhada e desalinhada, têm o mesmo volume).</p>
+    <div class="formula">V<sub>paralelepípedo</sub> = a · b · c &nbsp;·&nbsp; V<sub>prisma</sub> = B · h<small>B = área da base · h = altura do prisma</small></div>
+    <div class="postit">📌 <b>Dicas das Atividades:</b> 1 m³ = 1 000 litros · ao mergulhar um objeto num tanque, a água sobe (volume do objeto) ÷ (área da base do tanque) · dobrar <b>todas</b> as medidas ➜ volume <b>× 8</b> (2 · 2 · 2).</div>
+  </section>
+
+  <section id="s12" class="fb">
+    <h2>📚 Glossário rápido</h2>
+    <dl class="glossario">
+      <dt>Média ponderada</dt><dd>média em que cada valor é multiplicado pelo seu peso; divide-se pela soma dos pesos.</dd>
+      <dt>Frequência</dt><dd>quantas vezes um valor (ou classe) aparece.</dd>
+      <dt>Média da classe</dt><dd>ponto do meio de uma classe de intervalo, usado como valor dela.</dd>
+      <dt>Mediana</dt><dd>termo central dos dados ordenados.</dd>
+      <dt>Moda / bimodal / classe modal</dt><dd>valor mais frequente / duas modas / classe com maior frequência.</dd>
+      <dt>Amplitude</dt><dd>maior valor − menor valor.</dd>
+      <dt>Variância</dt><dd>média dos quadrados das diferenças em relação à média (÷ n ou ÷ n − 1).</dd>
+      <dt>Desvio padrão (σ)</dt><dd>raiz quadrada da variância.</dd>
+      <dt>Outlier</dt><dd>dado muito afastado dos demais.</dd>
+      <dt>Apótema</dt><dd>segmento do centro ao ponto médio de um lado do polígono regular (a = r).</dd>
+      <dt>Inscrita / circunscrita</dt><dd>circunferência tangente aos lados / que passa pelos vértices.</dd>
+      <dt>Poliedro</dt><dd>sólido formado por polígonos (faces, arestas, vértices).</dd>
+      <dt>Princípio de Cavalieri</dt><dd>seções de mesma área em todas as alturas ➜ volumes iguais.</dd>
+    </dl>
+  </section>
+
+  <section id="s13" class="fa relampago">
+    <h2>⚡ Teste relâmpago (5 perguntas para clicar)</h2>
+    <div id="relampago"></div>
+    <p id="rel-placar" style="font-weight:bold;margin-top:8px"></p>
+  </section>
+
+  <div class="fim" id="fim">
+    <h3 id="fim-h3">🔒 Próxima etapa: Simulado</h3>
+    <p id="fim-txt">Role até o fim da página para habilitar o botão.</p>
+    <button id="btn-li" onclick="confirmarLeitura()" disabled>✅ Li o resumo até o fim</button>
+    <a class="btn off" id="btn-prox" href="simulado.html">📝 Pronto para o Simulado!</a>
+  </div>
+
+  <div class="rodape">Feito com carinho para o jovem aprendiz. 🧱</div>
+</div>
+
+<div class="modal-bg" id="lock">
+  <div class="modal">
+    <div class="big">🔒</div>
+    <p><b>Esta etapa ainda está trancada.</b></p>
+    <p id="lock-txt">Para abrir o Resumo, envie o Quiz.</p>
+    <a href="index.html">Voltar ao início</a>
+  </div>
+</div>
+<div class="modal-bg" id="modal" style="background:rgba(0,0,0,.75)">
+  <div class="modal">
+    <p id="modal-txt"></p>
+    <button onclick="fecharModal()" id="modal-ok">Ok</button>
+    <button class="mini" onclick="fecharModal()" id="modal-cancel" style="display:none;margin-left:8px">Cancelar</button>
+  </div>
+</div>
+
+<script>
+/* ====== TRILHA COM CADEADOS (módulo comum do kit) ====== */
+var KIT='olaria_cobogo_mat9';
+var TRILHA=[
+ {id:'leitura', chave:KIT+'_leitura_v1', nome:'Leitura Guiada', arquivo:'leitura-guiada.html', emoji:'📖'},
+ {id:'quiz', chave:KIT+'_quiz_v1', nome:'Quiz', arquivo:'quiz.html', emoji:'🎯'},
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapaConcluida(id){ var e=TRILHA.filter(function(t){return t.id===id;})[0]; var d=lerJSON(e.chave); return !!(d&&d.concluido); }
+function podeAbrir(id){ var idx=TRILHA.map(function(t){return t.id;}).indexOf(id); if(idx<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[idx-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+links[i].textContent.replace('🔒 ',''); links[i].setAttribute('title','Ainda trancado'); } else { links[i].classList.remove('lock'); links[i].textContent=links[i].textContent.replace('🔒 ',''); links[i].removeAttribute('title'); } }
+}
+function travar(txt){
+  document.getElementById('lock-txt').textContent=txt;
+  document.getElementById('lock').classList.add('show');
+  var w=document.querySelector('.wrap'); w.style.filter='blur(9px)'; w.style.pointerEvents='none'; w.style.visibility='hidden'; w.setAttribute('aria-hidden','true');
+}
+
+function checarTrava(){
+  if(podeAbrir('resumo')) return true;
+  var L=lerJSON(KIT+'_leitura_v1');
+  travar((L&&L.concluido)?'Para abrir o Resumo, envie o Quiz.':'Para abrir o Resumo, conclua a Leitura Guiada e envie o Quiz.');
+  return false;
+}
+
+/* ====== TESTE RELÂMPAGO (conteúdo do livro) ====== */
+var RL=[
+ {p:"Na média ponderada, a soma dos produtos é dividida pela…",ops:["quantidade de números","soma dos pesos"],c:1,e:"Pela soma dos pesos."},
+ {p:"A mediana de {9, 1, 6, 4} é…",ops:["5","3,5","6"],c:0,e:"Ordenando: 1, 4, 6, 9 ➜ (4 + 6) ÷ 2 = 5."},
+ {p:"O desvio padrão é…",ops:["o quadrado da variância","a raiz quadrada da variância"],c:1,e:"σ = √Var."},
+ {p:"No hexágono regular inscrito numa circunferência de raio 5 cm, o lado mede…",ops:["5 cm","5√2 cm","5√3 cm"],c:0,e:"No hexágono, R = ℓ."},
+ {p:"O volume de um prisma de área da base 12 cm² e altura 5 cm é…",ops:["17 cm³","60 cm³","120 cm³"],c:1,e:"V = B · h = 12 · 5 = 60 cm³."}
+];
+
+/* ====== ESTADO DO RESUMO ====== */
+var CHAVE=KIT+'_resumo_v1'; var mem={}; var estado=carregar();
+function carregar(){ try{ var s=localStorage.getItem(CHAVE); if(s) return JSON.parse(s);}catch(e){ if(mem[CHAVE]) return JSON.parse(mem[CHAVE]); } return {rolagemMax:0,relampago:{}}; }
+function salvar(){ var s=JSON.stringify(estado); try{ localStorage.setItem(CHAVE,s);}catch(e){ mem[CHAVE]=s; } var d=new Date(); document.getElementById('salvo').textContent='📏 Rolagem máxima: '+Math.round(estado.rolagemMax||0)+'% · 💾 salvo às '+d.toLocaleTimeString('pt-BR')+' de '+d.toLocaleDateString('pt-BR'); }
+function renderRelampago(){
+  if(!estado.relampago) estado.relampago={};
+  var h=''; var acertos=0, resp=0;
+  RL.forEach(function(q,i){
+    var r=estado.relampago[i];
+    h+='<div class="qr"><p>'+(i+1)+'. '+q.p+'</p>';
+    q.ops.forEach(function(o,k){ var cls='op'; if(r!==undefined){ if(k===q.c) cls+=' certo'; else if(k===r) cls+=' errado'; } h+='<button class="'+cls+'" onclick="responderRL('+i+','+k+')">'+o+'</button>'; });
+    if(r!==undefined){ resp++; if(r===q.c) acertos++; h+='<div class="fb">'+(r===q.c?'✅ ':'❌ ')+q.e+'</div>'; }
+    h+='</div>';
+  });
+  document.getElementById('relampago').innerHTML=h;
+  document.getElementById('rel-placar').textContent= resp? '⚡ Placar: '+acertos+' de '+RL.length+(resp<RL.length?' (faltam '+(RL.length-resp)+')':'') : '';
+}
+function responderRL(i,k){ if(!estado.relampago) estado.relampago={}; if(estado.relampago[i]!==undefined) return; estado.relampago[i]=k; salvar(); renderRelampago(); }
+function medirRolagem(){
+  var h=document.documentElement; var total=h.scrollHeight-h.clientHeight; var pct= total<=0?100:Math.min(100,(window.scrollY||h.scrollTop)/total*100);
+  if(pct>(estado.rolagemMax||0)){ estado.rolagemMax=pct; salvar(); }
+  var b=document.getElementById('btn-li'); if(!estado.concluido && (estado.rolagemMax||0)>=90){ b.disabled=false; }
+}
+function confirmarLeitura(){ if(estado.concluido) return; if((estado.rolagemMax||0)<90) return; estado.concluido=true; estado.concluidoEm=new Date().toISOString(); salvar(); atualizarFim(); }
+function atualizarFim(){
+  var h3=document.getElementById('fim-h3'), txt=document.getElementById('fim-txt'), b=document.getElementById('btn-li'), a=document.getElementById('btn-prox');
+  if(estado.concluido||trilhaLiberada()){ h3.textContent='✅ Resumo lido — Simulado destravado!'; txt.textContent=estado.concluido?'Agora encare o Simulado valendo, como se fosse a prova.':'Trilha liberada pelos pais.'; b.disabled=!!estado.concluido||(estado.rolagemMax||0)<90; b.textContent=estado.concluido?'✅ Resumo concluído':'✅ Li o resumo até o fim'; a.classList.remove('off'); }
+  else { h3.textContent='🔒 Próxima etapa: Simulado'; txt.textContent=(estado.rolagemMax||0)>=90?'Confirme a leitura para destravar o Simulado.':'Role até o fim da página para habilitar o botão (rolagem: '+Math.round(estado.rolagemMax||0)+'%).'; a.classList.add('off'); }
+  marcarNav();
+}
+function exportar(){ var blob=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='resumo_olaria-do-cobogo.json'; a.click(); }
+function importar(ev){ var f=ev.target.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ try{ estado=JSON.parse(r.result); if(!estado.relampago) estado.relampago={}; salvar(); renderRelampago(); atualizarFim(); mostrarModal('✅ Progresso importado!',false);}catch(e){ mostrarModal('❌ Arquivo inválido.',false);} }; r.readAsText(f); }
+var acaoZerar=null;
+function pedirZerar(){ acaoZerar=true; mostrarModal('Apagar o teste relâmpago e a rolagem deste Resumo? (Se o Resumo já foi concluído, a conclusão é mantida.)',true); }
+function mostrarModal(txt,confirmar){ document.getElementById('modal-txt').innerHTML=txt; document.getElementById('modal').classList.add('show'); document.getElementById('modal-cancel').style.display=confirmar?'inline-block':'none'; document.getElementById('modal-ok').textContent=confirmar?'Sim, apagar':'Ok';
+  document.getElementById('modal-ok').onclick=function(){ if(confirmar&&acaoZerar){ var c=estado.concluido, ce=estado.concluidoEm; estado={rolagemMax:0,relampago:{}}; if(c){ estado.concluido=true; estado.concluidoEm=ce; } salvar(); renderRelampago(); atualizarFim(); } acaoZerar=null; fecharModal(); }; }
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+
+if(checarTrava()){ salvar(); renderRelampago(); atualizarFim(); window.addEventListener('scroll',function(){ medirRolagem(); atualizarFim(); }); setTimeout(function(){ medirRolagem(); atualizarFim(); },300); } else { marcarNav(); }
+
+
+</script>
+</body>
+</html>

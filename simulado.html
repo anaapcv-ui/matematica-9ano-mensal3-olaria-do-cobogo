@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado — Matemática 9º ano | Olaria do Cobogó (Mensal 3)</title>
+<style>
+  :root{--fundo:#17110d;--fundo2:#231a14;--fundo3:#2d2219;--borda:#3d2e23;--borda2:#5a4433;--amarelo:#f6c445;--azul:#4fb0e8;--terra:#e8804f;--verde:#4fd18b;--coral:#ff6b6b;--texto:#f3e9dd;--cinza:#bba897;--postit:#ffe39a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Verdana,'Segoe UI',system-ui,Arial,sans-serif;font-size:18px;line-height:1.55;color:var(--texto);background-color:var(--fundo);
+    background-image:radial-gradient(circle at 50% 50%,rgba(246,196,69,.06) 0 22%,transparent 23%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%);
+    background-size:56px 56px,56px 56px,56px 56px;background-position:0 0,0 0,28px 28px;min-height:100vh}
+  h1,h2,h3{font-family:'Trebuchet MS','Gill Sans',Tahoma,sans-serif}
+  header{background:linear-gradient(120deg,#3a210f,#231a14 55%,#123047);padding:24px 18px;text-align:center;border-bottom:5px solid var(--amarelo);box-shadow:0 4px 18px rgba(0,0,0,.5)}
+  header .selo{font-family:'Courier New',Consolas,monospace;font-size:.76rem;letter-spacing:3px;color:var(--amarelo);text-transform:uppercase}
+  header h1{font-size:1.6rem;margin:6px 0 2px}
+  header p{color:#e8d8c6;font-size:.92rem}
+  .wrap{max-width:880px;margin:0 auto;padding:16px}
+  .barra-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+  .barra-nav a{background:var(--fundo2);color:var(--texto);text-decoration:none;padding:7px 12px;border-radius:8px;font-size:.85rem;border:1px solid var(--borda2)}
+  .barra-nav a.on{background:var(--amarelo);color:#2b1c00;font-weight:bold}
+  .barra-nav a.lock{opacity:.5}
+  .painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--fundo2);border:1px solid var(--borda);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:.85rem}
+  .painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{cursor:pointer;font-family:inherit}
+  .mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:6px 10px;font-size:.8rem}
+  .intro{background:var(--fundo2);border:1px solid var(--borda);border-left:6px solid var(--amarelo);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+  .intro h2{font-size:1.2rem;margin-bottom:8px;color:var(--amarelo)}
+  .intro ol{margin:8px 0 0 22px}
+  .az{color:var(--azul);font-weight:bold} .te{color:var(--terra);font-weight:bold} .am{color:var(--amarelo);font-weight:bold}
+  .formula{text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:1.25rem;background:#120d0a;border:2px dashed var(--borda2);border-radius:12px;padding:12px;margin:10px 0;color:#fff}
+  .formula small{display:block;font-family:Verdana,sans-serif;font-size:.8rem;color:var(--cinza);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:8px 0 12px}
+  th,td{border:1px solid var(--borda2);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#33251b;color:var(--amarelo)}
+  .postit{background:var(--postit);color:#3b2a00;border-radius:4px 4px 18px 4px;padding:12px 14px;margin:12px 0;box-shadow:3px 4px 0 rgba(0,0,0,.35);transform:rotate(-.5deg);font-size:.95rem}
+  .alerta{background:#3a1616;border:2px solid var(--coral);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:.95rem}
+  .alerta b{color:#ffb3b3}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(15,10,7,.97);z-index:50;align-items:center;justify-content:center;padding:16px}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--fundo2);border:2px solid var(--amarelo);border-radius:14px;padding:22px;max-width:440px;text-align:center}
+  .modal p{margin-bottom:14px}
+  .modal .big{font-size:2.2rem}
+  .modal a,.modal button{display:inline-block;background:var(--amarelo);color:#2b1c00;border:none;border-radius:8px;padding:10px 18px;font-weight:bold;text-decoration:none;font-size:1rem}
+  .modal button.mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2)}
+  .trilha-fim{background:linear-gradient(120deg,#16301f,#1d3b28);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center}
+  .trilha-fim h3{color:#b5f2cf;margin-bottom:8px}
+  .trilha-fim a.btn{display:inline-block;margin-top:8px;background:var(--verde);color:#062614;text-decoration:none;font-weight:bold;padding:12px 20px;border-radius:10px}
+  .trilha-fim a.btn.off{background:#3a2e25;color:#8f7f70;pointer-events:none}
+  .rodape{text-align:center;color:var(--cinza);font-size:.8rem;margin-top:24px}
+  @media (max-width:560px){body{font-size:16.5px} header h1{font-size:1.3rem}}
+
+  header.sim{background:linear-gradient(120deg,#0b1a33,#13284a 60%,#1d1430);border-bottom:5px solid #e8454a}
+  .codigo{background:linear-gradient(120deg,#12291b,#1d4a30);border:2px solid var(--verde);border-radius:0 0 14px 14px;padding:12px;text-align:center;margin-bottom:16px;display:none;position:sticky;top:0;z-index:20}
+  .codigo.show{display:block}
+  .codigo .cod{font-family:'Courier New',monospace;font-size:1.8rem;font-weight:bold;letter-spacing:3px;color:#b5f2cf;margin:6px 0}
+  .progresso{height:12px;background:#120d0a;border-radius:6px;overflow:hidden;margin-bottom:16px;border:1px solid var(--borda2)}
+  .progresso div{height:100%;background:#e8454a;width:0;transition:width .3s}
+  .q{background:var(--fundo2);border:1px solid var(--borda);border-radius:14px;padding:16px;margin-bottom:14px}
+  .q .num{font-family:'Courier New',monospace;color:#ffa0a3;font-weight:bold;font-size:.8rem;letter-spacing:1px;text-transform:uppercase}
+  .q .tipo{display:none}
+  .q h3{font-size:1.02rem;margin:6px 0 10px;font-family:Verdana,sans-serif;font-weight:bold}
+  .afirm{background:#1b140f;border-left:3px solid var(--borda2);padding:8px 12px;margin:6px 0;border-radius:0 8px 8px 0;font-size:.95rem}
+  .afirm.ok{border-left-color:var(--verde)} .afirm.no{border-left-color:#777;color:#cfc5bb}
+  .alt{display:block;background:#1b140f;border:1px solid var(--borda2);border-radius:10px;padding:10px 12px;margin:6px 0;cursor:pointer}
+  .alt input{margin-right:8px}
+  .alt.sel{border-color:#ffa0a3;background:#331a18}
+  .alt.certa{border:2px solid var(--verde);background:#12291b}
+  .alt.errada{border-color:#5a5a5a;background:#2a2622;color:#cfc5bb}
+  .alt.marcada-errada{border:2px solid #e8454a;background:#3a1616}
+  .exp{margin-top:8px;font-size:.88rem;padding:8px 10px;border-radius:8px;background:#120d0a;border-left:3px solid var(--amarelo);display:none}
+  .exp.show{display:block}
+  .soma input{width:110px;padding:9px;border-radius:8px;border:1px solid var(--borda2);background:#0f0b08;color:var(--texto);font-size:1.05rem;text-align:center}
+  .soma .lab{font-size:.88rem;color:var(--cinza);margin-left:8px}
+  .enviar{width:100%;background:#e8454a;color:#fff;border:none;border-radius:12px;padding:14px;font-size:1.05rem;font-weight:bold;margin:10px 0}
+  .enviar:disabled{background:#3a2e25;color:#8f7f70;cursor:not-allowed}
+  .gab{background:var(--fundo2);border:1px dashed var(--azul);border-radius:14px;padding:16px;margin:16px 0;display:none}
+  .gab.show{display:block}
+  .gab input{padding:9px;border-radius:8px;border:1px solid var(--borda2);background:#0f0b08;color:var(--texto);font-size:1rem;width:180px;text-transform:uppercase}
+  .gab button{background:var(--azul);color:#06253a;border:none;border-radius:8px;padding:9px 14px;font-weight:bold;margin-left:6px}
+  .gab .msg{margin-top:8px;font-size:.9rem}
+  .fim{background:linear-gradient(120deg,#12291b,#1d4a30);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center;display:none}
+  .fim h3{color:#b5f2cf;margin-bottom:8px}
+  .fim a{display:inline-block;margin-top:8px;background:var(--verde);color:#062614;text-decoration:none;font-weight:bold;padding:11px 20px;border-radius:10px}
+  .dica-som{background:#1b140f;border:1px dashed var(--borda2);border-radius:12px;padding:10px 14px;font-size:.9rem;margin-bottom:14px}
+</style>
+</head>
+<body>
+<header class="sim">
+  <div class="selo">Olaria do Cobogó · Matemática 9º ano · CCF · Mensal 3</div>
+  <h1>📝 Simulado — A Grande Encomenda</h1>
+  <p>30 questões no estilo vestibular · múltipla escolha, somatório e números romanos · Código SIM para os pais</p>
+</header>
+
+<div class="wrap">
+  <nav class="barra-nav" id="nav">
+    <a href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a href="quiz.html">🎯 Quiz</a>
+    <a href="resumo.html">🗺️ Resumo</a>
+    <a class="on" href="simulado.html">📝 Simulado</a>
+    <a href="index.html">🏠 Início</a>
+  </nav>
+
+  <div class="codigo" id="codigo"><div>Seu código de liberação</div><div class="cod" id="cod"></div><div id="codtxt"></div></div>
+
+  <div class="intro">
+    <h2>📦 Chegou a Grande Encomenda da olaria!</h2>
+    <p>Agora é para valer, como se fosse a prova. São <b>30 questões</b>: responda <b>todas</b> antes de enviar (tenha papel, lápis e calma para as contas). Depois de <b>Enviar</b>, não dá para voltar atrás: as respostas travam, aparece o <b>código SIM</b> e o gabarito comentado só abre com esse código.</p>
+  </div>
+  <div class="dica-som">💡 <b>Como responder o somatório:</b> cada afirmativa tem um número (01, 02, 04, 08, 16). Some os números das afirmativas <b>corretas</b> e digite o total. Ex.: se só a 01 e a 08 estiverem certas, a resposta é 09.</div>
+
+  <div class="painel">
+    <span id="salvo">💾 Progresso salvo automaticamente.</span>
+    <div class="btns">
+      <button class="mini" onclick="exportar()">📥 Exportar</button>
+      <button class="mini" onclick="document.getElementById('imp').click()">📤 Importar</button>
+      <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+      <button class="mini" onclick="pedirZerar()">🗑️ Zerar tudo</button>
+    </div>
+  </div>
+
+  <div class="progresso"><div id="barra"></div></div>
+  <div id="questoes"></div>
+  <button class="enviar" id="btn-enviar" onclick="enviar()" disabled>📨 Enviar simulado (responda todas)</button>
+
+  <div class="gab" id="gab">
+    <b>🔑 Gabarito comentado:</b> digite o código SIM que apareceu no topo.<br>
+    <input id="gab-in" placeholder="SIM-XX-YY"><button onclick="abrirGab()">Ver gabarito</button>
+    <div class="msg" id="gab-msg"></div>
+  </div>
+
+  <div class="fim" id="fim">
+    <h3>🏁 Trilha completa!</h3>
+    <p>Você chegou ao fim da trilha. Agora <b>todos os materiais ficam abertos</b> para revisar quantas vezes quiser até a prova.</p>
+    <a href="index.html">🏠 Voltar ao início</a>
+  </div>
+
+  <div class="rodape">Feito com carinho para o jovem aprendiz. 🧱 Boa prova!</div>
+</div>
+
+<div class="modal-bg" id="lock">
+  <div class="modal">
+    <div class="big">🔒</div>
+    <p><b>Esta etapa ainda está trancada.</b></p>
+    <p id="lock-txt">Para abrir o Simulado, leia o Resumo até o fim.</p>
+    <a href="index.html">Voltar ao início</a>
+  </div>
+</div>
+<div class="modal-bg" id="modal" style="background:rgba(0,0,0,.75)">
+  <div class="modal">
+    <p id="modal-txt"></p>
+    <button onclick="fecharModal()" id="modal-ok">Ok</button>
+    <button class="mini" onclick="fecharModal()" id="modal-cancel" style="display:none;margin-left:8px">Cancelar</button>
+  </div>
+</div>
+
+<script>
+/* ====== TRILHA COM CADEADOS (módulo comum do kit) ====== */
+var KIT='olaria_cobogo_mat9';
+var TRILHA=[
+ {id:'leitura', chave:KIT+'_leitura_v1', nome:'Leitura Guiada', arquivo:'leitura-guiada.html', emoji:'📖'},
+ {id:'quiz', chave:KIT+'_quiz_v1', nome:'Quiz', arquivo:'quiz.html', emoji:'🎯'},
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapaConcluida(id){ var e=TRILHA.filter(function(t){return t.id===id;})[0]; var d=lerJSON(e.chave); return !!(d&&d.concluido); }
+function podeAbrir(id){ var idx=TRILHA.map(function(t){return t.id;}).indexOf(id); if(idx<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[idx-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+links[i].textContent.replace('🔒 ',''); links[i].setAttribute('title','Ainda trancado'); } else { links[i].classList.remove('lock'); links[i].textContent=links[i].textContent.replace('🔒 ',''); links[i].removeAttribute('title'); } }
+}
+function travar(txt){
+  document.getElementById('lock-txt').textContent=txt;
+  document.getElementById('lock').classList.add('show');
+  var w=document.querySelector('.wrap'); w.style.filter='blur(9px)'; w.style.pointerEvents='none'; w.style.visibility='hidden'; w.setAttribute('aria-hidden','true');
+}
+
+function checarTrava(){
+  if(podeAbrir('simulado')) return true;
+  var txt='Para abrir o Simulado, leia o Resumo até o fim e clique em “Li o resumo até o fim”.';
+  if(!etapaConcluida('quiz')) txt='Para abrir o Simulado, envie o Quiz e leia o Resumo até o fim.';
+  if(!etapaConcluida('leitura')) txt='Para abrir o Simulado, conclua a Leitura Guiada, envie o Quiz e leia o Resumo até o fim.';
+  travar(txt);
+  return false;
+}
+
+/* ====== QUESTÕES (conteúdo do livro Callis Matemática 9 — Caps. 19, 20, 21 e 23) — correta guardada pelo id ====== */
+/* tipos: mc = múltipla escolha · som = somatório · rom = números romanos */
+var Q=[
+ {tipo:"mc",p:"Numa escola, a média de cada matéria é ponderada: prova escrita peso 5, tarefa peso 2, participação peso 1 e projeto peso 2. A aprovação exige média 6,0. Um aluno tirou 5,0 na prova, 8,0 na tarefa, 9,0 na participação e 7,0 no projeto. Então, a média dele e a situação são:",alts:[
+  {id:"a",t:"6,4 — aprovado.",ok:true,e:"Mp = (5·5 + 2·8 + 1·9 + 2·7) ÷ 10 = (25 + 16 + 9 + 14) ÷ 10 = 64 ÷ 10 = 6,4 ≥ 6,0."},
+  {id:"b",t:"7,25 — aprovado.",e:"7,25 é a média simples (29 ÷ 4), que ignora os pesos."},
+  {id:"c",t:"5,8 — recuperação.",e:"Refaça: a soma ponderada é 64 e a soma dos pesos é 10, então 6,4."},
+  {id:"d",t:"6,4 — recuperação.",e:"A média 6,4 está certa, mas é maior que 6,0: o aluno está aprovado."}]},
+ {tipo:"som",p:"Sobre a média aritmética, some os números das afirmativas corretas:",itens:[
+  {v:1,t:"A média ponderada de {10, 20} com pesos 3 e 2, respectivamente, é 14.",ok:true,e:"(3·10 + 2·20) ÷ (3 + 2) = 70 ÷ 5 = 14."},
+  {v:2,t:"Na média ponderada, divide-se a soma dos produtos pela quantidade de números diferentes.",e:"Divide-se pela soma dos pesos."},
+  {v:4,t:"A média dos dados de uma tabela de frequência é uma média ponderada pelas frequências.",ok:true,e:"É o que o livro afirma na p. 152."},
+  {v:8,t:"Em classes de intervalo, usa-se o maior valor de cada classe como representante dela.",e:"Usa-se a média da classe (o ponto do meio)."},
+  {v:16,t:"Na classe 150 ├ 155, a média da classe é 152,5.",ok:true,e:"(150 + 155) ÷ 2 = 152,5."}]},
+ {tipo:"mc",p:"Uma pesquisa registrou o número de pessoas por casa: 2 pessoas em 5 casas; 3 pessoas em 8 casas; 4 pessoas em 5 casas; 5 pessoas em 2 casas. O número médio de pessoas por casa é:",alts:[
+  {id:"a",t:"3,5",e:"3,5 é a média dos valores 2, 3, 4 e 5, sem as frequências."},
+  {id:"b",t:"16",e:"Você dividiu 64 por 4 (número de linhas). Divide-se pelo total de casas (20)."},
+  {id:"c",t:"3,2",ok:true,e:"(2·5 + 3·8 + 4·5 + 5·2) ÷ 20 = (10 + 24 + 20 + 10) ÷ 20 = 64 ÷ 20 = 3,2."},
+  {id:"d",t:"5",e:"5 é a média das frequências (20 ÷ 4), não a média de pessoas."}]},
+ {tipo:"mc",p:"O preço de ingressos vendidos (R$) foi organizado em classes: 10 ├ 20: 4 ingressos; 20 ├ 30: 10 ingressos; 30 ├ 40: 6 ingressos. Usando a média de cada classe, o preço médio estimado é:",alts:[
+  {id:"a",t:"R$ 25,00",e:"25 é a média dos pontos médios (15, 25 e 35) sem considerar as frequências."},
+  {id:"b",t:"R$ 26,00",ok:true,e:"(15·4 + 25·10 + 35·6) ÷ 20 = (60 + 250 + 210) ÷ 20 = 520 ÷ 20 = 26."},
+  {id:"c",t:"R$ 30,00",e:"Refaça a conta com as médias das classes (15, 25 e 35)."},
+  {id:"d",t:"R$ 173,33",e:"Você dividiu 520 por 3 (número de classes). O total de ingressos é 20."}]},
+ {tipo:"rom",p:"Considere o conjunto {9, 2, 7, 4, 12, 6, 3} e analise as afirmativas:",itens:[
+  {n:"I",t:"Em ordem crescente, o conjunto fica {2, 3, 4, 6, 7, 9, 12}, e a mediana é 6.",ok:true,e:"Correto: n = 7, o termo central é o 4º, que é 6."},
+  {n:"II",t:"A mediana ocupa a 4ª posição da sequência ordenada.",ok:true,e:"(7 + 1) ÷ 2 = 4."},
+  {n:"III",t:"Se o número 20 for acrescentado ao conjunto, a mediana passa a ser 6,5.",ok:true,e:"Com 8 termos {2, 3, 4, 6, 7, 9, 12, 20}, Md = (6 + 7) ÷ 2 = 6,5."},
+  {n:"IV",t:"A mediana é 4, pois é o termo do meio na ordem em que os dados foram escritos.",e:"Pegadinha: é preciso ordenar antes. A mediana é 6."}],
+  alts:[
+  {id:"a",t:"Apenas I e II.",e:"A III também é verdadeira."},
+  {id:"b",t:"Apenas I, II e III.",ok:true,e:"I, II e III estão corretas; a IV esquece de ordenar os dados."},
+  {id:"c",t:"Apenas III e IV.",e:"A IV é falsa e a I e a II são verdadeiras."},
+  {id:"d",t:"I, II, III e IV.",e:"A IV é falsa."}]},
+ {tipo:"mc",p:"Os tempos (em segundos) de seis corredores foram 14, 18, 11, 16, 20 e 13. A mediana desses tempos é:",alts:[
+  {id:"a",t:"13,5 s",e:"Pegadinha: você usou os termos do meio sem ordenar (11 e 16)."},
+  {id:"b",t:"15,33 s",e:"15,33 é aproximadamente a média (92 ÷ 6)."},
+  {id:"c",t:"9 s",e:"9 é a amplitude (20 − 11)."},
+  {id:"d",t:"15 s",ok:true,e:"Ordenando: 11, 13, 14, 16, 18, 20. Md = (14 + 16) ÷ 2 = 15."}]},
+ {tipo:"som",p:"Tempo de estudo diário de 20 alunos (em horas): 0 ├ 1: 6 alunos; 1 ├ 2: 9 alunos; 2 ├ 3: 3 alunos; 3 ├ 4: 2 alunos. Some os números das afirmativas corretas:",itens:[
+  {v:1,t:"Como n ÷ 2 = 10, a mediana está na classe 1 ├ 2.",ok:true,e:"A 1ª classe vai do 1º ao 6º dado; a 2ª, do 7º ao 15º. O 10º está em 1 ├ 2."},
+  {v:2,t:"Na fórmula da mediana, Fa = 6.",ok:true,e:"Fa é a soma das frequências das classes anteriores: só a 1ª classe, com 6."},
+  {v:4,t:"A mediana é aproximadamente 1,44 h.",ok:true,e:"Md = 1 + (10 − 6) ÷ 9 · 1 = 1 + 4/9 ≈ 1,44 h."},
+  {v:8,t:"A classe modal é 0 ├ 1.",e:"A classe modal é a de maior frequência: 1 ├ 2 (9 alunos)."},
+  {v:16,t:"A média estimada é 1,55 h.",ok:true,e:"(0,5·6 + 1,5·9 + 2,5·3 + 3,5·2) ÷ 20 = (3 + 13,5 + 7,5 + 7) ÷ 20 = 31 ÷ 20 = 1,55."}]},
+ {tipo:"mc",p:"Uma loja registrou as cores de cobogó vendidas no mês: amarelo 18, branco 25, azul 25 e verde 7. Sobre a moda dessas vendas, é correto afirmar que:",alts:[
+  {id:"a",t:"a distribuição é bimodal: branco e azul.",ok:true,e:"Branco e azul empatam com a maior frequência (25): duas modas, bimodal."},
+  {id:"b",t:"a moda é só o branco.",e:"O azul tem a mesma frequência máxima (25)."},
+  {id:"c",t:"a moda é 25.",e:"25 é a frequência; a moda é a cor (o valor)."},
+  {id:"d",t:"a moda é 18,75.",e:"18,75 é a média das frequências (75 ÷ 4), não a moda."}]},
+ {tipo:"rom",p:"Para o conjunto {5, 7, 7, 8, 13}, analise as afirmativas:",itens:[
+  {n:"I",t:"A média é 8.",ok:true,e:"40 ÷ 5 = 8."},
+  {n:"II",t:"A mediana é 8.",e:"Já está ordenado; o termo central (3º) é 7."},
+  {n:"III",t:"A moda é 7.",ok:true,e:"O 7 aparece duas vezes."},
+  {n:"IV",t:"A amplitude é 8.",ok:true,e:"13 − 5 = 8."}],
+  alts:[
+  {id:"a",t:"Apenas I e III.",e:"A IV também é verdadeira."},
+  {id:"b",t:"Apenas II e IV.",e:"A II é falsa (a mediana é 7)."},
+  {id:"c",t:"Apenas I, III e IV.",ok:true,e:"I, III e IV estão corretas; a mediana é 7, não 8."},
+  {id:"d",t:"I, II, III e IV.",e:"A II é falsa."}]},
+ {tipo:"mc",p:"Num grupo de 5 pessoas, a média das idades é 20 anos. Uma pessoa de 32 anos entra no grupo. A nova média das idades passa a ser:",alts:[
+  {id:"a",t:"26 anos",e:"26 é a média entre 20 e 32; mas o 20 representa 5 pessoas."},
+  {id:"b",t:"21 anos",e:"Refaça: a soma antiga é 5 · 20 = 100."},
+  {id:"c",t:"24 anos",e:"Refaça: (100 + 32) ÷ 6 = 22."},
+  {id:"d",t:"22 anos",ok:true,e:"Soma antiga: 5 · 20 = 100. Nova soma: 132. Nova média: 132 ÷ 6 = 22."}]},
+ {tipo:"som",p:"Sobre as medidas de dispersão, some os números das afirmativas corretas:",itens:[
+  {v:1,t:"A amplitude é a diferença entre o maior e o menor valor do conjunto.",ok:true,e:"Mostra a faixa de variação dos dados."},
+  {v:2,t:"A variância populacional é a soma dos quadrados das diferenças entre cada dado e a média, dividida pelo número de elementos.",ok:true,e:"É a definição do livro (p. 176)."},
+  {v:4,t:"Na variância amostral, divide-se por n + 1.",e:"Divide-se por n − 1."},
+  {v:8,t:"O desvio padrão é o quadrado da variância.",e:"É a RAIZ QUADRADA da variância."},
+  {v:16,t:"Um outlier interfere muito na média e, principalmente, na variância.",ok:true,e:"Por isso o livro diz que costuma ser excluído dos cálculos."}]},
+ {tipo:"mc",p:"A variância populacional do conjunto {10, 12, 14, 16, 18} é:",alts:[
+  {id:"a",t:"8",ok:true,e:"Média 14. Quadrados das diferenças: 16, 4, 0, 4, 16 ➜ soma 40. Var = 40 ÷ 5 = 8."},
+  {id:"b",t:"10",e:"10 é a variância AMOSTRAL (40 ÷ 4)."},
+  {id:"c",t:"40",e:"40 é só a soma dos quadrados; falta dividir por n."},
+  {id:"d",t:"2,83",e:"2,83 é aproximadamente o desvio padrão (√8)."}]},
+ {tipo:"rom",p:"Quatro atletas têm a mesma média de pontos. Os desvios padrão são: P = 3,2; Q = 1,1; R = 5,0; S = 2,4. Analise as afirmativas:",itens:[
+  {n:"I",t:"O atleta mais regular é Q.",ok:true,e:"Menor desvio padrão (1,1)."},
+  {n:"II",t:"O atleta menos regular é R.",ok:true,e:"Maior desvio padrão (5,0)."},
+  {n:"III",t:"Como as médias são iguais, todos são igualmente regulares.",e:"Média igual não garante dispersão igual."},
+  {n:"IV",t:"A variância dos pontos de Q é 1,21.",ok:true,e:"Var = σ² = 1,1² = 1,21."}],
+  alts:[
+  {id:"a",t:"Apenas I e II.",e:"A IV também é verdadeira."},
+  {id:"b",t:"Apenas I, II e IV.",ok:true,e:"Só a III é falsa."},
+  {id:"c",t:"Apenas III.",e:"A III é justamente a falsa."},
+  {id:"d",t:"Apenas II e IV.",e:"A I também é verdadeira."}]},
+ {tipo:"mc",p:"O desvio padrão (populacional) do conjunto {2, 6, 8, 10, 14} é:",alts:[
+  {id:"a",t:"16",e:"16 é a variância; o desvio padrão é a raiz quadrada dela."},
+  {id:"b",t:"4",ok:true,e:"Média 8. Quadrados das diferenças: 36, 4, 0, 4, 36 ➜ 80. Var = 80 ÷ 5 = 16. σ = √16 = 4."},
+  {id:"c",t:"20",e:"20 é a variância amostral (80 ÷ 4)."},
+  {id:"d",t:"12",e:"12 é a amplitude (14 − 2)."}]},
+ {tipo:"som",p:"Uma escola calculou a média e o desvio padrão das notas de quatro turmas: A (média 7,0; desvio 0,5), B (média 7,0; desvio 1,8), C (média 6,5; desvio 0,9) e D (média 8,0; desvio 1,2). Some os números das afirmativas corretas:",itens:[
+  {v:1,t:"A turma A tem as notas mais homogêneas.",ok:true,e:"Tem o menor desvio padrão (0,5)."},
+  {v:2,t:"A turma de maior dispersão é a D, porque tem a maior média.",e:"Dispersão se mede pelo desvio padrão: a maior é a da turma B (1,8)."},
+  {v:4,t:"As turmas A e B têm a mesma média, mas as notas da B estão mais espalhadas.",ok:true,e:"Desvio 1,8 > 0,5."},
+  {v:8,t:"A variância das notas da turma A é 0,25.",ok:true,e:"Var = σ² = 0,5² = 0,25."},
+  {v:16,t:"O desvio padrão da turma C é a raiz quadrada da variância das notas dessa turma.",ok:true,e:"σ = √Var, para qualquer conjunto."}]},
+ {tipo:"mc",p:"Qual das figuras abaixo é um polígono regular?",alts:[
+  {id:"a",t:"Um retângulo de lados 3 cm e 5 cm.",e:"Os ângulos são iguais, mas os lados não."},
+  {id:"b",t:"Um losango com ângulos de 60° e 120°.",e:"Os lados são iguais, mas os ângulos não."},
+  {id:"c",t:"Um hexágono com todos os lados e todos os ângulos internos congruentes.",ok:true,e:"Lados e ângulos internos congruentes: é a definição de polígono regular."},
+  {id:"d",t:"Um triângulo isósceles qualquer.",e:"Só dois lados são iguais; não é regular."}]},
+ {tipo:"som",p:"Sobre polígonos regulares inscritos e circunscritos, some os números das afirmativas corretas:",itens:[
+  {v:1,t:"Todo polígono regular é inscritível numa circunferência e circunscritível a ela.",ok:true,e:"É a generalização do livro (p. 197)."},
+  {v:2,t:"O centro de um polígono regular é o ponto de encontro das mediatrizes dos seus lados.",ok:true,e:"As mediatrizes se interceptam num único ponto: o centro."},
+  {v:4,t:"O apótema liga o centro ao ponto médio de um lado e forma 90° com esse lado.",ok:true,e:"Definição do livro (p. 198)."},
+  {v:8,t:"O apótema tem a mesma medida do raio da circunferência circunscrita.",e:"O apótema é igual ao raio da circunferência INSCRITA (a = r)."},
+  {v:16,t:"A circunferência inscrita passa por todos os vértices do polígono.",e:"Quem passa pelos vértices é a circunscrita; a inscrita é tangente aos lados."}]},
+ {tipo:"mc",p:"Um quadrado está inscrito numa circunferência de diâmetro 20 cm. O lado desse quadrado mede:",alts:[
+  {id:"a",t:"20√2 cm",e:"Você usou o diâmetro como raio. O raio é 10 cm."},
+  {id:"b",t:"10√2 cm",ok:true,e:"R = 10 cm e ℓ = R√2 = 10√2 cm."},
+  {id:"c",t:"5√2 cm",e:"5√2 cm é o apótema (metade do lado)."},
+  {id:"d",t:"10 cm",e:"No quadrado, o lado não é igual ao raio."}]},
+ {tipo:"rom",p:"Um quadrado de lado 8 cm está inscrito numa circunferência e circunscrito a outra. Analise as afirmativas:",itens:[
+  {n:"I",t:"O raio da circunferência inscrita mede 4 cm.",ok:true,e:"r = a = ℓ ÷ 2 = 4 cm."},
+  {n:"II",t:"O raio da circunferência circunscrita mede 4√2 cm.",ok:true,e:"ℓ = R√2 ➜ R = 8 ÷ √2 = 4√2 cm."},
+  {n:"III",t:"O apótema mede 4√2 cm.",e:"O apótema é a metade do lado: 4 cm."},
+  {n:"IV",t:"A área do quadrado é 32 cm².",e:"A = ℓ² = 64 cm²."}],
+  alts:[
+  {id:"a",t:"Apenas I e II.",ok:true,e:"I e II estão corretas; III e IV têm erros de cálculo."},
+  {id:"b",t:"Apenas I, II e III.",e:"A III é falsa (o apótema é 4 cm)."},
+  {id:"c",t:"Apenas II e IV.",e:"A IV é falsa (A = 64 cm²)."},
+  {id:"d",t:"I, II, III e IV.",e:"III e IV são falsas."}]},
+ {tipo:"mc",p:"Um quadrado está inscrito numa circunferência de raio 4√2 cm. Qual é a menor distância entre o ponto médio de um dos lados do quadrado e a circunferência?",alts:[
+  {id:"a",t:"4 cm",e:"4 cm é o apótema (do centro até o ponto médio)."},
+  {id:"b",t:"4√2 cm",e:"4√2 cm é o raio inteiro."},
+  {id:"c",t:"(4√2 − 4) cm",ok:true,e:"ℓ = R√2 = 4√2 · √2 = 8 cm; a = ℓ ÷ 2 = 4 cm. Distância = R − a = 4√2 − 4 (≈ 1,66 cm)."},
+  {id:"d",t:"(8 − 4√2) cm",e:"Você usou o lado (8) no lugar do raio."}]},
+ {tipo:"som",p:"Um triângulo equilátero está inscrito numa circunferência de raio 10 cm. Some os números das afirmativas corretas:",itens:[
+  {v:1,t:"A altura do triângulo mede 15 cm.",ok:true,e:"R = (2/3)h ➜ 10 = (2/3)h ➜ h = 15 cm."},
+  {v:2,t:"O apótema mede 5 cm.",ok:true,e:"a = (1/3)h = 5 cm."},
+  {v:4,t:"O lado mede 10√3 cm.",ok:true,e:"h = ℓ√3 ÷ 2 ➜ 15 = ℓ√3 ÷ 2 ➜ ℓ = 30 ÷ √3 = 10√3 cm."},
+  {v:8,t:"A área do triângulo é 75√3 cm².",ok:true,e:"A = ℓ²√3 ÷ 4 = 300√3 ÷ 4 = 75√3 cm²."},
+  {v:16,t:"O raio da circunferência circunscrita é o triplo do apótema.",e:"É o DOBRO: R = (2/3)h e a = (1/3)h."}]},
+ {tipo:"mc",p:"Um triângulo equilátero está circunscrito a uma circunferência de raio 3 cm. A área desse triângulo é:",alts:[
+  {id:"a",t:"9√3 cm²",e:"Refaça: r = (1/3)h ➜ h = 9 cm; ℓ = 6√3 cm."},
+  {id:"b",t:"27√3 cm²",ok:true,e:"r = (1/3)h ➜ h = 9. 9 = ℓ√3 ÷ 2 ➜ ℓ = 18 ÷ √3 = 6√3. A = (6√3)²√3 ÷ 4 = 108√3 ÷ 4 = 27√3 cm²."},
+  {id:"c",t:"108√3 cm²",e:"Você esqueceu de dividir por 4."},
+  {id:"d",t:"18√3 cm²",e:"Refaça: com ℓ = 6√3 cm, ℓ² = 108 e A = 108√3 ÷ 4."}]},
+ {tipo:"rom",p:"Um hexágono regular está inscrito numa circunferência de raio 6 cm. Analise as afirmativas:",itens:[
+  {n:"I",t:"O lado do hexágono mede 6 cm.",ok:true,e:"No hexágono regular, R = ℓ."},
+  {n:"II",t:"O apótema mede 3√3 cm.",ok:true,e:"a = ℓ√3 ÷ 2 = 6√3 ÷ 2 = 3√3 cm."},
+  {n:"III",t:"A área do hexágono é 54√3 cm².",ok:true,e:"A = 3ℓ²√3 ÷ 2 = 3 · 36 · √3 ÷ 2 = 54√3 cm²."},
+  {n:"IV",t:"O perímetro do hexágono é 36 cm.",ok:true,e:"6 lados de 6 cm = 36 cm."}],
+  alts:[
+  {id:"a",t:"Apenas I e II.",e:"III e IV também são verdadeiras."},
+  {id:"b",t:"Apenas II e III.",e:"I e IV também são verdadeiras."},
+  {id:"c",t:"Apenas I, II e III.",e:"A IV também é verdadeira."},
+  {id:"d",t:"I, II, III e IV.",ok:true,e:"Todas estão corretas."}]},
+ {tipo:"mc",p:"Um hexágono regular, cuja área mede 24√3 cm², está inscrito numa circunferência. O raio dessa circunferência mede:",alts:[
+  {id:"a",t:"2√3 cm",e:"2√3 cm é o apótema do hexágono."},
+  {id:"b",t:"8 cm",e:"Refaça: 3ℓ²√3 ÷ 2 = 24√3 ➜ ℓ² = 16."},
+  {id:"c",t:"4 cm",ok:true,e:"3ℓ²√3 ÷ 2 = 24√3 ➜ 3ℓ² = 48 ➜ ℓ² = 16 ➜ ℓ = 4 cm. Como R = ℓ, R = 4 cm."},
+  {id:"d",t:"16 cm",e:"16 é ℓ²; falta tirar a raiz."}]},
+ {tipo:"mc",p:"Segundo o livro, os cobogós costumam ter formato de polígonos regulares que fazem um ladrilhamento perfeito, isto é, preenchem um plano sem falhas nem sobreposições. Esses polígonos são, em especial:",alts:[
+  {id:"a",t:"pentágono, hexágono e octógono.",e:"O pentágono e o octógono regulares não estão entre os três citados."},
+  {id:"b",t:"quadrado, pentágono e decágono.",e:"Só o quadrado está entre os três citados."},
+  {id:"c",t:"triângulo equilátero, pentágono e hexágono.",e:"O pentágono não está entre os três citados."},
+  {id:"d",t:"quadrado, triângulo equilátero e hexágono regular.",ok:true,e:"São os três citados no “Aplicando o assunto” (p. 207)."}]},
+ {tipo:"som",p:"Sobre poliedros e prismas, some os números das afirmativas corretas:",itens:[
+  {v:1,t:"Prisma é um poliedro com duas bases planas, paralelas e congruentes.",ok:true,e:"E as faces laterais são paralelogramos."},
+  {v:2,t:"Pelo princípio de Cavalieri, se todo plano paralelo a um plano dado corta dois sólidos em seções de áreas iguais, os volumes desses sólidos são iguais.",ok:true,e:"É o enunciado do livro (p. 248)."},
+  {v:4,t:"Num prisma oblíquo, as faces laterais são retângulos.",e:"Retângulos são as faces laterais do prisma RETO; no oblíquo, são paralelogramos."},
+  {v:8,t:"O cubo é um paralelepípedo reto-retângulo com todas as arestas congruentes.",ok:true,e:"Definição do livro (p. 242)."},
+  {v:16,t:"Um prisma hexagonal tem 6 faces ao todo.",e:"Tem 6 faces laterais + 2 bases = 8 faces."}]},
+ {tipo:"mc",p:"Uma caixa tem a forma de um prisma reto de base quadrada, com perímetro da base 24 cm e altura 10 cm. A área total da caixa é:",alts:[
+  {id:"a",t:"240 cm²",e:"240 cm² é só a área lateral; faltam as duas bases."},
+  {id:"b",t:"276 cm²",e:"Você somou só uma base; são duas."},
+  {id:"c",t:"312 cm²",ok:true,e:"Lado da base: 24 ÷ 4 = 6. AL = 4 · 6 · 10 = 240. B = 36. AT = 240 + 2 · 36 = 312 cm²."},
+  {id:"d",t:"360 cm²",e:"360 é o volume (em cm³): 36 · 10."}]},
+ {tipo:"rom",p:"Um reservatório tem a forma de um bloco retangular de 2 m × 3 m × 5 m. Analise as afirmativas:",itens:[
+  {n:"I",t:"O volume do reservatório é 30 m³.",ok:true,e:"V = 2 · 3 · 5 = 30 m³."},
+  {n:"II",t:"A área total do reservatório é 62 m².",ok:true,e:"AT = 2(6 + 10 + 15) = 62 m²."},
+  {n:"III",t:"A capacidade do reservatório é 3 000 litros.",e:"1 m³ = 1 000 L, então 30 m³ = 30 000 L."},
+  {n:"IV",t:"Se todas as arestas dobrassem, o volume ficaria 8 vezes maior.",ok:true,e:"4 · 6 · 10 = 240 m³ = 8 · 30."}],
+  alts:[
+  {id:"a",t:"Apenas I e II.",e:"A IV também é verdadeira."},
+  {id:"b",t:"Apenas I, II e III.",e:"A III é falsa (30 000 L)."},
+  {id:"c",t:"Apenas I, II e IV.",ok:true,e:"Só a III é falsa."},
+  {id:"d",t:"Apenas III e IV.",e:"A III é falsa; I e II são verdadeiras."}]},
+ {tipo:"mc",p:"Um prisma regular de base hexagonal tem 10 cm de altura, e o apótema da base mede 2√3 cm. O volume desse prisma é:",alts:[
+  {id:"a",t:"240√3 cm³",ok:true,e:"a = ℓ√3 ÷ 2 ➜ 2√3 = ℓ√3 ÷ 2 ➜ ℓ = 4 cm. B = 3 · 16 · √3 ÷ 2 = 24√3 cm². V = 24√3 · 10 = 240√3 cm³."},
+  {id:"b",t:"24√3 cm³",e:"24√3 cm² é a área da base; falta multiplicar pela altura."},
+  {id:"c",t:"120√3 cm³",e:"Você esqueceu o fator 3/2 da área ou dividiu por 2 a mais."},
+  {id:"d",t:"80√3 cm³",e:"Refaça: o lado da base é 4 cm, e B = 3ℓ²√3 ÷ 2."}]},
+ {tipo:"mc",p:"Um tanque tem base retangular de 50 cm × 40 cm, e a água está a 20 cm de altura. Coloca-se no tanque um objeto de 6 000 cm³, que fica totalmente submerso, sem a água transbordar. A nova altura da água é:",alts:[
+  {id:"a",t:"23 cm",ok:true,e:"Área da base: 50 · 40 = 2 000 cm². A água sobe 6 000 ÷ 2 000 = 3 cm: 20 + 3 = 23 cm."},
+  {id:"b",t:"26 cm",e:"A água sobe 3 cm, não 6."},
+  {id:"c",t:"21,5 cm",e:"Refaça: 6 000 ÷ 2 000 = 3 cm."},
+  {id:"d",t:"20,3 cm",e:"Refaça: a área da base é 2 000 cm², e 6 000 ÷ 2 000 = 3."}]}
+];
+
+/* ====== EMBARALHAMENTO COM SEMENTE FIXA (mulberry32) — correta guardada pelo id ====== */
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+var rnd=mulberry32(931032027);
+Q.forEach(function(q){ if(q.alts){ var arr=q.alts.slice(); for(var i=arr.length-1;i>0;i--){ var j=Math.floor(rnd()*(i+1)); var tmp=arr[i]; arr[i]=arr[j]; arr[j]=tmp; } q.ordem=arr; } if(q.tipo==='som'){ q.soma=q.itens.filter(function(x){return x.ok;}).reduce(function(a,x){return a+x.v;},0); } });
+var OBJ=Q.length;
+
+/* ====== ESTADO ====== */
+var CHAVE=KIT+'_simulado_v1'; var mem={}; var estado=carregar();
+function carregar(){ try{ var s=localStorage.getItem(CHAVE); if(s) return JSON.parse(s);}catch(e){ if(mem[CHAVE]) return JSON.parse(mem[CHAVE]); } return {resp:{},enviado:false}; }
+function salvar(){ var s=JSON.stringify(estado); try{ localStorage.setItem(CHAVE,s);}catch(e){ mem[CHAVE]=s; } var d=new Date(); document.getElementById('salvo').textContent='💾 Salvo às '+d.toLocaleTimeString('pt-BR')+' de '+d.toLocaleDateString('pt-BR'); }
+var LETRAS='ABCDEFGHJKLMNPQRSTUVWXYZ';
+function gerarCodigo(ac){ var xx=(ac<10?'0':'')+ac; var yy=LETRAS[Math.floor(Math.random()*LETRAS.length)]+LETRAS[Math.floor(Math.random()*LETRAS.length)]; return 'SIM-'+xx+'-'+yy; }
+function respondida(i){ var r=estado.resp[i]; if(r===undefined||r===null||String(r).trim()==='') return false; return true; }
+function acertou(i){ var q=Q[i], r=estado.resp[i]; if(q.tipo==='som') return parseInt(r,10)===q.soma; var a=q.alts.filter(function(x){return x.id===r;})[0]; return !!(a&&a.ok); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+function render(){
+  var c=document.getElementById('questoes'); var h=''; var G=estado.gabarito;
+  Q.forEach(function(q,i){
+    var tipoTxt={mc:'Múltipla escolha',som:'Somatório',rom:'Números romanos'}[q.tipo];
+    h+='<div class="q" id="q'+i+'"><span class="tipo '+q.tipo+'">'+tipoTxt+'</span><div class="num">Questão '+(i+1)+' de '+Q.length+'</div><h3>'+q.p+'</h3>';
+    if(q.tipo==='som'||q.tipo==='rom'){
+      q.itens.forEach(function(it){ var lab=q.tipo==='som'? ('('+(it.v<10?'0':'')+it.v+') ') : (it.n+'. '); var cls='afirm'+(G?(it.ok?' ok':' no'):''); h+='<div class="'+cls+'">'+lab+it.t+(G?'<div class="exp show">'+(it.ok?'✅ ':'❌ ')+it.e+'</div>':'')+'</div>'; });
+    }
+    if(q.tipo==='som'){
+      var r=estado.resp[i]; var ok=G?acertou(i):null;
+      h+='<div class="soma" style="margin-top:10px">Soma: <input type="number" min="0" max="31" id="som'+i+'" value="'+(r!==undefined?esc(r):'')+'" '+(estado.enviado?'disabled':'')+' oninput="marcar('+i+',this.value)"><span class="lab">'+(G?(ok?'✅ Correto: '+q.soma:'❌ Você somou '+esc(r)+'; o certo é '+q.soma):'')+'</span></div>';
+    } else {
+      q.ordem.forEach(function(a,k){
+        var letra='abcd'[k]; var sel=estado.resp[i]===a.id; var cls='alt'+(sel?' sel':'');
+        if(G){ if(a.ok) cls+=' certa'; else if(sel) cls+=' marcada-errada'; else cls+=' errada'; }
+        h+='<label class="'+cls+'"><input type="radio" name="q'+i+'" value="'+a.id+'" '+(sel?'checked':'')+' '+(estado.enviado?'disabled':'')+' onchange="marcar('+i+',\''+a.id+'\')"> <b>'+letra+')</b> '+a.t+(G?'<div class="exp show">'+(a.ok?'✅ ':'')+a.e+'</div>':'')+'</label>';
+      });
+    }
+    h+='</div>';
+  });
+  c.innerHTML=h; atualizarBarra(); if(estado.enviado) mostrarEnviado();
+}
+function marcar(i,v){ if(estado.enviado) return; estado.resp[i]=v; salvar(); var q=document.getElementById('q'+i); if(Q[i].tipo==='mc'||Q[i].tipo==='rom'){ var labs=q.querySelectorAll('.alt'); for(var k=0;k<labs.length;k++){ labs[k].classList.toggle('sel', labs[k].querySelector('input').value===v); } } atualizarBarra(); }
+function atualizarBarra(){ var n=0; Q.forEach(function(q,i){ if(respondida(i)) n++; }); document.getElementById('barra').style.width=(n/Q.length*100)+'%'; var b=document.getElementById('btn-enviar'); if(!estado.enviado){ b.disabled=n<Q.length; b.textContent=n<Q.length?'📨 Enviar simulado ('+n+' de '+Q.length+' respondidas)':'📨 Enviar simulado'; } }
+function enviar(){
+  if(estado.enviado) return;
+  var ac=0; Q.forEach(function(q,i){ if(acertou(i)===true) ac++; });
+  estado.acertos=ac; estado.objetivas=OBJ; estado.codigo=gerarCodigo(ac); estado.enviado=true; estado.concluido=true; estado.concluidoEm=new Date().toISOString();
+  salvar(); render(); window.scrollTo({top:0,behavior:'smooth'});
+}
+function mostrarEnviado(){
+  var b=document.getElementById('btn-enviar'); b.disabled=true; b.textContent='✅ Simulado enviado — respostas travadas';
+  document.getElementById('codigo').classList.add('show'); document.getElementById('cod').textContent=estado.codigo;
+  document.getElementById('codtxt').textContent='Anote este código para os pais. Ele abre o gabarito comentado.';
+  document.getElementById('gab').classList.add('show'); document.getElementById('fim').style.display='block';
+}
+function abrirGab(){ var v=document.getElementById('gab-in').value.trim().toUpperCase(); var m=document.getElementById('gab-msg'); if(v===estado.codigo||v==='PAIS-77'){ estado.gabarito=true; salvar(); render(); document.getElementById('gab-msg').innerHTML='<span style="color:#b5f2cf">Gabarito liberado: '+estado.acertos+' acertos de '+OBJ+' questões.</span>'; } else { m.innerHTML='<span style="color:#ffb3b3">Código incorreto.</span>'; } }
+function exportar(){ var blob=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='simulado_olaria-do-cobogo.json'; a.click(); }
+function importar(ev){ var f=ev.target.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ try{ estado=JSON.parse(r.result); if(!estado.resp) estado.resp={}; salvar(); render(); mostrarModal('✅ Progresso importado!',false);}catch(e){ mostrarModal('❌ Arquivo inválido.',false);} }; r.readAsText(f); }
+var acaoZerar=null;
+function pedirZerar(){ acaoZerar=true; mostrarModal('Apagar as respostas deste Simulado? (Se ele já foi enviado, o código e a conclusão são mantidos.)',true); }
+function mostrarModal(txt,confirmar){ document.getElementById('modal-txt').innerHTML=txt; document.getElementById('modal').classList.add('show'); document.getElementById('modal-cancel').style.display=confirmar?'inline-block':'none'; document.getElementById('modal-ok').textContent=confirmar?'Sim, apagar':'Ok';
+  document.getElementById('modal-ok').onclick=function(){ if(confirmar&&acaoZerar){ if(!estado.enviado){ estado={resp:{},enviado:false}; salvar(); render(); } else { acaoZerar=null; mostrarModal('O Simulado já foi enviado: as respostas ficam travadas. Para refazer do zero, use “Zerar o kit inteiro” no Início.',false); return; } } acaoZerar=null; fecharModal(); }; }
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+
+if(checarTrava()){ render(); }
+
+
+</script>
+</body>
+</html>

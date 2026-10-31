@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitura Guiada — Matemática 9º ano | Olaria do Cobogó (Mensal 3)</title>
+<style>
+  :root{--fundo:#17110d;--fundo2:#231a14;--fundo3:#2d2219;--borda:#3d2e23;--borda2:#5a4433;--amarelo:#f6c445;--azul:#4fb0e8;--terra:#e8804f;--verde:#4fd18b;--coral:#ff6b6b;--texto:#f3e9dd;--cinza:#bba897;--postit:#ffe39a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Verdana,'Segoe UI',system-ui,Arial,sans-serif;font-size:18px;line-height:1.55;color:var(--texto);background-color:var(--fundo);
+    background-image:radial-gradient(circle at 50% 50%,rgba(246,196,69,.06) 0 22%,transparent 23%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%),linear-gradient(45deg,rgba(232,128,79,.05) 25%,transparent 25%,transparent 75%,rgba(232,128,79,.05) 75%);
+    background-size:56px 56px,56px 56px,56px 56px;background-position:0 0,0 0,28px 28px;min-height:100vh}
+  h1,h2,h3{font-family:'Trebuchet MS','Gill Sans',Tahoma,sans-serif}
+  header{background:linear-gradient(120deg,#3a210f,#231a14 55%,#123047);padding:24px 18px;text-align:center;border-bottom:5px solid var(--amarelo);box-shadow:0 4px 18px rgba(0,0,0,.5)}
+  header .selo{font-family:'Courier New',Consolas,monospace;font-size:.76rem;letter-spacing:3px;color:var(--amarelo);text-transform:uppercase}
+  header h1{font-size:1.6rem;margin:6px 0 2px}
+  header p{color:#e8d8c6;font-size:.92rem}
+  .wrap{max-width:880px;margin:0 auto;padding:16px}
+  .barra-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+  .barra-nav a{background:var(--fundo2);color:var(--texto);text-decoration:none;padding:7px 12px;border-radius:8px;font-size:.85rem;border:1px solid var(--borda2)}
+  .barra-nav a.on{background:var(--amarelo);color:#2b1c00;font-weight:bold}
+  .barra-nav a.lock{opacity:.5}
+  .painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--fundo2);border:1px solid var(--borda);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:.85rem}
+  .painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{cursor:pointer;font-family:inherit}
+  .mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:6px 10px;font-size:.8rem}
+  .intro{background:var(--fundo2);border:1px solid var(--borda);border-left:6px solid var(--amarelo);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+  .intro h2{font-size:1.2rem;margin-bottom:8px;color:var(--amarelo)}
+  .intro ol{margin:8px 0 0 22px}
+  .az{color:var(--azul);font-weight:bold} .te{color:var(--terra);font-weight:bold} .am{color:var(--amarelo);font-weight:bold}
+  .formula{text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:1.25rem;background:#120d0a;border:2px dashed var(--borda2);border-radius:12px;padding:12px;margin:10px 0;color:#fff}
+  .formula small{display:block;font-family:Verdana,sans-serif;font-size:.8rem;color:var(--cinza);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:8px 0 12px}
+  th,td{border:1px solid var(--borda2);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#33251b;color:var(--amarelo)}
+  .postit{background:var(--postit);color:#3b2a00;border-radius:4px 4px 18px 4px;padding:12px 14px;margin:12px 0;box-shadow:3px 4px 0 rgba(0,0,0,.35);transform:rotate(-.5deg);font-size:.95rem}
+  .alerta{background:#3a1616;border:2px solid var(--coral);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:.95rem}
+  .alerta b{color:#ffb3b3}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(15,10,7,.97);z-index:50;align-items:center;justify-content:center;padding:16px}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--fundo2);border:2px solid var(--amarelo);border-radius:14px;padding:22px;max-width:440px;text-align:center}
+  .modal p{margin-bottom:14px}
+  .modal .big{font-size:2.2rem}
+  .modal a,.modal button{display:inline-block;background:var(--amarelo);color:#2b1c00;border:none;border-radius:8px;padding:10px 18px;font-weight:bold;text-decoration:none;font-size:1rem}
+  .modal button.mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2)}
+  .trilha-fim{background:linear-gradient(120deg,#16301f,#1d3b28);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center}
+  .trilha-fim h3{color:#b5f2cf;margin-bottom:8px}
+  .trilha-fim a.btn{display:inline-block;margin-top:8px;background:var(--verde);color:#062614;text-decoration:none;font-weight:bold;padding:12px 20px;border-radius:10px}
+  .trilha-fim a.btn.off{background:#3a2e25;color:#8f7f70;pointer-events:none}
+  .rodape{text-align:center;color:var(--cinza);font-size:.8rem;margin-top:24px}
+  @media (max-width:560px){body{font-size:16.5px} header h1{font-size:1.3rem}}
+
+  .parede{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:420px;margin:12px auto 6px}
+  .parede span{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:bold;color:#8f7f70;background:#120d0a;border:2px solid var(--borda2);position:relative;overflow:hidden}
+  .parede span::after{content:'';position:absolute;inset:22%;border-radius:50%;border:2px solid rgba(255,255,255,.08)}
+  .parede span.fa.ok{background:var(--azul);color:#06253a;border-color:#9fd6f5}
+  .parede span.fb.ok{background:var(--terra);color:#3a1505;border-color:#ffc2a3}
+  .parede span.at{border-color:var(--amarelo);color:var(--amarelo);animation:pulso 1.4s infinite}
+  @keyframes pulso{0%,100%{box-shadow:0 0 0 0 rgba(246,196,69,.5)}50%{box-shadow:0 0 0 6px rgba(246,196,69,0)}}
+  .legenda{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-size:.8rem;margin-top:6px}
+  .legenda span{padding:3px 10px;border-radius:8px}
+  .lg-a{background:#0f2a3b;color:var(--azul)} .lg-b{background:#3a1f10;color:var(--terra)}
+  .parte{margin:26px 0 12px;padding:10px 14px;border-radius:10px;font-weight:bold;font-family:'Courier New',Consolas,monospace;border:2px dashed}
+  .parte.fa{color:var(--azul);border-color:var(--azul);background:#0d1d28}
+  .parte.fb{color:var(--terra);border-color:var(--terra);background:#2a160b}
+  .bloco{background:var(--fundo2);border:1px solid var(--borda);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.35)}
+  .bloco.fa{border-top:5px solid var(--azul)} .bloco.fb{border-top:5px solid var(--terra)}
+  .bloco.travado{opacity:.6}
+  .bloco-cab{display:flex;gap:12px;align-items:center;padding:14px 16px;background:#2a1f17}
+  .bloco-cab .num{min-width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.1rem;background:var(--amarelo);color:#2b1c00}
+  .bloco.fa .num{background:var(--azul);color:#06253a} .bloco.fb .num{background:var(--terra);color:#3a1505}
+  .bloco-cab .porto{font-size:.75rem;color:var(--cinza);font-family:'Courier New',monospace}
+  .bloco-cab h3{font-size:1.1rem}
+  .cadeado{padding:14px 16px;color:var(--cinza)}
+  .bloco-corpo{padding:16px}
+  .texto p{margin-bottom:10px}
+  .texto ul{margin:6px 0 10px 22px}
+  .destaque{background:rgba(246,196,69,.18);color:#ffe08a;padding:0 4px;border-radius:4px;font-weight:bold}
+  .olhar{background:#120d0a;border:1px dashed var(--amarelo);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:.92rem}
+  .perg{background:#1b140f;border:1px solid var(--borda2);border-radius:12px;padding:12px;margin:12px 0}
+  .perg.red{border:2px solid var(--coral);background:#2a1212}
+  .perg label{display:block;font-weight:bold;margin:6px 0}
+  .tag{font-size:.7rem;padding:2px 8px;border-radius:8px;font-family:'Courier New',monospace}
+  .tag.conc{background:#0f2a3b;color:var(--azul)} .tag.apl{background:#3a2a08;color:var(--amarelo)}
+  textarea{width:100%;min-height:84px;background:#0f0b08;color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:10px;font-family:inherit;font-size:1rem}
+  .aviso{font-size:.9rem;margin-top:6px}
+  .aviso.amarelo{background:#3a2c08;border:1px solid var(--amarelo);border-radius:8px;padding:8px}
+  .aviso.vermelho{background:#3a1212;border:1px solid var(--coral);border-radius:8px;padding:8px}
+  .modelo{display:none;background:#12261a;border:1px solid var(--verde);border-radius:10px;padding:10px;margin-top:8px;font-size:.95rem}
+  .modelo.show{display:block}
+  .modelo .lab{font-size:.75rem;color:var(--verde);font-family:'Courier New',monospace;text-transform:uppercase}
+  .chk .item{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px dashed #2f5a40;padding:6px 0;font-size:.9rem}
+  .simnao button{border:1px solid var(--borda2);background:#0f0b08;color:var(--texto);border-radius:6px;padding:4px 10px;margin-left:4px}
+  .simnao button.sim.ativo{background:var(--verde);color:#062614} .simnao button.nao.ativo{background:var(--coral);color:#2b0707}
+  button.conferir{background:var(--amarelo);color:#2b1c00;border:none;border-radius:10px;padding:12px 18px;font-weight:bold;font-size:1rem;margin-top:6px}
+  button.conferir:disabled{background:#3a2e25;color:#8f7f70;cursor:not-allowed}
+  .status-bloco{margin-top:8px;font-size:.92rem}
+  .prox{margin-top:8px} .prox a{color:var(--amarelo)}
+  .peg{background:#2a1212;border:2px solid var(--coral);border-radius:16px;padding:16px;margin:22px 0}
+  .peg h3{color:#ffb3b3;margin-bottom:8px} .peg ol{margin-left:22px} .peg li{margin-bottom:6px}
+  .cobertura{background:var(--fundo2);border:1px solid var(--borda);border-radius:16px;padding:16px;margin:18px 0}
+  .cobertura h3{margin-bottom:8px;color:var(--amarelo)}
+  .revisar{background:#2a1f08;border:2px solid var(--amarelo);border-radius:16px;padding:16px;margin:18px 0}
+  .revisar h3{color:var(--amarelo)} .revisar ul{margin-left:20px}
+  .relatorio{background:var(--fundo2);border:1px dashed var(--borda2);border-radius:16px;padding:16px;margin:18px 0;font-size:.92rem}
+  .relatorio h3{margin-bottom:6px}
+</style>
+</head>
+<body>
+<header>
+  <div class="selo">Olaria do Cobogó · Matemática 9º ano · CCF · Mensal 3</div>
+  <h1>📖 Leitura Guiada — Montando a Parede de Cobogós</h1>
+  <p>Frente A: Estatística (Caps. 19 e 20) · Frente B: Polígonos regulares e Prismas (Caps. 21 e 23)</p>
+</header>
+
+<div class="wrap">
+  <nav class="barra-nav" id="nav">
+    <a class="on" href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a href="quiz.html" data-etapa="quiz">🎯 Quiz</a>
+    <a href="resumo.html" data-etapa="resumo">🗺️ Resumo</a>
+    <a href="simulado.html" data-etapa="simulado">📝 Simulado</a>
+    <a href="index.html">🏠 Início</a>
+  </nav>
+
+  <div class="intro">
+    <h2>🧱 Bem-vindo(a) à Olaria do Cobogó</h2>
+    <p>Nesta olaria se fabricam <b>cobogós</b> — aqueles blocos vazados das fachadas, feitos com polígonos regulares. No <b class="az">Balcão da Qualidade</b> você aprende a medir a produção com <b>estatística</b> (média, mediana, moda, variância e desvio padrão). No <b class="te">Forno das Formas</b> você domina os <b>polígonos regulares</b> e os <b>prismas</b>. Cada peça que você completa encaixa um cobogó na parede abaixo.</p>
+    <div class="parede" id="parede"></div>
+    <div class="legenda"><span class="lg-a">🔵 Peças 1–7 · Frente A (Estatística)</span><span class="lg-b">🟠 Peças 8–14 · Frente B (Geometria)</span></div>
+    <ol>
+      <li>Leia a peça com calma (tudo aqui vem do seu livro). Tenha <b>papel e lápis</b> para as contas.</li>
+      <li>Responda as 3 perguntas <b>escrevendo</b> com as suas palavras e mostrando as contas (não vale copiar o texto).</li>
+      <li>Clique em <b>Conferir</b>: aparece a resposta-modelo e uma autoavaliação Sim/Não.</li>
+      <li>Com as 14 peças conferidas e a autoavaliação respondida, o <b>🎯 Quiz destrava</b>.</li>
+    </ol>
+  </div>
+
+  <div class="painel">
+    <span id="salvo">💾 Progresso salvo automaticamente.</span>
+    <div class="btns">
+      <button class="mini" onclick="exportar()">📥 Exportar</button>
+      <button class="mini" onclick="document.getElementById('imp').click()">📤 Importar</button>
+      <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+      <button class="mini" onclick="pedirZerar()">🗑️ Zerar tudo</button>
+    </div>
+  </div>
+
+  <div id="blocos"></div>
+
+  <div class="peg">
+    <h3>⚠️ 10 Pegadinhas da Prova (não caia nelas!)</h3>
+    <ol>
+      <li><b>Média ponderada:</b> divida pela <b>soma dos pesos</b>, e não pela quantidade de números diferentes.</li>
+      <li><b>Classes de intervalo</b> (150 ├ 155): use a <b>média da classe</b> (ponto do meio). O resultado é uma <b>aproximação</b>.</li>
+      <li><b>Mediana:</b> primeiro <b>ordene</b>! Quantidade par ➜ média dos <b>dois</b> termos do meio.</li>
+      <li>Na fórmula da mediana agrupada, <b>F<sub>a</sub></b> soma só as frequências das classes <b>anteriores</b> — não inclui a classe da mediana.</li>
+      <li><b>Moda</b> é o <b>valor</b> mais frequente, não a frequência. Duas modas = <b>bimodal</b>.</li>
+      <li>Variância <b>populacional</b> ÷ n · variância <b>amostral</b> ÷ (n − 1). Desvio padrão = <b>raiz quadrada</b> da variância (não é o quadrado!).</li>
+      <li><b>Menor desvio padrão = mais regular/homogêneo.</b> Não confunda “maior dispersão” com “maior média”.</li>
+      <li><b>Triângulo equilátero:</b> R = (2/3)h e r = (1/3)h, então <b>R = 2r</b>. <b>Hexágono:</b> <b>R = ℓ</b> (e o apótema é ℓ√3/2).</li>
+      <li><b>Quadrado:</b> ℓ = R√2 e o apótema é <b>metade do lado</b> (r = ℓ/2) — R não é igual ao lado.</li>
+      <li><b>A<sub>T</sub> = A<sub>L</sub> + 2B</b> (são duas bases). Dobrar todas as medidas de um prisma multiplica o volume por <b>8</b>, não por 2.</li>
+    </ol>
+  </div>
+
+  <div class="cobertura">
+    <h3>🧭 Cobertura: Tópico → Peça</h3>
+    <table>
+      <thead><tr><th>Tópico</th><th>Páginas (livro)</th><th>Peça</th></tr></thead>
+      <tbody>
+        <tr><td>Média aritmética ponderada (pesos); média simples; notas com pesos</td><td>148–151</td><td>1</td></tr>
+        <tr><td>Média em tabela de frequência; coluna Classes · Frequência; classes de intervalo e média da classe</td><td>152–155</td><td>2</td></tr>
+        <tr><td>Mediana: termo central de dados ordenados; n ímpar e n par; posições</td><td>156–157</td><td>3</td></tr>
+        <tr><td>Mediana na tabela de frequência; fórmula Md = Li + [(n/2 − Fa)/fmd] · hmd</td><td>158–160</td><td>4</td></tr>
+        <tr><td>Moda; bimodal; moda na tabela; classe modal</td><td>161–162</td><td>5</td></tr>
+        <tr><td>Medidas de dispersão; amplitude; variância populacional e amostral (5 passos); outlier</td><td>176–182</td><td>6</td></tr>
+        <tr><td>Desvio padrão σ = √Var; interpretação (menor σ = mais regular); planilhas; Atividades</td><td>183–191</td><td>7</td></tr>
+        <tr><td>Polígonos regulares; inscrição e circunscrição; R, r, apótema, ℓ; R² = r² + (ℓ/2)²</td><td>196–198</td><td>8</td></tr>
+        <tr><td>Quadrado: ℓ = R√2, a = ℓ/2 = R√2/2; exercícios</td><td>198–200</td><td>9</td></tr>
+        <tr><td>Triângulo equilátero: R = 2h/3, r = h/3, h = ℓ√3/2, A = ℓ²√3/4; exercícios</td><td>201–205</td><td>10</td></tr>
+        <tr><td>Hexágono regular: R = ℓ, a = ℓ√3/2, A = 3ℓ²√3/2; cobogó e ladrilhamento</td><td>205–208</td><td>11</td></tr>
+        <tr><td>Poliedros (faces, arestas, vértices); prismas reto, oblíquo e regular; paralelepípedo, cubo, romboedro</td><td>240–242</td><td>12</td></tr>
+        <tr><td>Superfície do prisma; A<sub>L</sub>, A<sub>T</sub> = A<sub>L</sub> + 2B; paralelepípedo e cubo</td><td>243–247</td><td>13</td></tr>
+        <tr><td>Princípio de Cavalieri; V = a·b·c; V = B·h; medidas dobradas; Atividades (1 m³ = 1 000 L; nível da água)</td><td>248–252, 263–266</td><td>14</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="revisar" id="revisar" style="display:none">
+    <h3>🔁 Para revisar antes da prova</h3>
+    <ul id="revisar-lista"></ul>
+  </div>
+
+  <div class="relatorio">
+    <h3>📊 Para os pais (resumo desta leitura)</h3>
+    <div id="rel-conteudo">Assim que o jovem aprendiz for conferindo as peças, o resumo aparece aqui.</div>
+  </div>
+
+  <div class="trilha-fim" id="trilha-fim">
+    <h3>🔒 Próxima etapa: Quiz</h3>
+    <p id="trilha-fim-txt">O Quiz destrava quando as 14 peças estiverem conferidas e a autoavaliação respondida.</p>
+    <a class="btn off" id="btn-prox" href="quiz.html">🎯 Ir para o Quiz</a>
+  </div>
+
+  <div class="rodape">Feito com carinho para o jovem aprendiz. 🧱 Boa leitura — e boa prova!</div>
+</div>
+
+<div class="modal-bg" id="modal" style="background:rgba(0,0,0,.75)">
+  <div class="modal">
+    <p id="modal-txt"></p>
+    <button id="modal-ok">Ok</button>
+    <button class="mini" onclick="fecharModal()" id="modal-cancel" style="display:none;margin-left:8px">Cancelar</button>
+  </div>
+</div>
+
+<script>
+/* ====== TRILHA COM CADEADOS (módulo comum do kit) ====== */
+var KIT='olaria_cobogo_mat9';
+var TRILHA=[
+ {id:'leitura', chave:KIT+'_leitura_v1', nome:'Leitura Guiada', arquivo:'leitura-guiada.html', emoji:'📖'},
+ {id:'quiz', chave:KIT+'_quiz_v1', nome:'Quiz', arquivo:'quiz.html', emoji:'🎯'},
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapaConcluida(id){ var e=TRILHA.filter(function(t){return t.id===id;})[0]; var d=lerJSON(e.chave); return !!(d&&d.concluido); }
+function podeAbrir(id){ var idx=TRILHA.map(function(t){return t.id;}).indexOf(id); if(idx<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[idx-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+links[i].textContent.replace('🔒 ',''); links[i].setAttribute('title','Ainda trancado'); } else { links[i].classList.remove('lock'); links[i].textContent=links[i].textContent.replace('🔒 ',''); links[i].removeAttribute('title'); } }
+}
+function travar(txt){
+  document.getElementById('lock-txt').textContent=txt;
+  document.getElementById('lock').classList.add('show');
+  var w=document.querySelector('.wrap'); w.style.filter='blur(9px)'; w.style.pointerEvents='none'; w.style.visibility='hidden'; w.setAttribute('aria-hidden','true');
+}
+
+/* ====== PEÇAS DA PAREDE (conteúdo do livro Callis Matemática 9 — Frente A: Cap. 19 pp. 148-162 e Cap. 20 pp. 176-191; Frente B: Cap. 21 pp. 196-208 e Cap. 23 pp. 240-252 e 263-266) ====== */
+var BLOCOS = [
+ {
+  porto:"Peça 01 · Frente A · Cap. 19 · pp. 148–151", emoji:"⚖️", u:"fa", parte:"🔵 Balcão da Qualidade — Frente A: Estatística (peças 1 a 7)",
+  titulo:"Média aritmética ponderada",
+  texto:[
+   "Na olaria, nem toda medida vale a mesma coisa. Quando os valores <b>se repetem</b> ou quando cada um tem uma <b>importância diferente</b> (um <b>peso</b>), o livro manda usar a <span class='destaque'>média aritmética ponderada</span> — ou só <b>média ponderada</b>. O cálculo lembra o da média simples, mas exige atenção à quantidade de vezes que cada termo aparece.",
+   "<div class='formula'>M<sub>p</sub> = (p<sub>1</sub>·a<sub>1</sub> + p<sub>2</sub>·a<sub>2</sub> + … + p<sub>n</sub>·a<sub>n</sub>) ÷ (p<sub>1</sub> + p<sub>2</sub> + … + p<sub>n</sub>)<small>em cima: cada termo vezes o seu peso, tudo somado · embaixo: a soma dos pesos (a quantidade de termos)</small></div>",
+   "Exemplo resolvido do livro: a sequência {4, 5, 9} com pesos 2, 3 e 6. É como se o 4 aparecesse duas vezes, o 5 três vezes e o 9 seis vezes. Então M<sub>p</sub> = (2·4 + 3·5 + 6·9) ÷ (2 + 3 + 6) = (8 + 15 + 54) ÷ 11 = 77 ÷ 11 = <b>7</b>. Lembrete: na <b>média simples</b> é só somar tudo e dividir pela quantidade — por exemplo, {22, 56, 45, 37, 19} dá 179 ÷ 5 = 35,8.",
+   "Um uso bem comum aparece nos exercícios: a nota de uma matéria em que a <b>prova escrita tem peso 5</b>, a <b>tarefa peso 2</b>, a <b>participação peso 1</b> e o <b>projeto peso 2</b>. A prova “puxa” mais a média, porque vale mais.",
+   "<div class='olhar'><b>Peça 01:</b> multiplique cada valor pelo seu peso ➜ some ➜ divida pela <b>soma dos pesos</b> (e não pela quantidade de números diferentes).</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Com as suas palavras: em que situação a média ponderada é mais indicada que a média simples, e o que vai no denominador (embaixo) da conta?",modelo:"Quando os valores se repetem ou têm importâncias (pesos) diferentes. Embaixo vai a soma dos pesos.",chk:["Disse que é usada quando há repetição de termos ou pesos diferentes?","Disse que se divide pela soma dos pesos?"]},
+   {tag:"apl",q:"Calcule a média ponderada de {6, 8, 10} com pesos 1, 1 e 2. Mostre a conta.",modelo:"M<sub>p</sub> = (1·6 + 1·8 + 2·10) ÷ (1 + 1 + 2) = (6 + 8 + 20) ÷ 4 = 34 ÷ 4 = 8,5.",chk:["Multipliquei cada número pelo seu peso (6, 8 e 20)?","Dividi 34 pela soma dos pesos (4) e achei 8,5?"]},
+   {tag:"apl",q:"Use os pesos do livro (prova escrita 5, tarefa 2, participação 1, projeto 2; aprovação com 6,0). Um aluno tirou 6,0 na prova, 9,0 na tarefa, 10,0 na participação e 4,0 no projeto. Ele foi aprovado? Mostre a conta.",modelo:"M<sub>p</sub> = (5·6 + 2·9 + 1·10 + 2·4) ÷ (5 + 2 + 1 + 2) = (30 + 18 + 10 + 8) ÷ 10 = 66 ÷ 10 = 6,6. Como 6,6 ≥ 6,0, foi aprovado.",chk:["Fiz 5·6 + 2·9 + 1·10 + 2·4 = 66?","Dividi por 10 (soma dos pesos), achei 6,6 e concluí que foi aprovado?"]}
+  ]
+ },
+ {
+  porto:"Peça 02 · Frente A · Cap. 19 · pp. 152–155", emoji:"📋", u:"fa",
+  titulo:"Média em tabela de frequência",
+  texto:[
+   "Quando os dados vêm numa <span class='destaque'>tabela de frequência</span>, a média é, na verdade, uma <b>média ponderada pelas frequências</b>: cada valor (classe) é multiplicado pela sua frequência, somamos tudo e dividimos pelo <b>total de frequências</b>.",
+   "No exemplo do livro, uma pesquisa contou os filhos por família: 0 filho (10 100 famílias), 1 (12 350), 2 (15 005), 3 (9 010), 4 (8 000) e 5 (1 050). Para não fazer uma conta enorme, cria-se a coluna <b>“Classes · Frequência”</b>. A soma dessa coluna (106 640) é o numerador, e a soma das frequências (55 515 famílias) é o denominador: M<sub>a</sub> = 106 640 ÷ 55 515 ≅ <b>1,92</b> — em média, entre um e dois filhos.",
+   "E se os dados estiverem em <b>classes de intervalo</b>, como as alturas 150 ├ 155, 155 ├ 160…? Aí não sabemos a altura exata de cada aluno. O livro usa a <span class='destaque'>média da classe</span> (o ponto do meio) como valor de todos daquela classe: (150 + 155) ÷ 2 = 152,5. Com 2 alunos em 152,5; 5 em 157,5; 20 em 162,5 e 3 em 167,5, a média fica 4 845 ÷ 30 = <b>161,5 cm</b>. É um valor <b>aproximado</b>, uma estimativa.",
+   "<div class='olhar'><b>Peça 02:</b> colunas da tabela ➜ <b>Média da classe</b> ➜ <b>Média · Frequência</b> ➜ some essa coluna e divida pelo <b>total</b> de frequências.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Por que, numa tabela com classes de intervalo (como 150 ├ 155), o livro diz que a média encontrada é só uma aproximação?",modelo:"Porque os dados estão agrupados e não sabemos o valor exato de cada um dentro da classe. Usamos a média da classe (o ponto do meio) como se fosse o valor de todos daquela classe.",chk:["Disse que não sabemos o valor exato de cada dado dentro da classe?","Disse que se usa a média (ponto do meio) da classe?"]},
+   {tag:"apl",q:"Uma olaria anotou os cobogós com defeito por fornada: 0 defeito em 6 fornadas, 1 defeito em 3 fornadas e 2 defeitos em 1 fornada. Qual é a média de defeitos por fornada?",modelo:"(0·6 + 1·3 + 2·1) ÷ (6 + 3 + 1) = (0 + 3 + 2) ÷ 10 = 5 ÷ 10 = 0,5 defeito por fornada.",chk:["Multipliquei cada valor pela sua frequência (0, 3 e 2)?","Dividi 5 pelo total de fornadas (10) e achei 0,5?"]},
+   {tag:"apl",q:"Massa dos cobogós (kg): na classe 2 ├ 4 há 5 peças e na classe 4 ├ 6 há 15 peças. Calcule a massa média estimada.",modelo:"Médias das classes: 3 e 5. M<sub>a</sub> = (5·3 + 15·5) ÷ 20 = (15 + 75) ÷ 20 = 90 ÷ 20 = 4,5 kg.",chk:["Usei as médias das classes 3 e 5?","Calculei (5·3 + 15·5) ÷ 20 = 4,5 kg?"]}
+  ]
+ },
+ {
+  porto:"Peça 03 · Frente A · Cap. 19 · pp. 156–157", emoji:"🎯", u:"fa",
+  titulo:"Mediana: o termo do meio",
+  texto:[
+   "A <span class='destaque'>mediana</span> também mostra o centro dos dados, mas leva em conta a <b>ordem</b>: metade dos dados fica acima dela e metade abaixo. Para o livro, <b>mediana é o termo central de uma sequência de dados ordenados</b>. Por isso o <b>primeiro passo é sempre ordenar</b> (crescente ou decrescente).",
+   "Com quantidade <b>ímpar</b>, há um único termo no meio: {34, 23, 41, 19, 10} ordenado vira {10, 19, 23, 34, 41} e a mediana é <b>23</b>. Com quantidade <b>par</b>, há dois termos no meio e a mediana é a <b>média entre eles</b>: {26, 32, 1, 22} vira {1, 22, 26, 32}, então Md = (22 + 26) ÷ 2 = <b>24</b>.",
+   "<div class='formula'>n ímpar: Md = termo de posição (n + 1) ÷ 2<br>n par: Md = média dos termos de posição n ÷ 2 e n ÷ 2 + 1</div>",
+   "Isso ajuda muito em listas grandes: com 25 termos, a mediana é o termo da posição (25 + 1) ÷ 2 = <b>13ª</b>; com 30 termos, é a média entre o <b>15º e o 16º</b>. Exemplo resolvido do livro: {4, 6, 8, 12, 14, 4, 7, 3, 9, 10} ordenado fica {3, 4, 4, 6, 7, 8, 9, 10, 12, 14}; os termos do meio são 7 e 8, então Md = 7,5.",
+   "<div class='olhar'><b>Peça 03:</b> ordenou? ✅ contou quantos são? ✅ ímpar ➜ o do meio · par ➜ média dos dois do meio.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Explique com as suas palavras o que é a mediana e qual é o primeiro passo obrigatório para encontrá-la.",modelo:"É o valor do centro: metade dos dados fica abaixo e metade acima. Antes de tudo, é preciso colocar os dados em ordem (crescente ou decrescente).",chk:["Disse que é o termo central (do meio)?","Disse que antes é preciso ordenar os dados?"]},
+   {tag:"apl",q:"Encontre a mediana de {12, 3, 9, 15, 7, 20}. Mostre a ordem que você usou.",modelo:"Ordenando: 3, 7, 9, 12, 15, 20. São 6 termos (par), então Md = (9 + 12) ÷ 2 = 10,5.",chk:["Ordenei: 3, 7, 9, 12, 15, 20?","Como n = 6 é par, fiz a média de 9 e 12 = 10,5?"]},
+   {tag:"apl",q:"Uma sequência ordenada tem 41 termos. Em que posição está a mediana? E se a sequência tivesse 40 termos?",modelo:"Com 41 termos (ímpar): posição (41 + 1) ÷ 2 = 21ª. Com 40 termos (par): a mediana é a média entre o 20º e o 21º termos.",chk:["Para 41 termos, achei a 21ª posição?","Para 40 termos, disse a média dos termos de posição 20 e 21?"]}
+  ]
+ },
+ {
+  porto:"Peça 04 · Frente A · Cap. 19 · pp. 158–160", emoji:"📊", u:"fa",
+  titulo:"Mediana na tabela de frequência",
+  texto:[
+   "Numa tabela de valores isolados, basta contar as frequências até chegar à posição do meio. No exemplo do livro, 50 alunos tiveram estas notas: 9 tiraram 2, 3 tiraram 3, 6 tiraram 4, 7 tiraram 5, 13 tiraram 6… Com 50 dados, a mediana é a média do <b>25º e do 26º</b>. Somando 9 + 3 + 6 + 7 = 25, o 25º termo é nota 5 e o 26º já é nota 6: Md = (5 + 6) ÷ 2 = <b>5,5</b>.",
+   "Com <b>dados agrupados em classes</b>, o livro usa outro raciocínio. Massas de 30 estudantes: 50 ├ 60 (13), 60 ├ 70 (6), 70 ├ 80 (4), 80 ├┤ 90 (7). A posição procurada é 30 ÷ 2 = <b>15</b>. A 1ª classe vai do 1º ao 13º termo; a 2ª, do 14º ao 19º. Então a mediana está na classe <b>60 ├ 70</b>.",
+   "<div class='formula'>Md = L<sub>i</sub> + [ (n ÷ 2 − F<sub>a</sub>) ÷ f<sub>md</sub> ] · h<sub>md</sub><small>L<sub>i</sub>: limite inferior da classe da mediana · n: número de dados · F<sub>a</sub>: soma das frequências das classes ANTERIORES · f<sub>md</sub>: frequência da classe da mediana · h<sub>md</sub>: amplitude dessa classe</small></div>",
+   "No exemplo: L<sub>i</sub> = 60, n = 30, F<sub>a</sub> = 13, f<sub>md</sub> = 6 e h<sub>md</sub> = 10. Md = 60 + (15 − 13) ÷ 6 · 10 = 60 + 20 ÷ 6 = 380 ÷ 6 ≅ <b>63,333 kg</b> — o mesmo resultado que o livro encontra por proporção.",
+   "<div class='olhar'><b>Peça 04:</b> ache n ÷ 2 ➜ descubra a classe que contém essa posição ➜ F<sub>a</sub> é só das classes <b>de antes</b>.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Na fórmula Md = Li + [(n ÷ 2 − Fa) ÷ fmd] · hmd, o que significam Li, Fa, fmd e hmd?",modelo:"Li é o limite inferior da classe que contém a mediana; Fa é a soma das frequências das classes anteriores a ela; fmd é a frequência da classe da mediana; hmd é a amplitude (tamanho) dessa classe.",chk:["Li = limite inferior da classe da mediana?","Fa = soma das frequências das classes ANTERIORES?","fmd = frequência da classe da mediana e hmd = amplitude dessa classe?"]},
+   {tag:"apl",q:"Numa turma de 10 alunos: 3 tiraram nota 4, 4 tiraram nota 6, 2 tiraram nota 7 e 1 tirou nota 9. Qual é a mediana das notas?",modelo:"n = 10 (par): média do 5º e do 6º termos. Do 1º ao 3º é nota 4; do 4º ao 7º é nota 6. Então o 5º e o 6º são 6, e Md = (6 + 6) ÷ 2 = 6.",chk:["Usei as posições 5 e 6 (n = 10, par)?","Contei as frequências e vi que as duas posições têm nota 6, então Md = 6?"]},
+   {tag:"apl",q:"Tempo de queima das fornadas (min): 20 ├ 30: 8 fornadas; 30 ├ 40: 10 fornadas; 40 ├ 50: 2 fornadas (total 20). Calcule a mediana com a fórmula do livro.",modelo:"n ÷ 2 = 10. A 1ª classe vai do 1º ao 8º; a 2ª, do 9º ao 18º: a mediana está em 30 ├ 40. Li = 30, Fa = 8, fmd = 10, hmd = 10. Md = 30 + (10 − 8) ÷ 10 · 10 = 30 + 2 = 32 min.",chk:["Achei n ÷ 2 = 10 e a classe 30 ├ 40?","Usei Li = 30, Fa = 8, fmd = 10 e hmd = 10?","Cheguei a Md = 32 min?"]}
+  ]
+ },
+ {
+  porto:"Peça 05 · Frente A · Cap. 19 · pp. 161–162", emoji:"🏆", u:"fa",
+  titulo:"Moda: onde os dados se concentram",
+  texto:[
+   "A <span class='destaque'>moda</span> indica onde está a maior parte dos dados — onde eles estão <b>concentrados</b>. Para o livro, <b>moda é o termo que possui maior frequência</b> quando comparado aos demais. Em {3, 5, 7, 7, 9}, a moda é <b>7</b>.",
+   "Uma sequência pode ter <b>mais de uma moda</b>. Em {3, 5, 6, 3, 5, 4, 5, 3, 7, 7}, o 3 e o 5 aparecem três vezes cada: há duas modas, e a distribuição se chama <span class='destaque'>bimodal</span>.",
+   "Na tabela de frequência é ainda mais fácil, porque a própria tabela mostra quantas vezes cada valor aparece. Na tabela das notas dos 50 alunos, a moda é <b>6</b>, porque 13 alunos tiraram 6 — atenção: a moda é a <b>nota 6</b>, e não o número 13 (que é a frequência). Com classes de intervalo, fala-se em <b>classe modal</b>: nas massas dos 30 estudantes, é <b>50 ├ 60</b>, a classe com mais gente (13).",
+   "A moda serve até para dados que não são números: numa pesquisa sobre esporte preferido, a moda é o esporte mais citado.",
+   "<div class='olhar'><b>Peça 05:</b> moda = o valor <b>mais frequente</b> · dois empatados no topo = <b>bimodal</b> · com classes = <b>classe modal</b>.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Na tabela do livro, a nota 6 tem 13 alunos. Um colega disse que “a moda é 13”. Explique o erro dele.",modelo:"A moda é o valor que mais aparece, ou seja, a nota 6. O 13 é a frequência (quantas vezes a nota 6 aparece), não a moda.",chk:["Disse que a moda é o valor mais frequente (a nota 6)?","Disse que 13 é a frequência, não a moda?"]},
+   {tag:"apl",q:"Determine a moda de {2, 7, 4, 7, 2, 9, 7, 2} e diga como se classifica essa distribuição.",modelo:"O 2 aparece 3 vezes e o 7 também aparece 3 vezes (os outros, 1 vez). Há duas modas, 2 e 7: a distribuição é bimodal.",chk:["Contei: 2 aparece 3 vezes e 7 aparece 3 vezes?","Concluí que há duas modas (2 e 7) — bimodal?"]},
+   {tag:"apl",q:"Sacos de argila da olaria (kg): 20 ├ 25: 6 sacos; 25 ├ 30: 15 sacos; 30 ├ 35: 9 sacos. Qual é a classe modal? Justifique.",modelo:"A classe modal é 25 ├ 30, porque é a classe com a maior frequência (15 sacos).",chk:["Respondi 25 ├ 30?","Justifiquei pela maior frequência (15 sacos)?"]}
+  ]
+ },
+ {
+  porto:"Peça 06 · Frente A · Cap. 20 · pp. 176–182", emoji:"↔️", u:"fa",
+  titulo:"Amplitude e variância",
+  texto:[
+   "Média, mediana e moda mostram o <b>centro</b> dos dados, mas às vezes não bastam. João tirou 6, 5 e 7; Daniel tirou 3, 10 e 5. Os dois têm média 6, mas as notas de Daniel estão mais “distantes” da média — mais <b>dispersas</b>. Para medir isso existem as <span class='destaque'>medidas de dispersão</span>: <b>amplitude</b>, <b>variância</b> e <b>desvio padrão</b>.",
+   "A <span class='destaque'>amplitude</span> mostra a faixa de variação: é a diferença entre o maior e o menor valor. João: 7 − 5 = <b>2</b>. Daniel: 10 − 3 = <b>7</b>.",
+   "A <span class='destaque'>variância populacional</span> é mais informativa: é a soma dos quadrados das diferenças entre cada dado e a média, dividida pelo número de elementos. Os 5 passos do livro: <b>1º</b> calcular a média; <b>2º</b> fazer a diferença de cada valor para a média; <b>3º</b> elevar cada diferença ao quadrado; <b>4º</b> somar os quadrados; <b>5º</b> dividir por <b>n</b> (população) ou por <b>n − 1</b> (amostra).",
+   "<div class='formula'>Var = [ (x<sub>1</sub> − M<sub>a</sub>)² + (x<sub>2</sub> − M<sub>a</sub>)² + … + (x<sub>n</sub> − M<sub>a</sub>)² ] ÷ n<small>na variância amostral, divide-se por n − 1</small></div>",
+   "João: diferenças 0, −1 e 1 ➜ quadrados 0, 1 e 1 ➜ soma 2 ➜ 2 ÷ 3 = <b>0,6̄</b>. Daniel: (3 − 6)² + (5 − 6)² + (10 − 6)² = 9 + 1 + 16 = 26 ➜ 26 ÷ 3 = <b>8,6̄</b>. As notas de Daniel são mais dispersas. Quando a pesquisa usa só uma <b>amostra</b>, divide-se por n − 1, o que aumenta um pouco o resultado (margem de segurança). E um <b>outlier</b> — dado que se afasta muito dos demais, às vezes por falha de medição — atrapalha muito a média e, principalmente, a variância; por isso costuma ser excluído.",
+   "<div class='olhar'><b>Peça 06:</b> média ➜ diferenças ➜ ao quadrado ➜ soma ➜ ÷ n (ou ÷ n − 1 na amostra).</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Duas turmas têm a mesma média. Por que só a média não basta para compará-las? Que tipo de medida o livro usa nesse caso?",modelo:"A média só mostra o centro; as notas podem estar mais juntas ou mais espalhadas. Para ver isso usamos as medidas de dispersão: amplitude, variância e desvio padrão.",chk:["Disse que a média não mostra o quanto os dados se espalham?","Citei medidas de dispersão (amplitude, variância ou desvio padrão)?"]},
+   {tag:"apl",q:"Calcule a amplitude e a variância populacional de {4, 8, 6, 2}.",modelo:"Amplitude: 8 − 2 = 6. Média: 20 ÷ 4 = 5. Diferenças: −1, 3, 1, −3 ➜ quadrados 1, 9, 1, 9 ➜ soma 20. Var = 20 ÷ 4 = 5.",chk:["Amplitude: 8 − 2 = 6?","Média 5 e soma dos quadrados das diferenças = 20?","Var = 20 ÷ 4 = 5?"]},
+   {tag:"apl",q:"Se os dados {4, 8, 6, 2} fossem de uma AMOSTRA, qual seria a variância? Ela fica maior ou menor que a populacional?",modelo:"Na amostra divide-se por n − 1 = 3: Var = 20 ÷ 3 ≈ 6,67. Fica maior que a populacional (5).",chk:["Dividi a soma 20 por n − 1 = 3?","Disse que a amostral fica maior (≈ 6,67)?"]}
+  ]
+ },
+ {
+  porto:"Peça 07 · Frente A · Cap. 20 · pp. 183–191", emoji:"σ", u:"fa",
+  titulo:"Desvio padrão: quem é mais regular?",
+  texto:[
+   "Na variância, as diferenças são elevadas ao quadrado: uma diferença de 2 pesa <b>4 vezes</b> mais que uma diferença de 1 (2² = 4 e 1² = 1). Por isso, os salários do exercício resolvido (média R$ 3.000,00) deram variância <b>60 000</b> e parecem muito dispersos, embora variem só de R$ 2.700,00 a R$ 3.400,00 — bem menos, proporcionalmente, do que as notas de Daniel (de 3 a 10).",
+   "Para “compensar” os quadrados, calcula-se a <b>raiz quadrada da variância</b>. Esse valor é o <span class='destaque'>desvio padrão</span>, representado pela letra grega <b>σ (sigma)</b>.",
+   "<div class='formula'>σ = √Var<small>populacional: raiz de (soma dos quadrados ÷ n) · amostral: raiz de (soma dos quadrados ÷ (n − 1))</small></div>",
+   "Nos salários: σ = √60 000 ≅ <b>244,95</b>. Nos exercícios do livro, a regra de leitura é sempre a mesma: <b>quanto menor o desvio padrão, mais próximos (mais regulares, mais homogêneos) estão os dados</b>; quanto maior, maior a dispersão. Na questão do Enem dos atletas, o mais regular é o de <b>menor</b> desvio padrão; na corrida de regularidade, vence a equipe de <b>menor</b> desvio padrão.",
+   "Calcular isso à mão em conjuntos grandes dá trabalho, então o livro mostra as fórmulas das planilhas: <b>=VAR.A</b> (variância amostral), <b>=VAR.P</b> (variância populacional), <b>=DESVPAD.A</b> e <b>=DESVPAD.P</b> (desvio padrão amostral e populacional).",
+   "<div class='olhar'><b>Peça 07:</b> σ = √Var · <b>menor σ = mais regular</b> · não confunda “maior dispersão” com “maior média”.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"O que o desvio padrão mede, e como você decide qual grupo é o mais regular comparando os desvios padrão?",modelo:"Ele mede o quanto os dados se espalham em relação à média (é a raiz quadrada da variância). O grupo mais regular é o que tem o menor desvio padrão.",chk:["Disse que é a raiz quadrada da variância e mede a dispersão em relação à média?","Disse que o mais regular tem o MENOR desvio padrão?"]},
+   {tag:"apl",q:"Calcule o desvio padrão (populacional) de {3, 5, 7, 9}.",modelo:"Média: 24 ÷ 4 = 6. Quadrados das diferenças: 9, 1, 1, 9 ➜ soma 20. Var = 20 ÷ 4 = 5. σ = √5 ≈ 2,24.",chk:["Achei média 6 e variância 20 ÷ 4 = 5?","Tirei a raiz: σ = √5 (≈ 2,24)?"]},
+   {tag:"apl",q:"Três fornos têm a mesma temperatura média. Os desvios padrão são: forno A, 12 °C; forno B, 4 °C; forno C, 9 °C. Qual é o mais regular? E o menos regular?",modelo:"O mais regular é o forno B (menor desvio padrão, 4 °C). O menos regular é o forno A (maior desvio padrão, 12 °C).",chk:["Escolhi o forno B (menor desvio) como o mais regular?","Apontei o forno A (maior desvio) como o menos regular?"]}
+  ]
+ },
+ {
+  porto:"Peça 08 · Frente B · Cap. 21 · pp. 196–198", emoji:"⬡", u:"fb", parte:"🟠 Forno das Formas — Frente B: Geometria (peças 8 a 14)",
+  titulo:"Polígonos regulares: inscrição e circunscrição",
+  texto:[
+   "<span class='destaque'>Polígono regular</span> é aquele que tem <b>todos os lados congruentes</b> e <b>todos os ângulos internos congruentes</b>: triângulo equilátero, quadrado, pentágono, hexágono, heptágono, octógono, eneágono, decágono (regulares).",
+   "Por ter lados e ângulos iguais, quando traçamos as <b>mediatrizes</b> dos lados, elas se encontram num único ponto: o <b>centro</b> do polígono. Esse centro fica à mesma distância dos <b>lados</b> — então dá para desenhar uma circunferência tangente aos lados, a <span class='destaque'>circunferência inscrita</span> no polígono. Ele também fica à mesma distância dos <b>vértices</b> — então dá para desenhar uma circunferência que passa por todos eles, a <span class='destaque'>circunferência circunscrita</span>. O livro generaliza: <b>todos os polígonos regulares são inscritíveis numa circunferência e circunscritíveis a ela</b>.",
+   "Os elementos (com O no centro, A e B vértices e M o ponto médio do lado AB): <b>OA</b> é o raio da circunscrita, medida <b>R</b>; <b>OM</b> é o raio da inscrita, medida <b>r</b>; o lado mede <b>ℓ</b>. O segmento OM também se chama <span class='destaque'>apótema</span> (medida <b>a</b>): liga o centro ao ponto médio de um lado e forma <b>90°</b> com esse lado. Logo, <b>a = r</b>.",
+   "<div class='formula'>R² = r² + (ℓ ÷ 2)²<small>Pitágoras no triângulo retângulo OMA (catetos r e ℓ/2, hipotenusa R)</small></div>",
+   "<div class='olhar'><b>Peça 08:</b> inscrita = <b>dentro</b>, toca os lados (raio r = apótema) · circunscrita = <b>por fora</b>, passa pelos vértices (raio R).</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Qual é a diferença entre a circunferência inscrita e a circunscrita a um polígono regular? Qual desses raios é igual ao apótema?",modelo:"A inscrita fica dentro do polígono e toca (é tangente a) os lados; a circunscrita fica por fora e passa por todos os vértices. O apótema é igual ao raio da inscrita (a = r).",chk:["Inscrita: dentro, tangente aos lados; circunscrita: passa pelos vértices?","O apótema é igual ao raio da inscrita (a = r)?"]},
+   {tag:"apl",q:"Num polígono regular, R = 10 cm e o lado mede 12 cm. Use R² = r² + (ℓ ÷ 2)² para calcular o apótema.",modelo:"ℓ ÷ 2 = 6. 10² = r² + 6² ➜ 100 = r² + 36 ➜ r² = 64 ➜ r = 8. Como a = r, o apótema mede 8 cm.",chk:["Usei ℓ ÷ 2 = 6?","Fiz 100 = r² + 36 e achei a = r = 8 cm?"]},
+   {tag:"apl",q:"Um losango tem os 4 lados iguais, mas ângulos de 60° e 120°. Ele é um polígono regular? Explique usando a definição do livro.",modelo:"Não. Para ser regular, precisa ter todos os lados congruentes E todos os ângulos internos congruentes. Os lados são iguais, mas os ângulos (60° e 120°) não são.",chk:["Respondi que NÃO é regular?","Justifiquei: lados iguais, mas ângulos não são todos congruentes?"]}
+  ]
+ },
+ {
+  porto:"Peça 09 · Frente B · Cap. 21 · pp. 198–200", emoji:"◻️", u:"fb",
+  titulo:"Relações métricas do quadrado",
+  texto:[
+   "No quadrado inscrito numa circunferência de raio R, o triângulo <b>AOB</b> (O no centro, A e B vértices vizinhos) é retângulo em O, com os dois catetos iguais a R. Pelo teorema de Pitágoras: ℓ² = R² + R² = 2R², então:",
+   "<div class='formula'>ℓ = R√2 &nbsp;&nbsp;·&nbsp;&nbsp; r = a = ℓ ÷ 2 &nbsp;&nbsp;·&nbsp;&nbsp; a = R√2 ÷ 2</div>",
+   "O apótema do quadrado vale <b>metade do lado</b> (o triângulo OMA é retângulo e isósceles). E, no triângulo OMB, R² = a² + a² = 2a², que leva a a = R√2 ÷ 2.",
+   "Exercício resolvido do livro: quadrado inscrito numa circunferência de raio 12 cm. Lado: ℓ = 12√2 cm. Apótema: a = 12√2 ÷ 2 = 6√2 cm. Raio da inscrita: r = 6√2 cm. Área: A = ℓ² = (12√2)² = 144 · 2 = <b>288 cm²</b>.",
+   "<div class='olhar'><b>Peça 09:</b> no quadrado, R é a <b>metade da diagonal</b>; r (= apótema) é a <b>metade do lado</b>.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"De onde vem a fórmula ℓ = R√2 do quadrado inscrito? Explique qual triângulo o livro usa.",modelo:"Do triângulo AOB, que é retângulo em O e tem os dois catetos iguais a R (do centro até dois vértices vizinhos). Por Pitágoras, ℓ² = R² + R² = 2R², então ℓ = R√2.",chk:["Citei o triângulo AOB (retângulo, com os dois catetos iguais a R)?","Usei Pitágoras: ℓ² = R² + R² = 2R²?"]},
+   {tag:"apl",q:"Um quadrado está inscrito numa circunferência de raio 5 cm. Calcule o lado, o apótema e a área do quadrado.",modelo:"ℓ = R√2 = 5√2 cm. a = ℓ ÷ 2 = 5√2 ÷ 2 cm. A = ℓ² = (5√2)² = 25 · 2 = 50 cm².",chk:["ℓ = 5√2 cm?","a = 5√2 ÷ 2 cm (metade do lado)?","A = (5√2)² = 50 cm²?"]},
+   {tag:"apl",q:"Uma circunferência de raio 7 cm está inscrita num quadrado. Quanto mede o lado desse quadrado?",modelo:"No quadrado, r = a = ℓ ÷ 2. Então 7 = ℓ ÷ 2 e ℓ = 14 cm.",chk:["Usei r = a = ℓ ÷ 2?","Achei ℓ = 14 cm?"]}
+  ]
+ },
+ {
+  porto:"Peça 10 · Frente B · Cap. 21 · pp. 201–205", emoji:"🔺", u:"fb",
+  titulo:"Relações métricas do triângulo equilátero",
+  texto:[
+   "No triângulo equilátero inscrito e circunscrito, a altura CM mede <b>h</b>. O centro das duas circunferências é o <b>baricentro</b> do triângulo, que divide as medianas na proporção <b>2 : 1</b>. Por isso:",
+   "<div class='formula'>R = (2 ÷ 3) · h &nbsp;&nbsp;·&nbsp;&nbsp; r = a = (1 ÷ 3) · h<br>h = ℓ√3 ÷ 2 &nbsp;&nbsp;·&nbsp;&nbsp; A = ℓ²√3 ÷ 4</div>",
+   "Repare: como R vale 2 partes da altura e r vale 1 parte, no triângulo equilátero <b>R é o dobro de r</b>.",
+   "Exercício resolvido do livro: triângulo equilátero inscrito numa circunferência de raio 20 cm. (a) 20 = (2 ÷ 3)h ➜ h = 30 cm. (b) r = a = (1 ÷ 3) · 30 = 10 cm. (c) 30 = ℓ√3 ÷ 2 ➜ ℓ = 60 ÷ √3 = 20√3 cm. (d) raio da inscrita = 10 cm. (e) A = (20√3)² · √3 ÷ 4 = 400 · 3 · √3 ÷ 4 = <b>300√3 cm²</b>.",
+   "<div class='olhar'><b>Peça 10:</b> altura dividida em 3 partes: <b>2 para R</b> (do centro ao vértice) e <b>1 para r</b> (do centro ao lado).</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"No triângulo equilátero, por que R = 2/3 da altura e r = 1/3 da altura?",modelo:"Porque o centro das circunferências é o baricentro do triângulo, e o baricentro divide cada mediana (que aqui é a própria altura) na proporção 2 : 1.",chk:["Disse que o centro é o baricentro?","Citei a proporção 2 : 1 sobre a altura (mediana)?"]},
+   {tag:"apl",q:"Um triângulo equilátero está inscrito numa circunferência de raio 8 cm. Calcule a altura e o apótema.",modelo:"8 = (2 ÷ 3) · h ➜ h = 12 cm. a = (1 ÷ 3) · 12 = 4 cm.",chk:["8 = (2 ÷ 3)h ➜ h = 12 cm?","a = (1 ÷ 3) · 12 = 4 cm?"]},
+   {tag:"apl",q:"Um triângulo equilátero tem lado 6√3 cm. Calcule a altura e o raio da circunferência circunscrita.",modelo:"h = ℓ√3 ÷ 2 = 6√3 · √3 ÷ 2 = 6 · 3 ÷ 2 = 9 cm. R = (2 ÷ 3) · 9 = 6 cm.",chk:["h = ℓ√3 ÷ 2 = 9 cm?","R = (2 ÷ 3) · 9 = 6 cm?"]}
+  ]
+ },
+ {
+  porto:"Peça 11 · Frente B · Cap. 21 · pp. 205–208", emoji:"🧱", u:"fb",
+  titulo:"Hexágono regular — e o cobogó",
+  texto:[
+   "Ao traçar as diagonais que passam pelo centro de um hexágono regular, formamos <b>seis triângulos congruentes e equiláteros</b>. Como o triângulo AOB é equilátero, o raio da circunscrita é igual ao lado: <b>R = ℓ</b>.",
+   "O apótema (a = r) é a altura do triângulo equilátero AOB. Por Pitágoras, R² = a² + (R ÷ 2)², o que dá a = R√3 ÷ 2 = ℓ√3 ÷ 2. A área do hexágono é a de um triângulo AOB (ℓ²√3 ÷ 4) vezes 6:",
+   "<div class='formula'>R = ℓ &nbsp;&nbsp;·&nbsp;&nbsp; r = a = ℓ√3 ÷ 2 &nbsp;&nbsp;·&nbsp;&nbsp; A = 6 · ℓ²√3 ÷ 4 = 3ℓ²√3 ÷ 2</div>",
+   "Exercício resolvido: hexágono circunscrito a uma circunferência de raio 10 cm. (a) a = 10 cm. (b) 10 = ℓ√3 ÷ 2 ➜ ℓ = 20√3 ÷ 3 cm. (c) R = ℓ = 20√3 ÷ 3 cm. (d) A = <b>200√3 cm²</b>.",
+   "No “Aplicando o assunto”, o livro apresenta o <span class='destaque'>cobogó</span>: elemento vazado da arquitetura que deixa o ar circular, <b>design nacional</b> surgido em <b>Recife (PE)</b> no fim da década de 1920. Muitos cobogós têm a forma de polígonos regulares — em especial <b>quadrado, triângulo equilátero e hexágono regular</b>, que fazem um <b>ladrilhamento perfeito</b>: preenchem um plano <b>sem falhas nem sobreposições</b>. O nome junta as iniciais dos engenheiros Amadeu <b>Co</b>imbra, Ernest <b>Bo</b>eckman e Antônio de <b>Gó</b>is.",
+   "<div class='olhar'><b>Peça 11:</b> hexágono = 6 triângulos equiláteros ➜ <b>R = ℓ</b>. Cuidado: no hexágono quem é igual ao lado é o R, não o apótema.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Por que, no hexágono regular, o raio da circunferência circunscrita é igual ao lado (R = ℓ)?",modelo:"Porque as diagonais pelo centro dividem o hexágono em 6 triângulos equiláteros. No triângulo AOB, os lados OA e OB são raios (R) e AB é o lado do hexágono; como é equilátero, R = ℓ.",chk:["Disse que as diagonais formam 6 triângulos equiláteros?","Concluí que, no triângulo AOB, o raio R é igual ao lado ℓ?"]},
+   {tag:"apl",q:"Um hexágono regular está inscrito numa circunferência de raio 4 cm. Calcule o lado, o apótema e a área.",modelo:"ℓ = R = 4 cm. a = ℓ√3 ÷ 2 = 4√3 ÷ 2 = 2√3 cm. A = 3ℓ²√3 ÷ 2 = 3 · 16 · √3 ÷ 2 = 24√3 cm².",chk:["ℓ = R = 4 cm?","a = 2√3 cm?","A = 24√3 cm²?"]},
+   {tag:"apl",q:"Um cobogó tem a face em forma de hexágono regular de lado 10 cm. Qual é a área dessa face? Use √3 ≈ 1,7.",modelo:"A = 3ℓ²√3 ÷ 2 = 3 · 100 · √3 ÷ 2 = 150√3 ≈ 150 · 1,7 = 255 cm².",chk:["Usei A = 3ℓ²√3 ÷ 2 com ℓ = 10?","Achei 150√3 ≈ 255 cm²?"]}
+  ]
+ },
+ {
+  porto:"Peça 12 · Frente B · Cap. 23 · pp. 240–242", emoji:"🧊", u:"fb",
+  titulo:"Poliedros e prismas",
+  texto:[
+   "<span class='destaque'>Poliedros</span> são sólidos geométricos formados por um número finito de polígonos, em que cada lado de um polígono é comum a <b>dois, e somente dois</b>, polígonos. A palavra vem do grego: <i>póly</i> (vários) + <i>hedra</i> (faces). Elementos: <b>faces</b> (os polígonos), <b>arestas</b> (os lados dos polígonos) e <b>vértices</b> (os pontos de encontro).",
+   "<span class='destaque'>Prismas</span> são poliedros com <b>duas bases planas, paralelas e congruentes</b> e <b>faces laterais que são paralelogramos</b>. O nome vem do polígono da base: base pentagonal ➜ prisma pentagonal.",
+   "Classificação: <b>prisma reto</b> — faces laterais são retângulos e as arestas laterais são perpendiculares às bases; <b>prisma oblíquo</b> — arestas laterais inclinadas (oblíquas) em relação às bases; <b>prisma regular</b> — é um prisma <b>reto</b> cujas bases são <b>polígonos regulares</b>.",
+   "Outra classificação: <b>paralelepípedo</b> é o prisma cujas bases são paralelogramos (reto ou oblíquo); o reto de bases retangulares é o <b>paralelepípedo reto-retângulo</b> (ou <b>bloco retangular</b>). O <b>cubo</b> é o paralelepípedo reto-retângulo com <b>todas as arestas congruentes</b>. <b>Romboedros</b> são paralelepípedos com todas as arestas congruentes, retos ou oblíquos (faces em forma de losango).",
+   "<div class='olhar'><b>Peça 12:</b> regular = <b>reto + base regular</b>. Um prisma de base n-agonal tem <b>n faces laterais</b> + 2 bases.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Qual é a diferença entre um prisma reto e um prisma regular?",modelo:"No prisma reto, as faces laterais são retângulos (arestas laterais perpendiculares às bases). O prisma regular é um prisma reto que, além disso, tem bases que são polígonos regulares.",chk:["Reto: faces laterais retângulos / arestas perpendiculares às bases?","Regular: é reto E tem bases que são polígonos regulares?"]},
+   {tag:"apl",q:"Um cobogó tem a forma de um prisma reto cujas bases são hexágonos regulares. Dê o nome completo desse prisma e diga quantas faces laterais e quantas faces ao todo ele tem.",modelo:"É um prisma hexagonal regular. Tem 6 faces laterais (uma para cada lado do hexágono) e 2 bases: 8 faces ao todo.",chk:["Chamei de prisma hexagonal regular?","6 faces laterais + 2 bases = 8 faces?"]},
+   {tag:"apl",q:"Classifique: (a) um bloco com todas as arestas congruentes e todas as faces quadradas; (b) um paralelepípedo com todas as arestas congruentes e faces em forma de losango (não quadrado).",modelo:"(a) Cubo. (b) Romboedro.",chk:["(a) cubo?","(b) romboedro?"]}
+  ]
+ },
+ {
+  porto:"Peça 13 · Frente B · Cap. 23 · pp. 243–247", emoji:"📦", u:"fb",
+  titulo:"Área lateral e área total do prisma",
+  texto:[
+   "Planificando um prisma, vemos que a <b>superfície lateral</b> é sempre feita de <b>retângulos</b> (prisma reto) ou <b>paralelogramos</b> (oblíquo), e que a quantidade dessas faces é igual ao número de lados do polígono da base. A área de cada base depende do polígono da base.",
+   "<div class='formula'>A<sub>L</sub> = soma das áreas das faces laterais &nbsp;&nbsp;·&nbsp;&nbsp; A<sub>T</sub> = A<sub>L</sub> + 2B<small>B = área de UMA base (são duas bases congruentes)</small></div>",
+   "Exercício resolvido do livro: prisma triangular de altura 30 cm cuja base é um triângulo retângulo de lados 15, 20 e 25 cm. Faces: 30 · 25 = 750; 30 · 20 = 600; 30 · 15 = 450 ➜ A<sub>L</sub> = 1 800 cm². Base: 15 · 20 ÷ 2 = 150 cm². A<sub>T</sub> = 1 800 + 2 · 150 = <b>2 100 cm²</b>. No prisma hexagonal regular de aresta da base 8 cm e altura 12 cm: cada face 8 · 12 = 96, A<sub>L</sub> = 6 · 96 = 576 cm², B = 3 · 8²√3 ÷ 2 = 96√3 cm² e A<sub>T</sub> = 576 + 192√3 = 192(3 + √3) cm².",
+   "<div class='formula'>Paralelepípedo reto-retângulo (a, b, c): A<sub>T</sub> = 2(ab + ac + bc) &nbsp;&nbsp;·&nbsp;&nbsp; Cubo de aresta a: A<sub>T</sub> = 6 · a²</div>",
+   "<div class='olhar'><b>Peça 13:</b> não esqueça o <b>“2B”</b>: são duas bases. No cubo são 6 quadrados iguais.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Por que, na fórmula AT = AL + 2B, aparece o número 2?",modelo:"Porque o prisma tem duas bases, e elas são congruentes (têm a mesma área B). Então soma-se a área lateral com duas vezes a área da base.",chk:["Disse que o prisma tem duas bases?","Disse que as bases são congruentes (mesma área B)?"]},
+   {tag:"apl",q:"Calcule a área total de um paralelepípedo reto-retângulo de 6 cm × 4 cm × 5 cm.",modelo:"AT = 2(ab + ac + bc) = 2(6 · 4 + 6 · 5 + 4 · 5) = 2(24 + 30 + 20) = 2 · 74 = 148 cm².",chk:["Usei AT = 2(ab + ac + bc)?","2 · (24 + 30 + 20) = 148 cm²?"]},
+   {tag:"apl",q:"Um prisma quadrangular regular tem aresta da base 3 cm e altura 10 cm. Calcule a área lateral e a área total.",modelo:"Cada face lateral: 3 · 10 = 30 cm²; AL = 4 · 30 = 120 cm². B = 3² = 9 cm². AT = 120 + 2 · 9 = 138 cm².",chk:["AL = 4 · (3 · 10) = 120 cm²?","AT = 120 + 2 · 9 = 138 cm²?"]}
+  ]
+ },
+ {
+  porto:"Peça 14 · Frente B · Cap. 23 · pp. 248–252 e 263–266", emoji:"🪣", u:"fb",
+  titulo:"Princípio de Cavalieri e volume do prisma",
+  texto:[
+   "O <span class='destaque'>princípio de Cavalieri</span> diz: <b>dados dois sólidos, se todo plano secante a eles, paralelo a um plano dado, determina superfícies de áreas iguais, então os volumes dos sólidos são iguais</b>. Pense em duas pilhas com as mesmas placas: uma alinhada e outra desalinhada. Cortando as duas na mesma altura, a seção tem a mesma área (a de uma placa). Então o volume é o mesmo, mesmo com formas diferentes. (Bonaventura Cavalieri, 1598–1647, foi discípulo de Galileu Galilei.)",
+   "Do 7º ano: o volume do paralelepípedo reto-retângulo é o produto das dimensões, <b>V = a · b · c</b> (10 × 15 × 12 = 1 800 cm³). Agora compare esse bloco com um prisma qualquer de <b>mesma altura h</b> e <b>base de mesma área B</b>: qualquer corte paralelo às bases dá seções de mesma área. Por Cavalieri, os volumes são iguais. Conclusão do livro:",
+   "<div class='formula'>V<sub>prisma</sub> = B · h<small>B = área da base · h = altura do prisma</small></div>",
+   "No exercício das caixas (p. 251), o modelo 2 tem todas as medidas iguais ao <b>dobro</b> das do modelo 1. O volume <b>não</b> dobra: 6 · 6 · 10 = 360 cm³ e 12 · 12 · 20 = 2 880 cm³ — fica <b>8 vezes</b> maior (2 · 2 · 2). Nas Atividades aparece também que <b>1 m³ equivale a 1 000 litros</b> e que, ao colocar um objeto num tanque, o nível da água sobe o volume do objeto dividido pela área da base do tanque (ex.: 2 400 cm³ ÷ (40 · 30) cm² = 2 cm).",
+   "<div class='olhar'><b>Peça 14:</b> V = B · h (área da base vezes altura) · 1 m³ = 1 000 L · dobrou todas as medidas ➜ volume × 8.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Explique o princípio de Cavalieri usando o exemplo das duas pilhas de placas.",modelo:"As duas pilhas têm as mesmas placas e a mesma altura. Cortando as duas na mesma altura, a seção tem a mesma área (a de uma placa). Pelo princípio de Cavalieri, então, elas têm o mesmo volume, mesmo uma sendo alinhada e a outra desalinhada.",chk:["Disse que as seções na mesma altura têm áreas iguais?","Concluí que os volumes são iguais mesmo com formas diferentes?"]},
+   {tag:"apl",q:"Um prisma triangular reto tem como base um triângulo retângulo de catetos 6 cm e 4 cm, e altura do prisma 10 cm. Qual é o volume?",modelo:"B = 6 · 4 ÷ 2 = 12 cm². V = B · h = 12 · 10 = 120 cm³.",chk:["B = 6 · 4 ÷ 2 = 12 cm²?","V = 12 · 10 = 120 cm³?"]},
+   {tag:"apl",q:"Uma caixa cúbica tem aresta 3 cm. Se a aresta dobrar para 6 cm, o volume dobra? Calcule os dois volumes e compare.",modelo:"V₁ = 3 · 3 · 3 = 27 cm³. V₂ = 6 · 6 · 6 = 216 cm³. 216 ÷ 27 = 8: o volume fica 8 vezes maior, não o dobro.",chk:["Calculei 27 cm³ e 216 cm³?","Concluí que o volume fica 8 vezes maior (não o dobro)?"]}
+  ]
+ }
+];
+
+/* ====== ESTADO E PERSISTÊNCIA ====== */
+var CHAVE=KIT+'_leitura_v1';
+var mem={};
+var estado=carregar();
+
+function carregar(){
+  try{ var s=localStorage.getItem(CHAVE); if(s) return JSON.parse(s); }catch(e){ if(mem[CHAVE]) return JSON.parse(mem[CHAVE]); }
+  return {blocos:{}};
+}
+function calcProgresso(){
+  var conf=0, chkPend=0;
+  BLOCOS.forEach(function(bloco,i){
+    var b=estado.blocos[i]; if(!b||!b.conferido) return; conf++;
+    bloco.perguntas.forEach(function(p,j){ var ep=(b.perguntas&&b.perguntas[j])||{chk:{}}; p.chk.forEach(function(pt,k){ if(!ep.chk||!ep.chk[k]) chkPend++; }); });
+  });
+  estado.progresso={conferidos:conf,total:BLOCOS.length,chkPendentes:chkPend};
+  if(conf===BLOCOS.length && chkPend===0){ if(!estado.concluido){ estado.concluido=true; estado.concluidoEm=new Date().toISOString(); } }
+  return estado.progresso;
+}
+function salvar(){
+  calcProgresso();
+  var s=JSON.stringify(estado);
+  try{ localStorage.setItem(CHAVE,s); }catch(e){ mem[CHAVE]=s; }
+  var d=new Date();
+  document.getElementById('salvo').textContent='💾 Salvo às '+d.toLocaleTimeString('pt-BR')+' de '+d.toLocaleDateString('pt-BR');
+  atualizarTrilhaFim();
+  desenharParede();
+}
+function desenharParede(){
+  var t=document.getElementById('parede'); if(!t) return; var h='', atual=-1;
+  for(var i=0;i<BLOCOS.length;i++){ var b=estado.blocos[i]; if(atual<0 && !(b&&b.conferido)) atual=i; }
+  BLOCOS.forEach(function(bl,i){ var b=estado.blocos[i]; var cls=bl.u; if(b&&b.conferido) cls+=' ok'; else if(i===atual) cls+=' at'; h+='<span class="'+cls+'" title="Peça '+(i+1)+'">'+(i+1)+'</span>'; });
+  t.innerHTML=h;
+}
+function atualizarTrilhaFim(){
+  var p=estado.progresso||calcProgresso();
+  var box=document.getElementById('trilha-fim'), txt=document.getElementById('trilha-fim-txt'), btn=document.getElementById('btn-prox');
+  var h3=box.querySelector('h3');
+  if(estado.concluido||trilhaLiberada()){
+    h3.textContent='✅ Leitura concluída — Quiz destravado!';
+    txt.textContent=estado.concluido?'Você encaixou as '+BLOCOS.length+' peças da parede e respondeu a autoavaliação. Agora teste o que aprendeu.':'Trilha liberada pelos pais.';
+    btn.classList.remove('off');
+  } else {
+    h3.textContent='🔒 Próxima etapa: Quiz';
+    var faltam=p.total-p.conferidos;
+    txt.textContent=faltam>0 ? 'Destrava quando você conferir as '+p.total+' peças da Leitura Guiada (faltam '+faltam+').' : 'Falta responder a autoavaliação Sim/Não de '+p.chkPendentes+' ponto(s) para destravar.';
+    btn.classList.add('off');
+  }
+  marcarNav();
+}
+function estBloco(i){ if(!estado.blocos[i]) estado.blocos[i]={aberto:i===0,conferido:false,perguntas:{}}; return estado.blocos[i]; }
+function estPerg(i,j){ var b=estBloco(i); if(!b.perguntas[j]) b.perguntas[j]={resp:'',warned:false,red:false,tentou:'',chk:{}}; return b.perguntas[j]; }
+
+/* ====== ANTICÓPIA (motor validado — Português 7º, 08/10/2026) ====== */
+function normPal(s){
+  return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/<[^>]*>/g,' ').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim().split(' ').filter(Boolean);
+}
+function maiorRun(aw,bw){
+  var bStr=' '+bw.join(' ')+' ', best=0;
+  for(var i=0;i<aw.length;i++){
+    for(var len=aw.length-i; len>0; len--){
+      var sub=aw.slice(i,i+len).join(' ');
+      if(bStr.indexOf(' '+sub+' ')>=0){ if(len>best)best=len; break; }
+    }
+  }
+  return best;
+}
+function cobertoPorRuns(aw,bw,minRun){
+  var bStr=' '+bw.join(' ')+' ', cov=new Array(aw.length).fill(false);
+  for(var i=0;i<aw.length;i++){
+    for(var len=aw.length-i; len>=minRun; len--){
+      var sub=aw.slice(i,i+len).join(' ');
+      if(bStr.indexOf(' '+sub+' ')>=0){ for(var k=i;k<i+len;k++)cov[k]=true; break; }
+    }
+  }
+  return cov.filter(Boolean).length;
+}
+function ehCopia(resp, textoBloco, pergunta){
+  var a=normPal(resp), src=normPal(textoBloco), q=normPal(pergunta);
+  if(a.length<5) return false;
+  var qStr=' '+q.join(' ')+' ', keep=new Array(a.length).fill(true);
+  for(var i=0;i<a.length;i++){
+    for(var len=a.length-i; len>=4; len--){
+      var sub=a.slice(i,i+len).join(' ');
+      if(qStr.indexOf(' '+sub+' ')>=0){ for(var k=i;k<i+len;k++)keep[k]=false; break; }
+    }
+  }
+  var af=a.filter(function(w,idx){return keep[idx];});
+  if(af.length<5) return false;
+  var run=maiorRun(af,src);
+  var cov=cobertoPorRuns(af,src,5);
+  var ratio=cov/af.length;
+  return run>=8 || ratio>0.6;
+}
+
+/* ====== RENDER ====== */
+function textoPlano(bloco){ return bloco.texto.join(' '); }
+function irBloco(i){ var el=document.getElementById('bloco'+i); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+function render(){
+  var cont=document.getElementById('blocos'); cont.innerHTML='';
+  BLOCOS.forEach(function(bloco,i){
+    var b=estBloco(i);
+    if(bloco.parte){ var pt=document.createElement('div'); pt.className='parte '+bloco.u; pt.textContent=bloco.parte; cont.appendChild(pt); }
+    var div=document.createElement('div'); div.className='bloco '+bloco.u+(b.aberto?'':' travado'); div.id='bloco'+i;
+    var html='<div class="bloco-cab"><div class="num">'+(i+1)+'</div><div><div class="porto">'+bloco.porto+'</div><h3>'+bloco.emoji+' '+bloco.titulo+'</h3></div></div>';
+    if(!b.aberto){
+      html+='<div class="cadeado">🔒 Esta peça abre quando você conferir a peça anterior.</div>';
+      div.innerHTML=html; cont.appendChild(div); return;
+    }
+    html+='<div class="bloco-corpo"><div class="texto">';
+    bloco.texto.forEach(function(p){ html+= (p.indexOf('<div')===0 || p.indexOf('<ul')===0 || p.indexOf('<span class=\'formula')===0 ? p : '<p>'+p+'</p>'); });
+    html+='</div>';
+    bloco.perguntas.forEach(function(p,j){
+      var ep=estPerg(i,j);
+      var tagTxt=p.tag==='conc'?'Conceito':'Aplicação';
+      html+='<div class="perg'+(ep.red?' red':'')+'" id="perg'+i+'_'+j+'">';
+      html+='<span class="tag '+p.tag+'">'+tagTxt+'</span>';
+      html+='<label for="ta'+i+'_'+j+'">'+(j+1)+'. '+p.q+'</label>';
+      html+='<textarea id="ta'+i+'_'+j+'" oninput="digitou('+i+','+j+')">'+(ep.resp||'').replace(/</g,'&lt;')+'</textarea>';
+      html+='<div class="aviso" id="av'+i+'_'+j+'"></div>';
+      html+='<div class="modelo" id="mod'+i+'_'+j+'"><span class="lab">Resposta-modelo</span><p>'+p.modelo+'</p>';
+      html+='<div class="chk" id="chk'+i+'_'+j+'"></div></div>';
+      html+='</div>';
+    });
+    html+='<button class="conferir" id="conf'+i+'" onclick="conferir('+i+')">✔️ Conferir esta peça</button>';
+    html+='<div class="status-bloco" id="st'+i+'"></div>';
+    if(i<BLOCOS.length-1){ html+='<div class="prox" id="px'+i+'"></div>'; }
+    html+='</div>';
+    div.innerHTML=html;
+    cont.appendChild(div);
+  });
+  BLOCOS.forEach(function(bloco,i){
+    var b=estBloco(i);
+    if(b.aberto && b.conferido){ mostrarConferido(i); }
+    atualizarBotao(i);
+  });
+  atualizarRelatorio();
+  atualizarTrilhaFim();
+  desenharParede();
+}
+
+function digitou(i,j){
+  var ep=estPerg(i,j);
+  ep.resp=document.getElementById('ta'+i+'_'+j).value;
+  if(ep.red){
+    var bloco=BLOCOS[i];
+    if(!ehCopia(ep.resp, textoPlano(bloco), bloco.perguntas[j].q)){
+      ep.red=false;
+      var pd=document.getElementById('perg'+i+'_'+j); if(pd) pd.classList.remove('red');
+      var av=document.getElementById('av'+i+'_'+j); if(av){av.className='aviso'; av.textContent='';}
+    }
+  }
+  atualizarBotao(i);
+  salvar();
+  atualizarRelatorio();
+}
+
+function atualizarBotao(i){
+  var b=estBloco(i); if(!b.aberto) return;
+  var btn=document.getElementById('conf'+i); if(!btn) return;
+  if(b.conferido){ btn.textContent='✔️ Peça conferida'; btn.disabled=true; return; }
+  var todas=true;
+  BLOCOS[i].perguntas.forEach(function(p,j){
+    var v=(document.getElementById('ta'+i+'_'+j)||{}).value||estPerg(i,j).resp||'';
+    if(v.trim().length<3) todas=false;
+  });
+  btn.disabled=!todas;
+}
+
+function conferir(i){
+  var bloco=BLOCOS[i], b=estBloco(i);
+  var algumBloqueado=false;
+  bloco.perguntas.forEach(function(p,j){
+    var ep=estPerg(i,j);
+    ep.resp=document.getElementById('ta'+i+'_'+j).value;
+    var av=document.getElementById('av'+i+'_'+j);
+    var copia=ehCopia(ep.resp, textoPlano(bloco), p.q);
+    if(copia){
+      if(!ep.warned || ep.resp===ep.tentou){
+        if(!ep.warned){ ep.warned=true; ep.tentou=ep.resp; }
+        av.className='aviso amarelo';
+        av.innerHTML='✋ Boa parte da sua resposta está igual ao texto. Tente <b>reescrever com as suas palavras</b> — explique como se fosse para um amigo, sem olhar o texto. Pode ficar mais curto e simples: o que vale é ser <b>SEU</b>.';
+        algumBloqueado=true;
+      } else {
+        ep.red=true;
+        av.className='aviso vermelho';
+        av.innerHTML='🔴 Esta resposta continua muito parecida com o texto. Ela foi aceita, mas ficou marcada para revisar. Se reescrever com as suas palavras, a marca some.';
+        document.getElementById('perg'+i+'_'+j).classList.add('red');
+      }
+    } else {
+      ep.red=false;
+      if(av){ av.className='aviso'; av.textContent=''; }
+      var pd=document.getElementById('perg'+i+'_'+j); if(pd) pd.classList.remove('red');
+    }
+  });
+  salvar();
+  if(algumBloqueado){
+    document.getElementById('st'+i).innerHTML='<span style="color:var(--amarelo)">✍️ Reescreva as respostas marcadas em amarelo (mude o que escreveu) e clique em Conferir de novo.</span>';
+    return;
+  }
+  b.conferido=true;
+  if(i<BLOCOS.length-1){ estBloco(i+1).aberto=true; }
+  salvar();
+  render();
+  var alvo=document.getElementById('bloco'+i);
+  if(alvo) alvo.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function mostrarConferido(i){
+  var bloco=BLOCOS[i];
+  bloco.perguntas.forEach(function(p,j){
+    var ep=estPerg(i,j);
+    var mod=document.getElementById('mod'+i+'_'+j); if(mod) mod.classList.add('show');
+    if(ep.red){ var pd=document.getElementById('perg'+i+'_'+j); if(pd) pd.classList.add('red');
+      var av=document.getElementById('av'+i+'_'+j); if(av){av.className='aviso vermelho'; av.innerHTML='🔴 Resposta marcada para revisar (muito parecida com o texto). Reescreva com as suas palavras para tirar a marca.';}
+    }
+    var chk=document.getElementById('chk'+i+'_'+j); if(chk){
+      var h='<b style="font-size:.8rem;color:#b5f2cf">Confira você: a sua resposta…</b>';
+      p.chk.forEach(function(pt,k){
+        var val=ep.chk[k]||'';
+        h+='<div class="item"><span>'+pt+'</span><span class="simnao">'
+         +'<button class="sim'+(val==='sim'?' ativo':'')+'" onclick="marcarChk('+i+','+j+','+k+',\'sim\')">Sim</button>'
+         +'<button class="nao'+(val==='nao'?' ativo':'')+'" onclick="marcarChk('+i+','+j+','+k+',\'nao\')">Não</button>'
+         +'</span></div>';
+      });
+      chk.innerHTML=h;
+    }
+  });
+  atualizarStatusBloco(i);
+  var btn=document.getElementById('conf'+i); if(btn){ btn.textContent='✔️ Peça conferida'; btn.disabled=true; }
+  if(i<BLOCOS.length-1){
+    var px=document.getElementById('px'+i);
+    if(px) px.innerHTML='<a href="#bloco'+(i+1)+'" onclick="irBloco('+(i+1)+');return false;">⬇️ Ir para a próxima peça</a>';
+  }
+}
+
+function marcarChk(i,j,k,val){
+  var ep=estPerg(i,j); ep.chk[k]=val;
+  salvar(); mostrarConferido(i); atualizarStatusBloco(i); atualizarRelatorio();
+}
+
+function statusPergunta(i,j){
+  var ep=estPerg(i,j), p=BLOCOS[i].perguntas[j];
+  if(ep.red) return 'revisar';
+  var temNao=false, todasResp=true;
+  p.chk.forEach(function(pt,k){ if(ep.chk[k]==='nao') temNao=true; if(!ep.chk[k]) todasResp=false; });
+  if(temNao) return 'revisar';
+  if(!todasResp) return 'pendente';
+  return 'ok';
+}
+function atualizarStatusBloco(i){
+  var st=document.getElementById('st'+i); if(!st) return;
+  var revisar=false, pendente=false;
+  BLOCOS[i].perguntas.forEach(function(p,j){ var s=statusPergunta(i,j); if(s==='revisar')revisar=true; if(s==='pendente')pendente=true; });
+  if(revisar) st.innerHTML='<span style="color:#ffb3b3">🔁 Esta peça tem pontos para revisar.</span>';
+  else if(pendente) st.innerHTML='<span style="color:var(--amarelo)">📝 Responda a autoavaliação (Sim/Não) de cada pergunta.</span>';
+  else st.innerHTML='<span style="color:#b5f2cf">✅ Peça encaixada com sucesso!</span>';
+  atualizarRelatorio();
+}
+
+function atualizarRelatorio(){
+  var lista=[], totalConf=0, totalRed=0, totalNao=0;
+  BLOCOS.forEach(function(bloco,i){
+    var b=estBloco(i); if(!b.conferido) return; totalConf++;
+    bloco.perguntas.forEach(function(p,j){
+      var ep=estPerg(i,j);
+      if(ep.red){ totalRed++; lista.push('Peça '+(i+1)+' ('+bloco.titulo+'): pergunta '+(j+1)+' — resposta muito parecida com o texto.'); }
+      p.chk.forEach(function(pt,k){ if(ep.chk[k]==='nao'){ totalNao++; lista.push('Peça '+(i+1)+' ('+bloco.titulo+'): revisar — “'+pt+'”'); } });
+    });
+  });
+  var rev=document.getElementById('revisar'), rl=document.getElementById('revisar-lista');
+  if(lista.length){ rev.style.display='block'; rl.innerHTML=lista.map(function(x){return '<li>'+x+'</li>';}).join(''); }
+  else { rev.style.display='none'; rl.innerHTML=''; }
+  var rc=document.getElementById('rel-conteudo');
+  rc.innerHTML='<b>Peças conferidas:</b> '+totalConf+' de '+BLOCOS.length+'.<br>'
+    +'<b>Respostas marcadas (muito parecidas com o texto):</b> '+totalRed+'.<br>'
+    +'<b>Pontos marcados como “Não” na autoavaliação:</b> '+totalNao+'.<br>'
+    +(lista.length? '<span style="color:#ffb3b3">Há '+lista.length+' ponto(s) para revisar (lista acima).</span>' : '<span style="color:#b5f2cf">Sem pontos pendentes para revisar. 👏</span>');
+}
+
+/* ====== EXPORTAR / IMPORTAR / ZERAR ====== */
+function exportar(){
+  var dados=JSON.stringify(estado,null,2);
+  var blob=new Blob([dados],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='leitura-guiada_olaria-do-cobogo.json'; a.click();
+}
+function importar(ev){
+  var f=ev.target.files[0]; if(!f) return;
+  var r=new FileReader();
+  r.onload=function(){ try{ estado=JSON.parse(r.result); if(!estado.blocos) estado.blocos={}; salvar(); render(); mostrarModal('✅ Progresso importado!',false); }catch(e){ mostrarModal('❌ Arquivo inválido.',false); } };
+  r.readAsText(f);
+}
+var acaoZerar=null;
+function pedirZerar(){ acaoZerar=true; mostrarModal('Tem certeza que quer apagar TODO o progresso desta leitura? (O Quiz continua destravado se já tiver sido destravado.)',true); }
+function mostrarModal(txt,confirmar){
+  document.getElementById('modal-txt').innerHTML=txt;
+  document.getElementById('modal').classList.add('show');
+  document.getElementById('modal-cancel').style.display=confirmar?'inline-block':'none';
+  document.getElementById('modal-ok').textContent=confirmar?'Sim, apagar':'Ok';
+  document.getElementById('modal-ok').onclick=function(){ if(confirmar && acaoZerar){ var c=estado.concluido, ce=estado.concluidoEm; estado={blocos:{}}; if(c){estado.concluido=true; estado.concluidoEm=ce;} salvar(); render(); } acaoZerar=null; fecharModal(); };
+}
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+
+render();
+
+
+</script>
+</body>
+</html>

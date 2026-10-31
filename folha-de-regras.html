@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folha de Regras — Matemática 9º ano | Olaria do Cobogó (Mensal 3)</title>
+<style>
+  @page{size:A4 landscape;margin:8mm}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Verdana,'Segoe UI',Arial,sans-serif;font-size:12.5px;line-height:1.35;color:#2a1d14;background:#fbf4e8}
+  .barra{max-width:1120px;margin:10px auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .barra a,.barra button{background:#2a1d14;color:#f6c445;border:none;border-radius:8px;padding:8px 14px;font-size:.95rem;text-decoration:none;cursor:pointer;font-family:inherit}
+  .folha{max-width:1120px;margin:0 auto 20px;background:#fff;border:3px solid #2a1d14;border-radius:10px;padding:12px 14px}
+  h1{font-family:'Trebuchet MS',Tahoma,sans-serif;text-align:center;font-size:19px;margin-bottom:2px}
+  .sub{text-align:center;font-size:11px;color:#6b5646;margin-bottom:8px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .box{border-radius:8px;padding:8px 9px;border:2px solid}
+  .box h2{font-family:'Trebuchet MS',Tahoma,sans-serif;font-size:13.5px;margin-bottom:4px}
+  .box p{margin-bottom:3px}
+  .a1{background:#e8f4fc;border-color:#2b86c4} .a1 h2{color:#1b5f8f}
+  .a2{background:#e6f7f1;border-color:#2a9d6f} .a2 h2{color:#1d7350}
+  .a3{background:#efe9fb;border-color:#7a5bc7} .a3 h2{color:#5a3fa3}
+  .b1{background:#fdeee6;border-color:#d4693a} .b1 h2{color:#a64a20}
+  .b2{background:#fdf6dc;border-color:#c99a10} .b2 h2{color:#8a6a00}
+  .b3{background:#fde8ec;border-color:#c94a64} .b3 h2{color:#9a2f47}
+  .mac{background:#fff4c2;border-color:#2a1d14;grid-column:span 2}
+  .mac h2{color:#2a1d14}
+  .f{font-family:Georgia,'Times New Roman',serif;font-size:13.5px;background:rgba(255,255,255,.8);border-radius:5px;padding:2px 5px;display:inline-block;margin:1px 0}
+  table{border-collapse:collapse;width:100%;font-size:11.5px;margin-top:3px}
+  th,td{border:1px solid #c99a10;padding:3px 4px;text-align:left}
+  th{background:#f6e3a1}
+  .span2{grid-column:span 2}
+  @media print{.barra{display:none} body{background:#fff} .folha{border:none;padding:0;max-width:none}}
+  @media (max-width:800px){.grid{grid-template-columns:1fr 1fr}.mac,.span2{grid-column:span 2}}
+</style>
+</head>
+<body>
+<div class="barra">
+  <a href="index.html">🏠 Voltar ao início</a>
+  <button onclick="window.print()">🖨️ Imprimir esta folha</button>
+  <a href="folha-de-regras.pdf" target="_blank">📄 Abrir a versão em PDF</a>
+</div>
+<div class="folha">
+  <h1>🧱 FOLHA DE REGRAS — Matemática 9º ano · Avaliação Mensal 3 · Olaria do Cobogó</h1>
+  <div class="sub">Frente A: Estatística (Cap. 19, pp. 148–162 · Cap. 20, pp. 176–191) · Frente B: Polígonos regulares (Cap. 21, pp. 196–208) e Prismas (Cap. 23, pp. 240–252 e 263–266)</div>
+  <div class="grid">
+    <div class="box a1">
+      <h2>1) MÉDIAS</h2>
+      <p><b>Simples:</b> <span class="f">M<sub>a</sub> = soma ÷ quantidade</span></p>
+      <p><b>Ponderada:</b> <span class="f">M<sub>p</sub> = (p<sub>1</sub>a<sub>1</sub> + … + p<sub>n</sub>a<sub>n</sub>) ÷ (p<sub>1</sub> + … + p<sub>n</sub>)</span></p>
+      <p>Divida pela <b>soma dos pesos</b>.</p>
+      <p><b>Tabela:</b> soma de (valor · frequência) ÷ total de frequências.</p>
+      <p><b>Classes</b> (150 ├ 155): use a <b>média da classe</b> (152,5) ➜ resultado aproximado.</p>
+    </div>
+    <div class="box a2">
+      <h2>2) MEDIANA E MODA</h2>
+      <p><b>Mediana:</b> termo central dos dados <b>ordenados</b>.</p>
+      <p>n ímpar ➜ posição <span class="f">(n + 1) ÷ 2</span> · n par ➜ média das posições <span class="f">n ÷ 2</span> e <span class="f">n ÷ 2 + 1</span></p>
+      <p><b>Agrupada:</b> <span class="f">Md = L<sub>i</sub> + [(n ÷ 2 − F<sub>a</sub>) ÷ f<sub>md</sub>] · h<sub>md</sub></span></p>
+      <p><small>F<sub>a</sub> = frequências das classes ANTERIORES</small></p>
+      <p><b>Moda:</b> valor de maior frequência · 2 modas = <b>bimodal</b> · com classes = <b>classe modal</b>.</p>
+    </div>
+    <div class="box a3">
+      <h2>3) DISPERSÃO</h2>
+      <p><b>Amplitude</b> = maior − menor</p>
+      <p><b>Variância:</b> <span class="f">Var = Σ(x − M<sub>a</sub>)² ÷ n</span></p>
+      <p>Amostra: divide por <b>n − 1</b>.</p>
+      <p>Passos: média ➜ diferenças ➜ ao quadrado ➜ soma ➜ ÷ n</p>
+      <p><b>Desvio padrão:</b> <span class="f">σ = √Var</span></p>
+      <p><b>Menor σ = mais regular / homogêneo.</b></p>
+    </div>
+    <div class="box b1">
+      <h2>4) POLÍGONO REGULAR</h2>
+      <p>Lados <b>e</b> ângulos internos congruentes.</p>
+      <p><b>R</b> = raio da circunscrita (centro ➜ vértice)</p>
+      <p><b>r</b> = raio da inscrita = <b>apótema a</b> (centro ➜ ponto médio do lado, 90°)</p>
+      <p><span class="f">R² = r² + (ℓ ÷ 2)²</span></p>
+    </div>
+    <div class="box b2 span2">
+      <h2>5) RELAÇÕES MÉTRICAS</h2>
+      <table>
+        <tr><th></th><th>Lado e R</th><th>Apótema (a = r)</th><th>Área</th></tr>
+        <tr><td><b>Quadrado</b></td><td>ℓ = R√2</td><td>a = ℓ ÷ 2 = R√2 ÷ 2</td><td>A = ℓ²</td></tr>
+        <tr><td><b>Triângulo equilátero</b></td><td>R = 2h ÷ 3 · h = ℓ√3 ÷ 2</td><td>a = h ÷ 3 (R = 2r)</td><td>A = ℓ²√3 ÷ 4</td></tr>
+        <tr><td><b>Hexágono regular</b></td><td>R = ℓ</td><td>a = ℓ√3 ÷ 2</td><td>A = 3ℓ²√3 ÷ 2</td></tr>
+      </table>
+    </div>
+    <div class="box b3">
+      <h2>6) PRISMAS</h2>
+      <p>Reto: faces laterais retângulos · Oblíquo: arestas inclinadas · <b>Regular = reto + base regular</b></p>
+      <p><span class="f">A<sub>T</sub> = A<sub>L</sub> + 2B</span></p>
+      <p>Bloco: <span class="f">A<sub>T</sub> = 2(ab + ac + bc)</span> · Cubo: <span class="f">A<sub>T</sub> = 6a²</span></p>
+      <p><span class="f">V = B · h</span> · bloco <span class="f">V = a · b · c</span></p>
+      <p>Cavalieri: seções de mesma área ➜ mesmo volume.</p>
+    </div>
+    <div class="box mac">
+      <h2>⭐ MACETES DE PROVA</h2>
+      <p>✔ Mediana: <b>ordene primeiro</b>! · ✔ Moda é o <b>valor</b>, não a frequência. · ✔ σ é a <b>raiz</b> da variância (σ = 0,5 ➜ Var = 0,25).</p>
+      <p>✔ Triângulo equilátero: <b>R = 2r</b>. · ✔ Hexágono: <b>R = ℓ</b> (6 triângulos equiláteros). · ✔ Quadrado: apótema = <b>metade do lado</b>.</p>
+      <p>✔ Não confunda <b>diâmetro</b> com raio. · ✔ <b>1 m³ = 1 000 L</b>. · ✔ Dobrou todas as medidas do prisma ➜ volume <b>× 8</b>.</p>
+      <p>✔ Somatório: some só os números das afirmativas corretas (01, 02, 04, 08, 16).</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
